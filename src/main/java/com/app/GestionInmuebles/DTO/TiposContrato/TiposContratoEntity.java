@@ -17,10 +17,8 @@ public class TiposContratoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipos", nullable = false)
-    private int id_tipos;
+    private int idTipos;
     @Column(name = "tipos_contrato", nullable = false)
-    private String tipos_contrato;
-    @Column(name = "tipos_interviniente", nullable = false)
-    private String tipos_interviniente;
+    private String tipoContrato;
 
 }

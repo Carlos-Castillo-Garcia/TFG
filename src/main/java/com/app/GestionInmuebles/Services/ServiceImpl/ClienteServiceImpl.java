@@ -20,16 +20,16 @@ public class ClienteServiceImpl implements ClienteService {
     private ClientesRepository clientesRepository;
 
     @Override
-    public List<ClientesResponse> listar_Clientes() {
+    public List<ClientesResponse> listarClientes() {
         List<ClientesResponse> clientesResponseList = new ArrayList<>();
         for (ClientesEntity i:clientesRepository.findAll()) {
-            clientesResponseList.add(this.EntityToResponse(i));
+            clientesResponseList.add(EntityToResponse(i));
         }
         return clientesResponseList;
     }
 
     @Override
-    public void CrearClientes(ClientesDTO i) {
-        clientesRepository.save(this.DTOToEntity(i));
+    public ClientesResponse crearClientes(ClientesDTO i) {
+        return EntityToResponse(clientesRepository.save(DTOToEntity(i)));
     }
 }

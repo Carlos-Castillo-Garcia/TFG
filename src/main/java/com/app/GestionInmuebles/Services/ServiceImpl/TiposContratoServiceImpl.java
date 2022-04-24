@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +21,16 @@ public class TiposContratoServiceImpl implements TiposContratoService {
     private TiposContratoRepository tiposContratoRepository;
 
     @Override
-    public List<TiposContratoResponse> ListarTipos() {
+    public List<TiposContratoResponse> listarTipos() {
         List<TiposContratoResponse> tipos_contratoResponses = new ArrayList<>();
         for (TiposContratoEntity i: tiposContratoRepository.findAll()) {
-            tipos_contratoResponses.add(this.EntityToResponse(i));
+            tipos_contratoResponses.add(EntityToResponse(i));
         }
         return tipos_contratoResponses;
     }
 
     @Override
-    public void CrearTipos(String tipo_contrato, String tipo_interviniete) {
-        TiposContratoEntity nuevo = new TiposContratoEntity();
-        nuevo.setTipos_contrato(tipo_contrato);
-        nuevo.setTipos_interviniente(tipo_interviniete);
-        tiposContratoRepository.save(nuevo);
+    public TiposContratoResponse crearTipos(TiposContratoDTO tiposContratoDTO) {
+        return EntityToResponse(tiposContratoRepository.save(DTOToEntity(tiposContratoDTO)));
     }
 }

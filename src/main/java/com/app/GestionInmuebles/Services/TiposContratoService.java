@@ -10,17 +10,15 @@ import java.util.List;
 public interface TiposContratoService {
     default TiposContratoEntity DTOToEntity(TiposContratoDTO i) {
         ModelMapper modelMapper = new ModelMapper();
-        TiposContratoEntity tiposContratoEntity = modelMapper.map(i, TiposContratoEntity.class);
-        return tiposContratoEntity;
+        return modelMapper.map(i, TiposContratoEntity.class);
     }
 
     default TiposContratoResponse EntityToResponse(TiposContratoEntity i) {
         ModelMapper modelMapper = new ModelMapper();
-        TiposContratoResponse tiposContratoResponse = modelMapper.map(i, TiposContratoResponse.class);
-        return tiposContratoResponse;
+        return modelMapper.map(i, TiposContratoResponse.class);
     }
 
-    List<TiposContratoResponse> ListarTipos();
+    List<TiposContratoResponse> listarTipos();
 
-    void CrearTipos(String tipo_contrato, String tipo_interviniete);
+    TiposContratoResponse crearTipos(TiposContratoDTO tiposContratoDTO);
 }

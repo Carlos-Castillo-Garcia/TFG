@@ -1,7 +1,6 @@
 package com.app.GestionInmuebles.Services.ServiceImpl;
 
 import com.app.GestionInmuebles.DTO.Roles.RolesDTO;
-import com.app.GestionInmuebles.DTO.Roles.RolesEntity;
 import com.app.GestionInmuebles.DTO.Usuarios.UsuariosDTO;
 import com.app.GestionInmuebles.DTO.Usuarios.UsuariosEntity;
 import com.app.GestionInmuebles.DTO.Usuarios.UsuariosResponse;
@@ -27,21 +26,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 
     @Override
-    public List<UsuariosResponse> listar_usuarios() {
+    public List<UsuariosResponse> listarUsuarios() {
         List<UsuariosResponse> usuariosResponseList = new ArrayList<>();
         for (UsuariosEntity i: usuarioRepository.findAll()) {
-            usuariosResponseList.add(this.EntityToResponse(i));
+            usuariosResponseList.add(EntityToResponse(i));
         }
         return usuariosResponseList;
     }
 
     @Override
-    public void CrearUsuarios(String nombre, String password, String email, RolesDTO rol) {
-        UsuariosEntity usuario = new UsuariosEntity();
-        usuario.setNombre(nombre);
-        usuario.setPassword(password);
-        usuario.setEmail(email);
-        usuario.setRol_id(rolesService.DTOToEntity(rol));
-        usuarioRepository.save(usuario);
+    public UsuariosResponse crearUsuarios(UsuariosDTO usuariosDTO) {
+        return EntityToResponse(usuarioRepository.save(DTOToEntity(usuariosDTO)));
     }
 }

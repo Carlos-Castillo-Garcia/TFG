@@ -1,26 +1,25 @@
 package com.app.GestionInmuebles.DTO.Clientes;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientesResponse {
+    private int clienteId;
     private String localidad;
     private String direccion;
-    private int codigo_postal;
+    private int codigoPostal;
     private String nombre;
     private String apellidos;
-    private Date fecha_nacimiento;
+    private Date fechaNacimiento;
     private String nie;
     private String email;
     private int tlf;
-    private int tlf_movil;
+    private int tlfMovil;
     private int borrado;
 }

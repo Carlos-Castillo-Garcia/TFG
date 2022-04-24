@@ -11,17 +11,15 @@ import java.util.List;
 public interface UsuarioService {
     default UsuariosEntity DTOToEntity(UsuariosDTO user) {
         ModelMapper modelMapper = new ModelMapper();
-        UsuariosEntity usuariosEntity = modelMapper.map(user, UsuariosEntity.class);
-        return usuariosEntity;
+        return modelMapper.map(user, UsuariosEntity.class);
     }
 
     default UsuariosResponse EntityToResponse(UsuariosEntity user) {
         ModelMapper modelMapper = new ModelMapper();
-        UsuariosResponse usuariosResponse = modelMapper.map(user, UsuariosResponse.class);
-        return usuariosResponse;
+        return modelMapper.map(user, UsuariosResponse.class);
     }
 
-    List<UsuariosResponse> listar_usuarios();
+    List<UsuariosResponse> listarUsuarios();
 
-    void CrearUsuarios(String nombre, String password, String email, RolesDTO roles);
+    UsuariosResponse crearUsuarios(UsuariosDTO usuariosDTO);
 }

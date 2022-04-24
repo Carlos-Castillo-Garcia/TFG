@@ -10,6 +10,5 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor
 public class TiposContratoDTO {
-    private String Tipo_contrato;
-    private String Tipo_interviniente;
+    private String TipoContrato;
 }

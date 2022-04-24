@@ -4,9 +4,10 @@ import lombok.*;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class RolesDTO {
-    private int id_rol;
-    private String nombre_rol;
+    private int idRol;
+    private String nombreRol;
 }

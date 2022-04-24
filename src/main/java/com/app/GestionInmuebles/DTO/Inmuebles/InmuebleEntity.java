@@ -2,7 +2,6 @@ package com.app.GestionInmuebles.DTO.Inmuebles;
 
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
 import lombok.*;
-import net.bytebuddy.agent.builder.AgentBuilder;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,14 +12,15 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class InmuebleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inmueble", nullable = false)
-    private int id_inmueble;
+    private int idInmueble;
     @Column(name = "ref_catastral", nullable = false)
-    private String ref_catastral;
+    private String refCatastral;
     @Column(name = "alias", nullable = false)
     private String alias;
     @Column(name = "localidad", nullable = false)
@@ -28,13 +28,13 @@ public class InmuebleEntity {
     @Column(name = "direccion", nullable = false)
     private String direccion;
     @Column(name = "codigo_postal", nullable = false)
-    private int codigo_postal;
+    private int codigoPostal;
     @Column(name = "create_time")
-    private Date create_time;
+    private Date createTime;
     @Column(name = "update_time")
-    private Date update_time;
+    private Date updateTime;
     @Column(name = "usuario_id", nullable = false)
-    private int usuario_id;
+    private int usuarioId;
     @Column(name = "borrado", nullable = false)
     private int borrado;
 

@@ -5,10 +5,11 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class InmuebleResponse {
-    private int id_inmueble;
-    private String ref_catastral;
+    private int idInmueble;
+    private String refCatastral;
     private String alias;
     private String localidad;
     private String direccion;

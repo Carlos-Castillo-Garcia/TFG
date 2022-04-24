@@ -18,16 +18,16 @@ public class TBIIntervinientesServiceImpl implements TBIIntervinientesService {
     private TBIIntervinientesRepository tbiIntervinientesRepository;
 
     @Override
-    public List<TBIIntervinientesResponse> listar_Inmuebles() {
+    public List<TBIIntervinientesResponse> listarIntervinientes() {
         List<TBIIntervinientesResponse> intervinientes = new ArrayList<>();
         for (TBIIntervinientesEntity i : tbiIntervinientesRepository.findAll()) {
-            intervinientes.add(this.EntityToResponse(i));
+            intervinientes.add(EntityToResponse(i));
         }
         return intervinientes;
     }
 
     @Override
-    public TBIIntervinientesResponse CrearInmuebles(TBIIntervinientesDTO intervinientesDTO) {
+    public TBIIntervinientesResponse CrearIntervinientes(TBIIntervinientesDTO intervinientesDTO) {
         return EntityToResponse(tbiIntervinientesRepository.save(DTOToEntity(intervinientesDTO)));
     }
 }

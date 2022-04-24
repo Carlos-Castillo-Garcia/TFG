@@ -5,9 +5,11 @@ import lombok.*;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class UsuariosResponse {
+    private int inmuebleId;
     private String nombre;
     private String email;
     private String password;

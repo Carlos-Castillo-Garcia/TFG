@@ -10,13 +10,15 @@ import java.util.List;
 public interface RolesService {
     default RolesEntity DTOToEntity(RolesDTO rol) {
         ModelMapper modelMapper = new ModelMapper();
-        RolesEntity rolesEntity = modelMapper.map(rol, RolesEntity.class);
-        return rolesEntity;
+        return modelMapper.map(rol, RolesEntity.class);
     }
 
-    RolesResponse EntityToResponse(RolesEntity rol);
+    default RolesResponse EntityToResponse(RolesEntity rol){
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(rol, RolesResponse.class);
+    }
 
-    List<RolesResponse> listar_Roles();
+    List<RolesResponse> listarRoles();
 
-    void CrearRoles(String nombre_rol);
+    RolesResponse CrearRoles(RolesDTO rolesDTO);
 }

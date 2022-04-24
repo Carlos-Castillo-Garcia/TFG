@@ -16,12 +16,12 @@ import java.util.List;
 public class RolesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "id_rol", nullable = false)
+    private int idRol;
     @Column(name = "nombre_rol")
-    private String nombre_rol;
+    private String nombreRol;
 
-    @OneToMany(mappedBy = "rol_id")
+    @OneToMany(mappedBy = "rolId")
     @ToString.Exclude
     private List<UsuariosEntity> usuario;
 

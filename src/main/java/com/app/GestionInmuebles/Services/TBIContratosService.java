@@ -10,17 +10,15 @@ import java.util.List;
 public interface TBIContratosService {
     default TBIContratosEntity DTOToEntity(TBIContratosDTO inmueble){
         ModelMapper modelMapper = new ModelMapper();
-        TBIContratosEntity contratosEntity = modelMapper.map(inmueble, TBIContratosEntity.class);
-        return contratosEntity;
+        return modelMapper.map(inmueble, TBIContratosEntity.class);
     }
 
     default TBIContratosResponse EntityToResponse(TBIContratosEntity inmueble){
         ModelMapper modelMapper = new ModelMapper();
-        TBIContratosResponse contratosResponse = modelMapper.map(inmueble, TBIContratosResponse.class);
-        return contratosResponse;
+        return modelMapper.map(inmueble, TBIContratosResponse.class);
     }
 
-    List<TBIContratosResponse> listar_Inmuebles();
+    List<TBIContratosResponse> listarContratos();
 
-    void CrearInmuebles();
+    TBIContratosResponse CrearContratos(TBIContratosDTO tbiContratosDTO);
 }

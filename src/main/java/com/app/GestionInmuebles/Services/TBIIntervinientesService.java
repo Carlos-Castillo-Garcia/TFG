@@ -10,19 +10,15 @@ import java.util.List;
 public interface TBIIntervinientesService {
     default TBIIntervinientesEntity DTOToEntity(TBIIntervinientesDTO inmueble) {
         ModelMapper modelMapper = new ModelMapper();
-        TBIIntervinientesEntity intervinientesEntity =
-                modelMapper.map(inmueble, TBIIntervinientesEntity.class);
-        return intervinientesEntity;
+        return modelMapper.map(inmueble, TBIIntervinientesEntity.class);
     }
 
     default TBIIntervinientesResponse EntityToResponse(TBIIntervinientesEntity inmueble) {
         ModelMapper modelMapper = new ModelMapper();
-        TBIIntervinientesResponse intervinientesResponse =
-                modelMapper.map(inmueble, TBIIntervinientesResponse.class);
-        return intervinientesResponse;
+        return modelMapper.map(inmueble, TBIIntervinientesResponse.class);
     }
 
-    List<TBIIntervinientesResponse> listar_Inmuebles();
+    List<TBIIntervinientesResponse> listarIntervinientes();
 
-    TBIIntervinientesResponse CrearInmuebles(TBIIntervinientesDTO intervinientesDTO);
+    TBIIntervinientesResponse CrearIntervinientes(TBIIntervinientesDTO intervinientesDTO);
 }

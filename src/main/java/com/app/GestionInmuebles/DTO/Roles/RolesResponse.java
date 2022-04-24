@@ -1,20 +1,16 @@
 package com.app.GestionInmuebles.DTO.Roles;
 
-import com.app.GestionInmuebles.DTO.Usuarios.UsuariosEntity;
-import com.app.GestionInmuebles.DTO.Usuarios.UsuariosResponse;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class RolesResponse {
-    private String nombre_rol;
+    private String nombreRol;
     private List<String> usuario;
 
 }

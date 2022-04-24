@@ -6,6 +6,8 @@ import com.app.GestionInmuebles.DTO.TipoPeriodos.TipoPeriodosDTO;
 import com.app.GestionInmuebles.DTO.TipoPeriodos.TipoPeriodosResponse;
 import com.app.GestionInmuebles.DTO.TiposContrato.TiposContratoDTO;
 import com.app.GestionInmuebles.DTO.TiposContrato.TiposContratoResponse;
+import com.app.GestionInmuebles.Services.ServiceImpl.TipoIntervinienteServiceImpl;
+import com.app.GestionInmuebles.Services.ServiceImpl.TipoPeriodoServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.TiposContratoServiceImpl;
 import com.app.GestionInmuebles.Services.TipoIntervinienteService;
 import com.app.GestionInmuebles.Services.TipoPeriodoService;
@@ -25,40 +27,40 @@ public class TiposController {
     private TiposContratoServiceImpl tiposContratoService;
 
     @Autowired
-    @Qualifier("TipoIntervinienteService")
-    private TipoIntervinienteService tipoIntervinienteService;
+    @Qualifier("TipoIntervinienteServiceImpl")
+    private TipoIntervinienteServiceImpl tipoIntervinienteService;
 
     @Autowired
-    @Qualifier("TipoPeriodoService")
-    private TipoPeriodoService tipoPeriodoService;
+    @Qualifier("TipoPeriodoServiceImpl")
+    private TipoPeriodoServiceImpl tipoPeriodoService;
 
 
-    @PostMapping("/crearTipos")
+    @PostMapping("/Contratos")
     public TiposContratoResponse crearTiposContrato(@Valid @RequestBody TiposContratoDTO tiposContratoDTO){
         return tiposContratoService.crearTipos(tiposContratoDTO);
     }
 
-    @GetMapping("/getTipos")
+    @GetMapping("/Contratos")
     public List<TiposContratoResponse> listarTiposContratos(){
         return tiposContratoService.listarTipos();
     }
 
-    @PostMapping("/crearTipos")
+    @PostMapping("/Intervinietes")
     public TipoIntervinienteResponse crearTiposIntervinientes(@Valid @RequestBody TipoIntervinienteDTO tipoIntervinienteDTO){
         return tipoIntervinienteService.crearTipoInterviniente(tipoIntervinienteDTO);
     }
 
-    @GetMapping("/getTipos")
+    @GetMapping("/Intervinientes")
     public List<TipoIntervinienteResponse> listarTiposIntervininetes(){
         return tipoIntervinienteService.listTipoInterviniente();
     }
 
-    @PostMapping("/crearTipos")
+    @PostMapping("/Periodo")
     public TipoPeriodosResponse crearTiposPeriodos(@Valid @RequestBody TipoPeriodosDTO tipoPeriodosDTO){
         return tipoPeriodoService.crearTipoPeriodo(tipoPeriodosDTO);
     }
 
-    @GetMapping("/getTipos")
+    @GetMapping("/Periodo")
     public List<TipoPeriodosResponse> listarTiposPeriodos(){
         return tipoPeriodoService.listarTiposPeriodos();
     }

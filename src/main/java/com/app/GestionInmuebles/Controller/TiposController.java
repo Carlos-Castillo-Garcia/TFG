@@ -45,7 +45,7 @@ public class TiposController {
         return tiposContratoService.listarTipos();
     }
 
-    @PostMapping("/Intervinietes")
+    @PostMapping("/Intervinientes")
     public TipoIntervinienteResponse crearTiposIntervinientes(@Valid @RequestBody TipoIntervinienteDTO tipoIntervinienteDTO){
         return tipoIntervinienteService.crearTipoInterviniente(tipoIntervinienteDTO);
     }

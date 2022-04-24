@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "tipos_contrato")
@@ -20,5 +21,9 @@ public class TiposContratoEntity {
     private int idTipos;
     @Column(name = "tipos_contrato", nullable = false)
     private String tipoContrato;
+    @Column(name = "create_time")
+    private Date createTime;
+    @Column(name = "update_time")
+    private Date updateTime;
 
 }

@@ -20,16 +20,13 @@ import java.util.List;
 @RequestMapping("/api/v1/Tipos")
 public class TiposController {
 
-
     @Autowired
     @Qualifier("TiposContratoServiceImpl")
     private TiposContratoServiceImpl tiposContratoService;
 
-
     @Autowired
     @Qualifier("TipoIntervinienteService")
     private TipoIntervinienteService tipoIntervinienteService;
-
 
     @Autowired
     @Qualifier("TipoPeriodoService")

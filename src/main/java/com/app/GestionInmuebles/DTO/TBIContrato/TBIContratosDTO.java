@@ -15,7 +15,7 @@ public class TBIContratosDTO {
     private Date fechaInicio;
     private Date fechaFin;
     private int cantidadPeriodo;
-    private int inmuebleId;
-    private int tipoPeriodoId;
-    private int tipoContratoId;
+    private int idInmueble;
+    private int idTipoPeriodo;
+    private int idTipoContrato;
 }

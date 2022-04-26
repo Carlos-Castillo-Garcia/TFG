@@ -1,11 +1,9 @@
 package com.app.GestionInmuebles.DTO.Inmuebles;
 
-import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "inmuebles")
@@ -37,9 +35,5 @@ public class InmuebleEntity {
     private int usuarioId;
     @Column(name = "borrado", nullable = false)
     private int borrado;
-
-    @OneToMany(mappedBy = "inmuebleId")
-    @ToString.Exclude
-    private List<TBIContratosEntity> contratosId;
 
 }

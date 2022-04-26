@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TipoPeriodosResponse {
-    private int idPeriodo;
+    private int idTipoPeriodos;
     private String tipoPeriodo;
     private Date createTime;
     private Date updateTime;

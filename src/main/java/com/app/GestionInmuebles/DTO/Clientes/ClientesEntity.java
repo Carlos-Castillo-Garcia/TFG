@@ -48,8 +48,4 @@ public class ClientesEntity {
     @Column(name = "borrado", nullable = false)
     private int borrado;
 
-    @OneToMany(mappedBy = "clienteId")
-    @ToString.Exclude
-    private List<TBIIntervinientesEntity> intervinientesId;
-
 }

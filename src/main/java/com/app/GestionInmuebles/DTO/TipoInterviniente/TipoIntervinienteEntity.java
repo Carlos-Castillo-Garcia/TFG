@@ -16,8 +16,7 @@ public class TipoIntervinienteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tipo_interviniente_id", nullable = false)
-    private int tipoIntervinienteId;
-
+    private int idTipoInterviniente;
     @Column(name = "tipo_interviniente")
     private String tipoInterviniente;
     @Column(name = "create_time")

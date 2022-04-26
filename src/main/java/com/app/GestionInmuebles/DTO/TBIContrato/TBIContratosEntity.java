@@ -20,7 +20,7 @@ public class TBIContratosEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contrato_id", nullable = false)
-    private int contratoId;
+    private int idContrato;
     @Column(name = "fecha_contrato", nullable = false)
     private Date fechaContrato;
     @Column(name = "valor_contrato", nullable = false)
@@ -42,14 +42,14 @@ public class TBIContratosEntity {
 
     @ManyToOne
     @JoinColumn(name = "inmuebles_id", nullable = false)
-    private InmuebleEntity inmuebleId;
+    private InmuebleEntity idInmueble;
 
     @ManyToOne
     @JoinColumn(name = "tipo_periodos_id", nullable = false)
-    private TipoPeriodosEntity tipoPeriodosId;
+    private TipoPeriodosEntity idTipoPeriodo;
 
     @ManyToOne
     @JoinColumn(name = "tipos_contrato_id", nullable = false)
-    private TiposContratoEntity tiposContratoEntity;
+    private TiposContratoEntity idTipoContrato;
 
 }

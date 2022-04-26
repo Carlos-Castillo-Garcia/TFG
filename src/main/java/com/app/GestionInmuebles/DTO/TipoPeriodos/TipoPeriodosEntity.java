@@ -15,12 +15,13 @@ import java.util.Date;
 public class TipoPeriodosEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tipos_periodos_id", nullable = false)
-    private int tiposPeriodosID;
+    @Column(name = "id_tipos_periodos", nullable = false)
+    private int idTipoPeriodo;
     @Column(name = "tipo_periodo", nullable = false)
     private String tipoPeriodo;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+
 }

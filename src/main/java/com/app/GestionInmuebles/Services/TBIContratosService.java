@@ -8,14 +8,16 @@ import org.modelmapper.ModelMapper;
 import java.util.List;
 
 public interface TBIContratosService {
-    default TBIContratosEntity DTOToEntity(TBIContratosDTO inmueble){
+    default TBIContratosEntity DTOToEntity(TBIContratosDTO contratos){
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, TBIContratosEntity.class);
+        TBIContratosEntity contrato = modelMapper.map(contratos, TBIContratosEntity.class);
+        return contrato;
     }
 
-    default TBIContratosResponse EntityToResponse(TBIContratosEntity inmueble){
+    default TBIContratosResponse EntityToResponse(TBIContratosEntity contratos){
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, TBIContratosResponse.class);
+        TBIContratosResponse contrato = modelMapper.map(contratos, TBIContratosResponse.class);
+        return contrato;
     }
 
     List<TBIContratosResponse> listarContratos();

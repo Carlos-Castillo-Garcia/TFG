@@ -10,6 +10,6 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor
 public class TiposContratoResponse {
-    private int tipoContratoId;
+    private int tipoContratosId;
     private String tipoContrato;
 }

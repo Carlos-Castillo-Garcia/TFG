@@ -7,10 +7,12 @@ import com.app.GestionInmuebles.Repository.TBIIntervinientesRepository;
 import com.app.GestionInmuebles.Services.TBIIntervinientesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("TBIIntervinientesServiceImpl")
 public class TBIIntervinientesServiceImpl implements TBIIntervinientesService {
 
     @Autowired

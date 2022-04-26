@@ -4,11 +4,8 @@ import com.app.GestionInmuebles.DTO.Clientes.ClientesDTO;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesResponse;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleDTO;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
-import com.app.GestionInmuebles.DTO.TiposContrato.TiposContratoDTO;
-import com.app.GestionInmuebles.DTO.TiposContrato.TiposContratoResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.ClienteServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.InmueblesServiceImpl;
-import com.app.GestionInmuebles.Services.ServiceImpl.TiposContratoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +14,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/inmuebles")
-public class InmueblesContratosController {
+@RequestMapping("/api/v1/InmueblesClientes")
+public class InmueblesClientesController {
 
     @Autowired
     @Qualifier("InmueblesServiceImpl")
@@ -28,23 +25,25 @@ public class InmueblesContratosController {
     @Qualifier("ClienteServiceImpl")
     private ClienteServiceImpl clienteService;
 
-    @PostMapping("/crearInmueble")
+    @PostMapping("/Inmueble")
     public InmuebleResponse CrearInmueble(@Valid @RequestBody InmuebleDTO inmuebleDTO){
         return inmueblesService.CrearInmuebles(inmuebleDTO);
     }
 
-    @GetMapping("/getInmuebles")
+    @GetMapping("/Inmuebles")
     public List<InmuebleResponse> ListarInmuebles(){
         return inmueblesService.listarInmuebles();
     }
 
-    @PostMapping("/crearCliente")
+    @PostMapping("/Cliente")
     public ClientesResponse CrearCliente(@Valid @RequestBody ClientesDTO cliente){
         return clienteService.crearClientes(cliente);
     }
 
-    @GetMapping("/getClientes")
+    @GetMapping("/Clientes")
     public List<ClientesResponse> ListarClientes(){
         return clienteService.listarClientes();
     }
+
+
 }

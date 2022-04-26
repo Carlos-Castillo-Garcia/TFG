@@ -1,5 +1,8 @@
 package com.app.GestionInmuebles.DTO.TBIContrato;
 
+import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
+import com.app.GestionInmuebles.DTO.TipoPeriodos.TipoPeriodosEntity;
+import com.app.GestionInmuebles.DTO.TiposContrato.TiposContratoEntity;
 import lombok.*;
 
 import java.util.Date;
@@ -18,9 +21,9 @@ public class TBIContratosResponse {
     private int cantidadPeriodo;
     private Date createTime;
     private Date updateTime;
-    private int usuarioId;
+    private int idUsuario;
     private int borrado;
-    private int inmuebleId;
-    private int tipoPeriodoId;
-    private int tipoContratoId;
+    private InmuebleEntity idInmueble;
+    private TipoPeriodosEntity idTipoPeriodo;
+    private TiposContratoEntity idTipoContrato;
 }

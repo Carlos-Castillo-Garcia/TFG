@@ -10,7 +10,7 @@ import lombok.*;
 public class TBIIntervinientesDTO {
     private int porcentajePropiedad;
     private int usuarioId;
-    private int clienteId;
-    private int contratosId;
-    private int tipoIntervinienteId;
+    private int idCliente;
+    private int idContrato;
+    private int idTipoInterviniente;
 }

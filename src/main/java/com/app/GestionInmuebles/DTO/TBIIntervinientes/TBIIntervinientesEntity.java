@@ -3,19 +3,25 @@ package com.app.GestionInmuebles.DTO.TBIIntervinientes;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
 import com.app.GestionInmuebles.DTO.TipoInterviniente.TipoIntervinienteEntity;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "TBI_Intervinientes")
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class TBIIntervinientesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_interviniente", nullable = false)
     private int idInterviniente;
     @Column(name = "porcentaje_propiedad", nullable = false)
-    private int propiedadPorcentaje;
+    private int porcentajePropiedad;
     @Column(name = "usuario_id", nullable = false)
     private int usuarioId;
     @Column(name = "create_time")
@@ -25,13 +31,13 @@ public class TBIIntervinientesEntity {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
-    private ClientesEntity clienteId;
+    private ClientesEntity idCliente;
 
     @ManyToOne
     @JoinColumn(name = "tbi_contratos_id", nullable = false)
-    private TBIContratosEntity tbiContratosId;
+    private TBIContratosEntity idContrato;
 
     @ManyToOne
     @JoinColumn(name = "tipos_interviniente_id", nullable = false)
-    private TipoIntervinienteEntity tiposIntervinientesId;
+    private TipoIntervinienteEntity idTipoInterviniente;
 }

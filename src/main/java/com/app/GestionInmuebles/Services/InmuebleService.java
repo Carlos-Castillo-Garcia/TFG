@@ -10,12 +10,14 @@ import java.util.List;
 public interface InmuebleService {
     default InmuebleEntity DTOToEntity(InmuebleDTO inmueble) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, InmuebleEntity.class);
+        InmuebleEntity inmuebleEntity = modelMapper.map(inmueble, InmuebleEntity.class);
+        return inmuebleEntity;
     }
 
     default InmuebleResponse EntityToResponse(InmuebleEntity inmueble) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, InmuebleResponse.class);
+        InmuebleResponse inmuebleResponse = modelMapper.map(inmueble, InmuebleResponse.class);
+        return inmuebleResponse;
     }
 
     List<InmuebleResponse> listarInmuebles();

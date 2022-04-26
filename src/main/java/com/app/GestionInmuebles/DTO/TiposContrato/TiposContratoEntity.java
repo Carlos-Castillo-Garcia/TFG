@@ -17,8 +17,8 @@ import java.util.Date;
 public class TiposContratoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipos", nullable = false)
-    private int idTipos;
+    @Column(name = "id_tipos_contrato", nullable = false)
+    private int idTipoContrato;
     @Column(name = "tipos_contrato", nullable = false)
     private String tipoContrato;
     @Column(name = "create_time")

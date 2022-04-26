@@ -1,6 +1,8 @@
 package com.app.GestionInmuebles.DTO.TBIIntervinientes;
 
 
+import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
+import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
 import lombok.*;
 
 import java.util.Date;
@@ -16,7 +18,7 @@ public class TBIIntervinientesResponse {
     private int usuarioId;
     private Date createTime;
     private Date updateTime;
-    private int clienteId;
-    private int contratosId;
-    private int tipoIntervinienteId;
+    private ClientesEntity idCliente;
+    private TBIContratosEntity idContrato;
+    private String idTipoInterviniente;
 }

@@ -14,45 +14,26 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/UsuarioRoles")
-public class UsuarioRolesController {
+@RequestMapping("api/v1/Usuario")
+public class UsuarioController {
 
     @Autowired
     @Qualifier("UsuarioServiceImpl")
     private UsuarioServiceImpl usuarioService;
 
-    @Autowired
-    @Qualifier("RolesServiceImpl")
-    private RolesServiceImpl rolesService;
-
-    @PostMapping("/")
+    @PostMapping
     public UsuariosResponse crearUsuario(@Valid @RequestBody UsuariosDTO usuariosDTO){
        return usuarioService.createUpdateUsuarios(usuariosDTO);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<UsuariosResponse> listarUsuarios(){
         return usuarioService.listarUsuarios();
     }
 
-    @PutMapping("/")
+    @PutMapping
     public UsuariosResponse updateUsuario(@Valid @RequestBody UsuariosDTO usuariosDTO){
        return usuarioService.createUpdateUsuarios(usuariosDTO);
-    }
-
-    @PostMapping("/")
-    public RolesResponse crearRol(@Valid @RequestBody RolesDTO rolesDTO){
-        return rolesService.createUpdateRoles(rolesDTO);
-    }
-
-    @GetMapping("/")
-    public List<RolesResponse> listarRoles(){
-        return rolesService.listarRoles();
-    }
-
-    @PutMapping("/")
-    public RolesResponse updateRoles(@Valid @RequestBody RolesDTO rolesDTO){
-        return rolesService.createUpdateRoles(rolesDTO);
     }
 
 }

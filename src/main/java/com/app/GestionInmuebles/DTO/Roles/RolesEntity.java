@@ -20,10 +20,10 @@ public class RolesEntity {
     private int idRol;
     @Column(name = "nombre_rol")
     private String nombreRol;
-    @Column(name = "borrado", columnDefinition = "0")
+    @Column(name = "borrado")
     private int borrado;
 
-    @OneToMany(mappedBy = "rolId")
+    @OneToMany(mappedBy = "idRol")
     @ToString.Exclude
     private List<UsuariosEntity> usuario;
 

@@ -13,5 +13,5 @@ public class UsuariosDTO {
     private String nombre;
     private String email;
     private String password;
-    private RolesDTO rol;
+    private int idRol;
 }

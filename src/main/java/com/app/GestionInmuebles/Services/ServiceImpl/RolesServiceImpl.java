@@ -23,13 +23,15 @@ public class RolesServiceImpl implements RolesService {
     public List<RolesResponse> listarRoles() {
         List<RolesResponse> rolesResponseList = new ArrayList<>();
         for (RolesEntity i: rolesRepository.findAll()) {
-            rolesResponseList.add(EntityToResponse(i));
+            if (i.getBorrado() == 0) {
+                rolesResponseList.add(EntityToResponse(i));
+            }
         }
         return rolesResponseList;
     }
 
     @Override
-    public RolesResponse CrearRoles(RolesDTO rolesDTO) {
+    public RolesResponse createUpdateRoles(RolesDTO rolesDTO) {
         return EntityToResponse(rolesRepository.save(DTOToEntity(rolesDTO)));
     }
 }

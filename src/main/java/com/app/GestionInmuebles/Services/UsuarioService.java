@@ -21,5 +21,6 @@ public interface UsuarioService {
 
     List<UsuariosResponse> listarUsuarios();
 
-    UsuariosResponse crearUsuarios(UsuariosDTO usuariosDTO);
+    UsuariosResponse createUpdateUsuarios(UsuariosDTO usuariosDTO);
+
 }

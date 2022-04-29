@@ -28,6 +28,8 @@ public class UsuariosEntity {
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+    @Column(name = "borrado", columnDefinition = "0")
+    private int borrado;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rol_id", nullable = false)

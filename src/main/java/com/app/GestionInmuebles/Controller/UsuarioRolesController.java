@@ -25,23 +25,34 @@ public class UsuarioRolesController {
     @Qualifier("RolesServiceImpl")
     private RolesServiceImpl rolesService;
 
-    @PostMapping("/crearUsuario")
-    public void CrearUsuario(@Valid @RequestBody UsuariosDTO usuariosDTO){
-        usuarioService.crearUsuarios(usuariosDTO);
+    @PostMapping("/")
+    public UsuariosResponse crearUsuario(@Valid @RequestBody UsuariosDTO usuariosDTO){
+       return usuarioService.createUpdateUsuarios(usuariosDTO);
     }
 
-    @GetMapping("/listUsuarios")
+    @GetMapping("/")
     public List<UsuariosResponse> listarUsuarios(){
         return usuarioService.listarUsuarios();
     }
 
-    @PostMapping("/crearRol")
-    public RolesResponse CrearRol(@Valid @RequestBody RolesDTO rolesDTO){
-        return rolesService.CrearRoles(rolesDTO);
+    @PutMapping("/")
+    public UsuariosResponse updateUsuario(@Valid @RequestBody UsuariosDTO usuariosDTO){
+       return usuarioService.createUpdateUsuarios(usuariosDTO);
     }
 
-    @GetMapping("/listRoles")
+    @PostMapping("/")
+    public RolesResponse crearRol(@Valid @RequestBody RolesDTO rolesDTO){
+        return rolesService.createUpdateRoles(rolesDTO);
+    }
+
+    @GetMapping("/")
     public List<RolesResponse> listarRoles(){
         return rolesService.listarRoles();
     }
+
+    @PutMapping("/")
+    public RolesResponse updateRoles(@Valid @RequestBody RolesDTO rolesDTO){
+        return rolesService.createUpdateRoles(rolesDTO);
+    }
+
 }

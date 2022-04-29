@@ -20,5 +20,5 @@ public interface RolesService {
 
     List<RolesResponse> listarRoles();
 
-    RolesResponse CrearRoles(RolesDTO rolesDTO);
+    RolesResponse createUpdateRoles(RolesDTO rolesDTO);
 }

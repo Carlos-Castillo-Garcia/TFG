@@ -6,6 +6,8 @@ import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleDTO;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.ClienteServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.InmueblesServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,7 @@ public class InmueblesClientesController {
     @Qualifier("ClienteServiceImpl")
     private ClienteServiceImpl clienteService;
 
+    @Operation(description = "prueba")
     @PostMapping("/Inmueble")
     public InmuebleResponse CrearInmueble(@Valid @RequestBody InmuebleDTO inmuebleDTO){
         return inmueblesService.CrearInmuebles(inmuebleDTO);

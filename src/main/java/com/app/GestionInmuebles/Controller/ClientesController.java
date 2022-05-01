@@ -19,14 +19,17 @@ public class ClientesController {
     private ClienteServiceImpl clienteService;
 
     @PostMapping
-    public ClientesResponse CrearCliente(@Valid @RequestBody ClientesDTO cliente){
-        return clienteService.crearClientes(cliente);
+    public ClientesResponse createCliente(@Valid @RequestBody ClientesDTO cliente){
+        return clienteService.createUpdateClientes(cliente);
     }
 
     @GetMapping
-    public List<ClientesResponse> ListarClientes(){
+    public List<ClientesResponse> listClientes(){
         return clienteService.listarClientes();
     }
 
-
+    @PutMapping
+    public ClientesResponse updateCliente(@Valid @RequestBody ClientesDTO cliente){
+        return clienteService.createUpdateClientes(cliente);
+    }
 }

@@ -20,5 +20,5 @@ public interface InmuebleService {
 
     List<InmuebleResponse> listarInmuebles();
 
-    InmuebleResponse CrearInmuebles(InmuebleDTO inmuebleDTO);
+    InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO);
 }

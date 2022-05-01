@@ -18,7 +18,7 @@ public interface TiposContratoService {
         return modelMapper.map(i, TiposContratoResponse.class);
     }
 
-    List<TiposContratoResponse> listarTipos();
+    List<TiposContratoResponse> listarTiposContrato();
 
-    TiposContratoResponse crearTipos(TiposContratoDTO tiposContratoDTO);
+    TiposContratoResponse createUpdateTiposContrato(TiposContratoDTO tiposContratoDTO);
 }

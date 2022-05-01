@@ -19,5 +19,5 @@ public interface TipoPeriodoService {
     }
 
     List<TipoPeriodosResponse> listarTiposPeriodos();
-    TipoPeriodosResponse crearTipoPeriodo(TipoPeriodosDTO tipoPeriodosDTO);
+    TipoPeriodosResponse createUpdateTipoPeriodo(TipoPeriodosDTO tipoPeriodosDTO);
 }

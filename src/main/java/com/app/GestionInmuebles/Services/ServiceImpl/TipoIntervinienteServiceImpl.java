@@ -23,13 +23,15 @@ public class TipoIntervinienteServiceImpl implements TipoIntervinienteService {
     public List<TipoIntervinienteResponse> listTipoInterviniente() {
         List<TipoIntervinienteResponse> list = new ArrayList<>();
         for (TipoIntervinienteEntity i : tipoIntervinienteRepository.findAll()) {
-            list.add(EntityToResponse(i));
+            if (i.getBorrado() == 0) {
+                list.add(EntityToResponse(i));
+            }
         }
         return list;
     }
 
     @Override
-    public TipoIntervinienteResponse crearTipoInterviniente(TipoIntervinienteDTO tipoIntervinienteDTO) {
+    public TipoIntervinienteResponse createUpdateTipoInterviniente(TipoIntervinienteDTO tipoIntervinienteDTO) {
         return EntityToResponse(tipoIntervinienteRepository.save(DTOToEntity(tipoIntervinienteDTO)));
     }
 }

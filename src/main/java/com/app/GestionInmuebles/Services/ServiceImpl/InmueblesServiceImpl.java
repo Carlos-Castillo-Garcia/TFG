@@ -23,13 +23,15 @@ public class InmueblesServiceImpl implements InmuebleService {
     public List<InmuebleResponse> listarInmuebles() {
         List<InmuebleResponse> inmuebleResponseList = new ArrayList<>();
         for (InmuebleEntity i: inmueblesRepository.findAll()) {
-            inmuebleResponseList.add(EntityToResponse(i));
+            if (i.getBorrado() == 0) {
+                inmuebleResponseList.add(EntityToResponse(i));
+            }
         }
         return inmuebleResponseList;
     }
 
     @Override
-    public InmuebleResponse CrearInmuebles(InmuebleDTO inmuebleDTO) {
+    public InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO) {
         return EntityToResponse(inmueblesRepository.save(DTOToEntity(inmuebleDTO)));
     }
 }

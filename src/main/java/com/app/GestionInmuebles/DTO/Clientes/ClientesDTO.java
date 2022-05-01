@@ -10,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientesDTO {
+    private int idCliente;
     private String localidad;
     private String direccion;
     private int codigoPostal;

@@ -10,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TBIContratosDTO {
+    private int idContrato;
     private Date fechaContrato;
     private float valorContrato;
     private Date fechaInicio;

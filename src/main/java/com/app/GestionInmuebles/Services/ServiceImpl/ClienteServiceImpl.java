@@ -23,13 +23,15 @@ public class ClienteServiceImpl implements ClienteService {
     public List<ClientesResponse> listarClientes() {
         List<ClientesResponse> clientesResponseList = new ArrayList<>();
         for (ClientesEntity i:clientesRepository.findAll()) {
-            clientesResponseList.add(EntityToResponse(i));
+            if (i.getBorrado() == 0) {
+                clientesResponseList.add(EntityToResponse(i));
+            }
         }
         return clientesResponseList;
     }
 
     @Override
-    public ClientesResponse crearClientes(ClientesDTO i) {
+    public ClientesResponse createUpdateClientes(ClientesDTO i) {
         return EntityToResponse(clientesRepository.save(DTOToEntity(i)));
     }
 }

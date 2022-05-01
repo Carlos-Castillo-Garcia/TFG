@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TBIIntervinientesDTO {
+    private int idInterviniente;
     private int porcentajePropiedad;
     private int usuarioId;
     private int idCliente;

@@ -8,5 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TipoIntervinienteDTO {
+    private int idTipoInterviniente;
     private String tipoInterviniente;
 }

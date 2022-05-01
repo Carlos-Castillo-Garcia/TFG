@@ -23,13 +23,15 @@ public class TBIContratosServiceImpl implements TBIContratosService {
     public List<TBIContratosResponse> listarContratos() {
         List<TBIContratosResponse> responses = new ArrayList<>();
         for (TBIContratosEntity i : tbiContratosRespository.findAll()) {
-            responses.add(EntityToResponse(i));
+            if (i.getBorrado() == 0) {
+                responses.add(EntityToResponse(i));
+            }
         }
         return responses;
     }
 
     @Override
-    public TBIContratosResponse CrearContratos(TBIContratosDTO tbiContratosDTO) {
+    public TBIContratosResponse createUpdateContratos(TBIContratosDTO tbiContratosDTO) {
         return EntityToResponse(tbiContratosRespository.save(DTOToEntity(tbiContratosDTO)));
     }
 }

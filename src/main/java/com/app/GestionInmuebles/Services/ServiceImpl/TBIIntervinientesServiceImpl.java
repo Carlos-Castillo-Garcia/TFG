@@ -23,13 +23,15 @@ public class TBIIntervinientesServiceImpl implements TBIIntervinientesService {
     public List<TBIIntervinientesResponse> listarIntervinientes() {
         List<TBIIntervinientesResponse> intervinientes = new ArrayList<>();
         for (TBIIntervinientesEntity i : tbiIntervinientesRepository.findAll()) {
-            intervinientes.add(EntityToResponse(i));
+            if (i.getBorrado() == 0) {
+                intervinientes.add(EntityToResponse(i));
+            }
         }
         return intervinientes;
     }
 
     @Override
-    public TBIIntervinientesResponse CrearIntervinientes(TBIIntervinientesDTO intervinientesDTO) {
+    public TBIIntervinientesResponse createUpdateIntervinientes(TBIIntervinientesDTO intervinientesDTO) {
         return EntityToResponse(tbiIntervinientesRepository.save(DTOToEntity(intervinientesDTO)));
     }
 }

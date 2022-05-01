@@ -1,6 +1,8 @@
 package com.app.GestionInmuebles.DTO.Inmuebles;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class InmuebleEntity {

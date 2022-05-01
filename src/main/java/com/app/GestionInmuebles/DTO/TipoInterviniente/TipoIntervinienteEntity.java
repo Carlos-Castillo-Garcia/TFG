@@ -11,6 +11,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @ToString
 public class TipoIntervinienteEntity {
     @Id
@@ -23,5 +24,7 @@ public class TipoIntervinienteEntity {
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+    @Column(name = "borrado")
+    private int borrado;
 
 }

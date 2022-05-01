@@ -8,5 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TipoPeriodosDTO {
+    private int idTipoPeriodo;
     private String tipoPeriodo;
 }

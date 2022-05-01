@@ -20,5 +20,5 @@ public interface TipoIntervinienteService {
 
     List<TipoIntervinienteResponse> listTipoInterviniente();
 
-    TipoIntervinienteResponse crearTipoInterviniente(TipoIntervinienteDTO tipoIntervinienteDTO);
+    TipoIntervinienteResponse createUpdateTipoInterviniente(TipoIntervinienteDTO tipoIntervinienteDTO);
 }

@@ -21,12 +21,17 @@ public class InmueblesController {
 
     @Operation(description = "prueba")
     @PostMapping
-    public InmuebleResponse CrearInmueble(@Valid @RequestBody InmuebleDTO inmuebleDTO){
-        return inmueblesService.CrearInmuebles(inmuebleDTO);
+    public InmuebleResponse createInmueble(@Valid @RequestBody InmuebleDTO inmuebleDTO){
+        return inmueblesService.createUpdateInmuebles(inmuebleDTO);
     }
 
     @GetMapping
-    public List<InmuebleResponse> ListarInmuebles(){
+    public List<InmuebleResponse> listarInmuebles(){
         return inmueblesService.listarInmuebles();
+    }
+
+    @PutMapping
+    public InmuebleResponse updateInmueble(@Valid @RequestBody InmuebleDTO inmuebleDTO){
+        return inmueblesService.createUpdateInmuebles(inmuebleDTO);
     }
 }

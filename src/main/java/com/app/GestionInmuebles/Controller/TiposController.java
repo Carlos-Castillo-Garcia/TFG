@@ -9,8 +9,6 @@ import com.app.GestionInmuebles.DTO.TiposContrato.TiposContratoResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.TipoIntervinienteServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.TipoPeriodoServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.TiposContratoServiceImpl;
-import com.app.GestionInmuebles.Services.TipoIntervinienteService;
-import com.app.GestionInmuebles.Services.TipoPeriodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -36,32 +34,47 @@ public class TiposController {
 
 
     @PostMapping("/Contratos")
-    public TiposContratoResponse crearTiposContrato(@Valid @RequestBody TiposContratoDTO tiposContratoDTO){
-        return tiposContratoService.crearTipos(tiposContratoDTO);
+    public TiposContratoResponse createTiposContrato(@Valid @RequestBody TiposContratoDTO tiposContratoDTO){
+        return tiposContratoService.createUpdateTiposContrato(tiposContratoDTO);
     }
 
     @GetMapping("/Contratos")
-    public List<TiposContratoResponse> listarTiposContratos(){
-        return tiposContratoService.listarTipos();
+    public List<TiposContratoResponse> listTiposContratos(){
+        return tiposContratoService.listarTiposContrato();
+    }
+
+    @PutMapping("/Contratos")
+    public TiposContratoResponse updateTiposContrato(@Valid @RequestBody TiposContratoDTO tiposContratoDTO){
+        return tiposContratoService.createUpdateTiposContrato(tiposContratoDTO);
     }
 
     @PostMapping("/Intervinientes")
-    public TipoIntervinienteResponse crearTiposIntervinientes(@Valid @RequestBody TipoIntervinienteDTO tipoIntervinienteDTO){
-        return tipoIntervinienteService.crearTipoInterviniente(tipoIntervinienteDTO);
+    public TipoIntervinienteResponse createTiposIntervinientes(@Valid @RequestBody TipoIntervinienteDTO tipoIntervinienteDTO){
+        return tipoIntervinienteService.createUpdateTipoInterviniente(tipoIntervinienteDTO);
     }
 
     @GetMapping("/Intervinientes")
-    public List<TipoIntervinienteResponse> listarTiposIntervininetes(){
+    public List<TipoIntervinienteResponse> listTiposIntervininetes(){
         return tipoIntervinienteService.listTipoInterviniente();
     }
 
+    @PutMapping("/Intervinientes")
+    public TipoIntervinienteResponse updateTiposIntervinientes(@Valid @RequestBody TipoIntervinienteDTO tipoIntervinienteDTO){
+        return tipoIntervinienteService.createUpdateTipoInterviniente(tipoIntervinienteDTO);
+    }
+
     @PostMapping("/Periodo")
-    public TipoPeriodosResponse crearTiposPeriodos(@Valid @RequestBody TipoPeriodosDTO tipoPeriodosDTO){
-        return tipoPeriodoService.crearTipoPeriodo(tipoPeriodosDTO);
+    public TipoPeriodosResponse createTiposPeriodos(@Valid @RequestBody TipoPeriodosDTO tipoPeriodosDTO){
+        return tipoPeriodoService.createUpdateTipoPeriodo(tipoPeriodosDTO);
     }
 
     @GetMapping("/Periodo")
-    public List<TipoPeriodosResponse> listarTiposPeriodos(){
+    public List<TipoPeriodosResponse> listTiposPeriodos(){
         return tipoPeriodoService.listarTiposPeriodos();
+    }
+
+    @PutMapping("/Periodo")
+    public TipoPeriodosResponse updateTiposPeriodos(@Valid @RequestBody TipoPeriodosDTO tipoPeriodosDTO){
+        return tipoPeriodoService.createUpdateTipoPeriodo(tipoPeriodosDTO);
     }
 }

@@ -18,13 +18,17 @@ public class ContratosController {
     private TBIContratosServiceImpl tbiContratosService;
 
     @GetMapping
-    public List<TBIContratosResponse> listarContratos(){
+    public List<TBIContratosResponse> listContratos(){
         return tbiContratosService.listarContratos();
     }
 
     @PostMapping
-    public TBIContratosResponse crearContratos(@Valid @RequestBody TBIContratosDTO tbiContratosDTO){
-        return tbiContratosService.CrearContratos(tbiContratosDTO);
+    public TBIContratosResponse createContratos(@Valid @RequestBody TBIContratosDTO tbiContratosDTO){
+        return tbiContratosService.createUpdateContratos(tbiContratosDTO);
     }
 
+    @PutMapping
+    public TBIContratosResponse updateContratos(@Valid @RequestBody TBIContratosDTO tbiContratosDTO){
+        return tbiContratosService.createUpdateContratos(tbiContratosDTO);
+    }
 }

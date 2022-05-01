@@ -1,11 +1,8 @@
 package com.app.GestionInmuebles.Controller;
 
-import com.app.GestionInmuebles.DTO.Roles.RolesDTO;
-import com.app.GestionInmuebles.DTO.Roles.RolesResponse;
-import com.app.GestionInmuebles.DTO.Usuarios.UsuariosDTO;
-import com.app.GestionInmuebles.DTO.Usuarios.UsuariosResponse;
-import com.app.GestionInmuebles.Services.ServiceImpl.RolesServiceImpl;
-import com.app.GestionInmuebles.Services.ServiceImpl.UsuarioServiceImpl;
+import com.TFG.Usuarios.DTO.Usuarios.UsuariosDTO;
+import com.TFG.Usuarios.DTO.Usuarios.UsuariosResponse;
+import com.TFG.Usuarios.Service.ServiceImpl.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +15,7 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    @Qualifier("UsuarioServiceImpl")
+    @Qualifier(value = "UsuarioServiceImpl")
     private UsuarioServiceImpl usuarioService;
 
     @PostMapping

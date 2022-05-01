@@ -10,5 +10,6 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor
 public class TiposContratoDTO {
+    private int idTipoContrato;
     private String TipoContrato;
 }

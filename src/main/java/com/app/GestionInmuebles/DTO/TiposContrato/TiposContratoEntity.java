@@ -1,9 +1,6 @@
 package com.app.GestionInmuebles.DTO.TiposContrato;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,7 +10,9 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TiposContratoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +24,6 @@ public class TiposContratoEntity {
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
-
+    @Column(name = "borrado")
+    private int borrado;
 }

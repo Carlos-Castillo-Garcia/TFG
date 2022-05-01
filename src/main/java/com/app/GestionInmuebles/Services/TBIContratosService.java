@@ -20,5 +20,5 @@ public interface TBIContratosService {
 
     List<TBIContratosResponse> listarContratos();
 
-    TBIContratosResponse CrearContratos(TBIContratosDTO tbiContratosDTO);
+    TBIContratosResponse createUpdateContratos(TBIContratosDTO tbiContratosDTO);
 }

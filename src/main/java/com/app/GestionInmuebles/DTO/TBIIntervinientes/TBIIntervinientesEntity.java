@@ -13,6 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class TBIIntervinientesEntity {
@@ -28,6 +29,8 @@ public class TBIIntervinientesEntity {
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+    @Column(name = "borrado")
+    private int borrado;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)

@@ -20,5 +20,5 @@ public interface TBIIntervinientesService {
 
     List<TBIIntervinientesResponse> listarIntervinientes();
 
-    TBIIntervinientesResponse CrearIntervinientes(TBIIntervinientesDTO intervinientesDTO);
+    TBIIntervinientesResponse createUpdateIntervinientes(TBIIntervinientesDTO intervinientesDTO);
 }

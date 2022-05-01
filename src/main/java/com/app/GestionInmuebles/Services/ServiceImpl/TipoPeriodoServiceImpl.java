@@ -23,13 +23,15 @@ public class TipoPeriodoServiceImpl implements TipoPeriodoService {
     public List<TipoPeriodosResponse> listarTiposPeriodos() {
         List<TipoPeriodosResponse> list = new ArrayList<>();
         for (TipoPeriodosEntity i : tipoPeriodoRepository.findAll()) {
-            list.add(EntityToResponse(i));
+            if (i.getBorrado() == 0) {
+                list.add(EntityToResponse(i));
+            }
         }
         return list;
     }
 
     @Override
-    public TipoPeriodosResponse crearTipoPeriodo(TipoPeriodosDTO tipoPeriodosDTO) {
+    public TipoPeriodosResponse createUpdateTipoPeriodo(TipoPeriodosDTO tipoPeriodosDTO) {
         return EntityToResponse(tipoPeriodoRepository.save(DTOToEntity(tipoPeriodosDTO)));
     }
 }

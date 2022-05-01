@@ -1,10 +1,7 @@
 package com.app.GestionInmuebles.Controller;
 
-import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosDTO;
-import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosResponse;
 import com.app.GestionInmuebles.DTO.TBIIntervinientes.TBIIntervinientesDTO;
 import com.app.GestionInmuebles.DTO.TBIIntervinientes.TBIIntervinientesResponse;
-import com.app.GestionInmuebles.Services.ServiceImpl.TBIContratosServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.TBIIntervinientesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,12 +19,17 @@ public class IntervinientesController {
     private TBIIntervinientesServiceImpl tbiIntervinientesService;
 
     @GetMapping
-    public List<TBIIntervinientesResponse> listarIntervinientes(){
+    public List<TBIIntervinientesResponse> listIntervinientes(){
         return tbiIntervinientesService.listarIntervinientes();
     }
 
     @PostMapping
-    public TBIIntervinientesResponse crearIntervinientes(@Valid @RequestBody TBIIntervinientesDTO intervinientesDTO){
-        return tbiIntervinientesService.CrearIntervinientes(intervinientesDTO);
+    public TBIIntervinientesResponse createIntervinientes(@Valid @RequestBody TBIIntervinientesDTO intervinientesDTO){
+        return tbiIntervinientesService.createUpdateIntervinientes(intervinientesDTO);
+    }
+
+    @PutMapping
+    public TBIIntervinientesResponse updateIntervinientes(@Valid @RequestBody TBIIntervinientesDTO intervinientesDTO){
+        return tbiIntervinientesService.createUpdateIntervinientes(intervinientesDTO);
     }
 }

@@ -33,9 +33,7 @@ select * from roles;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="315f8967-b290-4ef1-a96e-2cbba2d69d6d" object-ref="consoles/Connection" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="315f8967-b290-4ef1-a96e-2cbba2d69d6d" />

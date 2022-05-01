@@ -20,5 +20,5 @@ public interface ClienteService {
 
     List<ClientesResponse> listarClientes();
 
-    ClientesResponse crearClientes(ClientesDTO i);
+    ClientesResponse createUpdateClientes(ClientesDTO i);
 }

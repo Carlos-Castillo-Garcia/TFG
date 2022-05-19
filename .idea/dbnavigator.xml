@@ -28,8 +28,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="315f8967-b290-4ef1-a96e-2cbba2d69d6d">
-      <console name="Connection" type="STANDARD" schema="gestioninmuebles" session="Pool"><![CDATA[select * from gestioninmuebles.usuarios;
-select * from roles;]]></console>
+      <console name="TFG" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

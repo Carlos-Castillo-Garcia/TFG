@@ -2,9 +2,8 @@ package com.app.GestionInmuebles.DTO.TBIIntervinientes;
 
 import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
-import com.app.GestionInmuebles.DTO.TipoInterviniente.TipoIntervinienteEntity;
+import com.app.GestionInmuebles.DTO.Tipos.Intervinientes.IntervinientesEntity;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,9 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class TBIIntervinientesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,24 +20,27 @@ public class TBIIntervinientesEntity {
     private int idInterviniente;
     @Column(name = "porcentaje_propiedad", nullable = false)
     private int porcentajePropiedad;
-    @Column(name = "usuario_id", nullable = false)
-    private int usuarioId;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
     @Column(name = "borrado")
-    private int borrado;
+    private boolean borrado;
 
+    @Column(name = "usuario_id", nullable = false)
+    private int usuarioId;
+    @Column(name = "administrador_id", nullable = false)
+    private int administradorId;
+    
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
-    private ClientesEntity idCliente;
+    private ClientesEntity clienteId;
 
     @ManyToOne
     @JoinColumn(name = "tbi_contratos_id", nullable = false)
-    private TBIContratosEntity idContrato;
+    private TBIContratosEntity contratosId;
 
     @ManyToOne
     @JoinColumn(name = "tipos_interviniente_id", nullable = false)
-    private TipoIntervinienteEntity idTipoInterviniente;
+    private IntervinientesEntity tipoIntervinienteId;
 }

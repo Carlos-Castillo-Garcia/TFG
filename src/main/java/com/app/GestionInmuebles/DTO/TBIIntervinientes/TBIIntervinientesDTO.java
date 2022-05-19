@@ -2,6 +2,8 @@ package com.app.GestionInmuebles.DTO.TBIIntervinientes;
 
 import lombok.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -10,8 +12,14 @@ import lombok.*;
 public class TBIIntervinientesDTO {
     private int idInterviniente;
     private int porcentajePropiedad;
+
+    private boolean borrado;
+    private Date createTime;
+    private Date updateTime;
+
+    private int administradorId;
     private int usuarioId;
-    private int idCliente;
-    private int idContrato;
-    private int idTipoInterviniente;
+    private int clienteId;
+    private int contratosId;
+    private int tipoIntervinienteId;
 }

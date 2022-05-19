@@ -1,3 +1,4 @@
+
 package com.app.GestionInmuebles.Services.ServiceImpl;
 
 import com.app.GestionInmuebles.DTO.TBIIntervinientes.TBIIntervinientesDTO;
@@ -20,12 +21,21 @@ public class TBIIntervinientesServiceImpl implements TBIIntervinientesService {
     private TBIIntervinientesRepository tbiIntervinientesRepository;
 
     @Override
-    public List<TBIIntervinientesResponse> listarIntervinientes() {
-        List<TBIIntervinientesResponse> intervinientes = new ArrayList<>();
-        for (TBIIntervinientesEntity i : tbiIntervinientesRepository.findAll()) {
-            if (i.getBorrado() == 0) {
-                intervinientes.add(EntityToResponse(i));
+    public List<TBIIntervinientesResponse> listarIntervinientesContratoId(int id) {
+        List<TBIIntervinientesResponse> intervinientesEntities = new ArrayList<>();
+        for (TBIIntervinientesEntity i : tbiIntervinientesRepository.getByContratosId(id)) {
+            if (!i.isBorrado()) {
+                intervinientesEntities.add(EntityToResponse(i));
             }
+        }
+        return intervinientesEntities;
+    }
+
+    @Override
+    public List<TBIIntervinientesResponse> listarIntervinientesidIntervinientes(int id) {
+        List<TBIIntervinientesResponse> intervinientes = new ArrayList<>();
+        for (TBIIntervinientesEntity i : tbiIntervinientesRepository.getByidInterviniente(id)) {
+            intervinientes.add(EntityToResponse(i));
         }
         return intervinientes;
     }

@@ -20,12 +20,21 @@ public class TBIContratosServiceImpl implements TBIContratosService {
     private TBIContratosRepository tbiContratosRespository;
 
     @Override
-    public List<TBIContratosResponse> listarContratos() {
+    public List<TBIContratosResponse> listarContratosadministradorId(int id) {
         List<TBIContratosResponse> responses = new ArrayList<>();
-        for (TBIContratosEntity i : tbiContratosRespository.findAll()) {
-            if (i.getBorrado() == 0) {
+        for (TBIContratosEntity i : tbiContratosRespository.getByadministradorId(id)) {
+            if (!i.isBorrado()) {
                 responses.add(EntityToResponse(i));
             }
+        }
+        return responses;
+    }
+
+    @Override
+    public List<TBIContratosResponse> listarContratosidContratos(int id) {
+        List<TBIContratosResponse> responses = new ArrayList<>();
+        for (TBIContratosEntity i : tbiContratosRespository.getByidContratos(id)) {
+            responses.add(EntityToResponse(i));
         }
         return responses;
     }

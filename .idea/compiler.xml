@@ -7,13 +7,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Usuarios" />
+        <module name="GestionInmuebles" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Conexion" target="11" />
+      <module name="Tipos" target="11" />
+      <module name="Tipos (1) (com.app)" target="11" />
+      <module name="Usuario" target="11" />
+      <module name="Usuarios" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Conexion" options="-parameters" />
       <module name="GestionInmuebles" options="-parameters" />
+      <module name="Tipos" options="-parameters" />
       <module name="Usuarios" options="-parameters" />
     </option>
   </component>

@@ -11,23 +11,29 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+
 @RestController
-@RequestMapping("api/v1/Inmuebles")
+@RequestMapping("api/v1/inmuebles")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class InmueblesController {
 
     @Autowired
     @Qualifier("InmueblesServiceImpl")
     private InmueblesServiceImpl inmueblesService;
 
-    @Operation(description = "prueba")
     @PostMapping
     public InmuebleResponse createInmueble(@Valid @RequestBody InmuebleDTO inmuebleDTO){
         return inmueblesService.createUpdateInmuebles(inmuebleDTO);
     }
 
-    @GetMapping
-    public List<InmuebleResponse> listarInmuebles(){
-        return inmueblesService.listarInmuebles();
+    @GetMapping("/{id}")
+    public List<InmuebleResponse> listarInmueblesIdAdministrador(@Valid @PathVariable("id") int id){
+        return inmueblesService.listarInmueblesIdAdministrador(id);
+    }
+
+    @GetMapping("/detalle/{id}")
+    public List<InmuebleResponse> listarInmueblesIdInmueble(@Valid @PathVariable("id") int id){
+        return inmueblesService.listarInmueblesIdInmueble(id);
     }
 
     @PutMapping

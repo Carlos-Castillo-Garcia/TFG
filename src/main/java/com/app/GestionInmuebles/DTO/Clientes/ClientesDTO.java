@@ -2,6 +2,7 @@ package com.app.GestionInmuebles.DTO.Clientes;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import java.util.Date;
 
 @Getter
@@ -21,5 +22,10 @@ public class ClientesDTO {
     private String email;
     private int tlf;
     private int tlfMovil;
-    private int borrado;
+
+    private boolean borrado;
+    private Date createTime;
+    private Date updateTime;
+    private int usuarioId;
+    private int administradorId;
 }

@@ -69,7 +69,7 @@ select * from roles;]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="315f8967-b290-4ef1-a96e-2cbba2d69d6d" active="true" signed="false">
+      <connection id="315f8967-b290-4ef1-a96e-2cbba2d69d6d" active="false" signed="false">
         <database>
           <name value="TFG" />
           <description value="asd" />
@@ -82,10 +82,10 @@ select * from roles;]]></console>
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="mysql" />
+          <database value="gestionescastillo" />
           <type value="USER_PASSWORD" />
           <user value="root" />
-          <deprecated-pwd value="UGFzc3cwcmQ=" />
+          <deprecated-pwd value="UGFzc3cwcmQh" />
         </database>
         <properties>
           <auto-commit value="true" />

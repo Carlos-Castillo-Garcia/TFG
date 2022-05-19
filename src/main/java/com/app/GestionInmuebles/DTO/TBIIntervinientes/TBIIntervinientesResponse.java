@@ -13,12 +13,16 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TBIIntervinientesResponse {
-    private int intervinientesId;
+    private int IdInterviniente;
     private int porcentajePropiedad;
-    private int usuarioId;
+
     private Date createTime;
     private Date updateTime;
-    private ClientesEntity idCliente;
-    private TBIContratosEntity idContrato;
-    private String idTipoInterviniente;
+    private boolean borrado;
+
+    private int usuarioId;
+    private int administradorId;
+    private int clienteId;
+    private int contratosId;
+    private int tipoIntervinienteId;
 }

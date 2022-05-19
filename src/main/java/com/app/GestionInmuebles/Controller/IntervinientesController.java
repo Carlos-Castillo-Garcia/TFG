@@ -11,16 +11,22 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/Intervinientes")
+@RequestMapping("/api/v1/intervinientes")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class IntervinientesController {
 
     @Autowired
     @Qualifier("TBIIntervinientesServiceImpl")
     private TBIIntervinientesServiceImpl tbiIntervinientesService;
 
-    @GetMapping
-    public List<TBIIntervinientesResponse> listIntervinientes(){
-        return tbiIntervinientesService.listarIntervinientes();
+    @GetMapping("/{id}")
+    public List<TBIIntervinientesResponse> listIntervinientesContratosId(@Valid @PathVariable("id") int id){
+        return tbiIntervinientesService.listarIntervinientesContratoId(id);
+    }
+
+    @GetMapping("/detalle/{id}")
+    public List<TBIIntervinientesResponse> listIntervinientesidIntervininetes(@Valid @PathVariable("id") int id){
+        return tbiIntervinientesService.listarIntervinientesidIntervinientes(id);
     }
 
     @PostMapping

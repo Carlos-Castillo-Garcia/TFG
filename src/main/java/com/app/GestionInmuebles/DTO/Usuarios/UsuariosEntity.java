@@ -1,0 +1,40 @@
+package com.app.GestionInmuebles.DTO.Usuarios;
+
+import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesEntity;
+import lombok.*;
+
+import javax.persistence.*;
+import java.sql.Date;
+
+@Entity
+@Table(name = "Usuarios")
+@Getter
+@Setter
+@ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class UsuariosEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario", nullable = false)
+    private int idUsuario;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+    @Column(name = "password", nullable = false)
+    private String password;
+    @Column(name = "create_time")
+    private Date createTime;
+    @Column(name = "update_time")
+    private Date updateTime;
+    @Column(name = "borrado")
+    private boolean borrado;
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private RolesEntity rolId;
+    @Column(name = "id_administrador")
+    private int administradorId;
+}

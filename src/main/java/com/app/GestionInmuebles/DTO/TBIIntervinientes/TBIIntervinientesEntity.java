@@ -2,36 +2,45 @@ package com.app.GestionInmuebles.DTO.TBIIntervinientes;
 
 import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
-import com.app.GestionInmuebles.DTO.TipoInterviniente.TipoIntervinienteEntity;
-
+import com.app.GestionInmuebles.DTO.Tipos.Intervinientes.IntervinientesEntity;
+import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "TBI_Intervinientes")
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class TBIIntervinientesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_interviniente", nullable = false)
     private int idInterviniente;
     @Column(name = "porcentaje_propiedad", nullable = false)
-    private int propiedadPorcentaje;
-    @Column(name = "usuario_id", nullable = false)
-    private int usuarioId;
+    private int porcentajePropiedad;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+    @Column(name = "borrado")
+    private boolean borrado;
 
+    @Column(name = "usuario_id", nullable = false)
+    private int usuarioId;
+    @Column(name = "administrador_id", nullable = false)
+    private int administradorId;
+    
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private ClientesEntity clienteId;
 
     @ManyToOne
     @JoinColumn(name = "tbi_contratos_id", nullable = false)
-    private TBIContratosEntity tbiContratosId;
+    private TBIContratosEntity contratosId;
 
     @ManyToOne
     @JoinColumn(name = "tipos_interviniente_id", nullable = false)
-    private TipoIntervinienteEntity tiposIntervinientesId;
+    private IntervinientesEntity tipoIntervinienteId;
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientesResponse {
-    private int clienteId;
+    private int idCliente;
     private String localidad;
     private String direccion;
     private int codigoPostal;
@@ -21,5 +21,11 @@ public class ClientesResponse {
     private String email;
     private int tlf;
     private int tlfMovil;
-    private int borrado;
+
+    private Date createTime;
+    private Date updateTime;
+    private boolean borrado;
+
+    private int usuarioId;
+    private int administradorId;
 }

@@ -12,8 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class ClientesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,17 +38,19 @@ public class ClientesEntity {
     private int tlf;
     @Column(name = "tlf_movil", nullable = false)
     private int tlfMovil;
+
+
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+    @Column(name = "borrado", nullable = false)
+    private boolean borrado;
+
+
     @Column(name = "usuario_id", nullable = false)
     private int usuarioId;
-    @Column(name = "borrado", nullable = false)
-    private int borrado;
-
-    @OneToMany(mappedBy = "clienteId")
-    @ToString.Exclude
-    private List<TBIIntervinientesEntity> intervinientesId;
+    @Column(name = "id_administrador", nullable = false)
+    private int administradorId;
 
 }

@@ -1,8 +1,8 @@
 package com.app.GestionInmuebles.Services;
 
-import com.app.GestionInmuebles.DTO.Roles.RolesDTO;
-import com.app.GestionInmuebles.DTO.Roles.RolesEntity;
-import com.app.GestionInmuebles.DTO.Roles.RolesResponse;
+import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesDTO;
+import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesEntity;
+import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesResponse;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
@@ -13,12 +13,14 @@ public interface RolesService {
         return modelMapper.map(rol, RolesEntity.class);
     }
 
-    default RolesResponse EntityToResponse(RolesEntity rol){
+    default RolesResponse EntityToResponse(RolesEntity rol) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(rol, RolesResponse.class);
     }
 
-    List<RolesResponse> listarRoles();
+    List<RolesResponse> listarRolesadministradorId(int id);
 
-    RolesResponse CrearRoles(RolesDTO rolesDTO);
+    List<RolesResponse> listarRolesidRoles(int id);
+
+    RolesResponse createUpdateRoles(RolesDTO rolesDTO);
 }

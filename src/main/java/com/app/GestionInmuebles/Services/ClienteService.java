@@ -18,7 +18,9 @@ public interface ClienteService {
         return modelMapper.map(i, ClientesResponse.class);
     }
 
-    List<ClientesResponse> listarClientes();
+    List<ClientesResponse> listarClientesadministradorId(int id);
 
-    ClientesResponse crearClientes(ClientesDTO i);
+    List<ClientesResponse> listarClientesidCliente(int id);
+
+    ClientesResponse createUpdateClientes(ClientesDTO i);
 }

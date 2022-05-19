@@ -2,6 +2,8 @@ package com.app.GestionInmuebles.DTO.Usuarios;
 
 import lombok.*;
 
+import java.util.Date;
+
 
 @Getter
 @Setter
@@ -9,9 +11,14 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsuariosResponse {
-    private int inmuebleId;
+    private int idUsuario;
     private String nombre;
     private String email;
     private String password;
-    private String rol;
+    private Date createTime;
+    private Date updateTime;
+    private boolean borrado;
+
+    private int idRol;
+    private int administradorId;
 }

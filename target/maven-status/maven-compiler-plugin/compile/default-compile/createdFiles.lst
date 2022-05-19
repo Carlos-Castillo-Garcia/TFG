@@ -1,0 +1,6 @@
+com\app\GestionInmuebles\Controller\PersonasPagadorasController.class
+com\app\GestionInmuebles\DTO\Usuarios\UsuariosEntity.class
+com\app\GestionInmuebles\Controller\InmueblesController.class
+com\app\GestionInmuebles\DTO\Usuarios\UsuariosEntity$UsuariosEntityBuilder.class
+com\app\GestionInmuebles\Controller\UsuarioController.class
+com\app\GestionInmuebles\Controller\IngresoGastoController.class

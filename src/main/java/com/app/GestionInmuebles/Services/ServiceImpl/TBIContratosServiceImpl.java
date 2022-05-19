@@ -3,31 +3,44 @@ package com.app.GestionInmuebles.Services.ServiceImpl;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosDTO;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosResponse;
-import com.app.GestionInmuebles.Repository.TBIContratosRespository;
+import com.app.GestionInmuebles.Repository.TBIContratosRepository;
 import com.app.GestionInmuebles.Services.TBIContratosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("TBIContratosServiceImpl")
 public class TBIContratosServiceImpl implements TBIContratosService {
 
     @Autowired
-    @Qualifier("TBIContratosRespository")
-    private TBIContratosRespository tbiContratosRespository;
+    @Qualifier("TBIContratosRepository")
+    private TBIContratosRepository tbiContratosRespository;
 
     @Override
-    public List<TBIContratosResponse> listarContratos() {
+    public List<TBIContratosResponse> listarContratosadministradorId(int id) {
         List<TBIContratosResponse> responses = new ArrayList<>();
-        for (TBIContratosEntity i : tbiContratosRespository.findAll()) {
+        for (TBIContratosEntity i : tbiContratosRespository.getByadministradorId(id)) {
+            if (!i.isBorrado()) {
+                responses.add(EntityToResponse(i));
+            }
+        }
+        return responses;
+    }
+
+    @Override
+    public List<TBIContratosResponse> listarContratosidContratos(int id) {
+        List<TBIContratosResponse> responses = new ArrayList<>();
+        for (TBIContratosEntity i : tbiContratosRespository.getByidContratos(id)) {
             responses.add(EntityToResponse(i));
         }
         return responses;
     }
 
     @Override
-    public TBIContratosResponse CrearContratos(TBIContratosDTO tbiContratosDTO) {
+    public TBIContratosResponse createUpdateContratos(TBIContratosDTO tbiContratosDTO) {
         return EntityToResponse(tbiContratosRespository.save(DTOToEntity(tbiContratosDTO)));
     }
 }

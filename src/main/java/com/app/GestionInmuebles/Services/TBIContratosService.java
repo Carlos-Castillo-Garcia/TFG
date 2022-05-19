@@ -1,24 +1,41 @@
 package com.app.GestionInmuebles.Services;
 
+import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
+import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosDTO;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosResponse;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 
 import java.util.List;
 
 public interface TBIContratosService {
-    default TBIContratosEntity DTOToEntity(TBIContratosDTO inmueble){
+
+    PropertyMap<TBIContratosEntity, TBIContratosResponse> ENTITYTORESPONSE = new PropertyMap<TBIContratosEntity, TBIContratosResponse>() {
+        protected void configure() {
+            map().setTipoContratoId(source.getTipoContratoId().getIdTipoContrato());
+            map().setTipoPeriodoId(source.getTipoPeriodoId().getIdTipoPeriodo());
+            map().setInmuebleId(source.getInmuebleId().getIdInmueble());
+        }
+    };
+
+    default TBIContratosEntity DTOToEntity(TBIContratosDTO contratos){
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, TBIContratosEntity.class);
+        TBIContratosEntity contratosEntity = modelMapper.map(contratos, TBIContratosEntity.class);
+        return contratosEntity;
     }
 
-    default TBIContratosResponse EntityToResponse(TBIContratosEntity inmueble){
+    default TBIContratosResponse EntityToResponse(TBIContratosEntity contratos){
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, TBIContratosResponse.class);
+        modelMapper.addMappings(ENTITYTORESPONSE);
+        TBIContratosResponse contratosResponse = modelMapper.map(contratos, TBIContratosResponse.class);
+        return contratosResponse;
     }
 
-    List<TBIContratosResponse> listarContratos();
+    List<TBIContratosResponse> listarContratosadministradorId(int id);
 
-    TBIContratosResponse CrearContratos(TBIContratosDTO tbiContratosDTO);
+    List<TBIContratosResponse> listarContratosidContratos(int id);
+
+    TBIContratosResponse createUpdateContratos(TBIContratosDTO tbiContratosDTO);
 }

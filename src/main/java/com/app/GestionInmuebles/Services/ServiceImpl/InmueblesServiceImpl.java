@@ -20,16 +20,27 @@ public class InmueblesServiceImpl implements InmuebleService {
     private InmueblesRepository inmueblesRepository;
 
     @Override
-    public List<InmuebleResponse> listarInmuebles() {
+    public List<InmuebleResponse> listarInmueblesIdAdministrador(int id) {
         List<InmuebleResponse> inmuebleResponseList = new ArrayList<>();
-        for (InmuebleEntity i: inmueblesRepository.findAll()) {
-            inmuebleResponseList.add(EntityToResponse(i));
+        for (InmuebleEntity i: inmueblesRepository.getByadministradorId(id)) {
+            if (!i.isBorrado()) {
+                inmuebleResponseList.add(EntityToResponse(i));
+            }
         }
         return inmuebleResponseList;
     }
 
     @Override
-    public InmuebleResponse CrearInmuebles(InmuebleDTO inmuebleDTO) {
+    public List<InmuebleResponse> listarInmueblesIdInmueble(int id) {
+        List<InmuebleResponse> inmuebleResponseList = new ArrayList<>();
+        for (InmuebleEntity i: inmueblesRepository.getByidInmueble(id)) {
+                inmuebleResponseList.add(EntityToResponse(i));
+        }
+        return inmuebleResponseList;
+    }
+
+    @Override
+    public InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO) {
         return EntityToResponse(inmueblesRepository.save(DTOToEntity(inmuebleDTO)));
     }
 }

@@ -16,20 +16,31 @@ import java.util.List;
 public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
-    @Qualifier("ClientesRepository")
+    @Qualifier(value = "ClientesRepository")
     private ClientesRepository clientesRepository;
 
     @Override
-    public List<ClientesResponse> listarClientes() {
+    public List<ClientesResponse> listarClientesadministradorId(int id) {
         List<ClientesResponse> clientesResponseList = new ArrayList<>();
-        for (ClientesEntity i:clientesRepository.findAll()) {
+        for (ClientesEntity i : clientesRepository.findByadministradorId(id)) {
+            if (!i.isBorrado()) {
+                clientesResponseList.add(EntityToResponse(i));
+            }
+        }
+        return clientesResponseList;
+    }
+
+    @Override
+    public List<ClientesResponse> listarClientesidCliente(int id) {
+        List<ClientesResponse> clientesResponseList = new ArrayList<>();
+        for (ClientesEntity i : clientesRepository.findByidCliente(id)) {
             clientesResponseList.add(EntityToResponse(i));
         }
         return clientesResponseList;
     }
 
     @Override
-    public ClientesResponse crearClientes(ClientesDTO i) {
+    public ClientesResponse createUpdateClientes(ClientesDTO i) {
         return EntityToResponse(clientesRepository.save(DTOToEntity(i)));
     }
 }

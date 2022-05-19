@@ -1,6 +1,5 @@
 package com.app.GestionInmuebles.Services.ServiceImpl;
 
-import com.app.GestionInmuebles.DTO.Roles.RolesDTO;
 import com.app.GestionInmuebles.DTO.Usuarios.UsuariosDTO;
 import com.app.GestionInmuebles.DTO.Usuarios.UsuariosEntity;
 import com.app.GestionInmuebles.DTO.Usuarios.UsuariosResponse;
@@ -24,18 +23,35 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Qualifier("RolesServiceImpl")
     private RolesServiceImpl rolesService;
 
+    @Override
+    public List<UsuariosResponse> listarUsuariosIdAdministrador(int id) {
+        List<UsuariosResponse> usuariosResponseList = new ArrayList<>();
+        for (UsuariosEntity i : usuarioRepository.getByadministradorId(id)) {
+            if (!i.isBorrado()) {
+                usuariosResponseList.add(EntityToResponse(i));
+            }
+        }
+        return usuariosResponseList;
+    }
 
     @Override
-    public List<UsuariosResponse> listarUsuarios() {
+    public List<UsuariosResponse> listarUsuariosIdUsuario(int id) {
         List<UsuariosResponse> usuariosResponseList = new ArrayList<>();
-        for (UsuariosEntity i: usuarioRepository.findAll()) {
+        for (UsuariosEntity i : usuarioRepository.getByidUsuario(id)) {
             usuariosResponseList.add(EntityToResponse(i));
         }
         return usuariosResponseList;
     }
 
     @Override
-    public UsuariosResponse crearUsuarios(UsuariosDTO usuariosDTO) {
+    public UsuariosResponse createUpdateUsuarios(UsuariosDTO usuariosDTO) {
         return EntityToResponse(usuarioRepository.save(DTOToEntity(usuariosDTO)));
     }
+
+    @Override
+    public UsuariosResponse loggin(String email, String password) {
+        UsuariosResponse usuariosResponse = EntityToResponse(usuarioRepository.getByEmailAndPassword(email, password));
+        return usuariosResponse;
+    }
+
 }

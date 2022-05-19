@@ -1,19 +1,20 @@
 package com.app.GestionInmuebles.DTO.Inmuebles;
 
-import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
-import lombok.*;
+import com.app.GestionInmuebles.DTO.Tipos.Inmuebles.TipoInmuebleEntity;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "inmuebles")
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class InmuebleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,17 +30,30 @@ public class InmuebleEntity {
     private String direccion;
     @Column(name = "codigo_postal", nullable = false)
     private int codigoPostal;
+    @Column(name = "planta", nullable = false)
+    private int planta;
+    @Column(name = "n_habitaciones", nullable = false)
+    private int nHabitaciones;
+    @Column(name = "m_cuadrados", nullable = false)
+    private int mCuadrados;
+    @Column(name = "n_banos", nullable = false)
+    private int nBanos;
+
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+    @Column(name = "borrado", nullable = false)
+    private boolean borrado;
+
+
     @Column(name = "usuario_id", nullable = false)
     private int usuarioId;
-    @Column(name = "borrado", nullable = false)
-    private int borrado;
+    @Column(name = "id_administrador", nullable = false)
+    private int administradorId;
 
-    @OneToMany(mappedBy = "inmuebleId")
-    @ToString.Exclude
-    private List<TBIContratosEntity> contratosId;
+    @ManyToOne
+    @JoinColumn(name = "tipo_inmueble_id", nullable = false)
+    private TipoInmuebleEntity idTipoInmueble;
 
 }

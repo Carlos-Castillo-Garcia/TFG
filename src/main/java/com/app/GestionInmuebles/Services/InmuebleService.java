@@ -4,21 +4,33 @@ import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleDTO;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 
 import java.util.List;
 
 public interface InmuebleService {
+    PropertyMap<InmuebleEntity, InmuebleResponse> ENTITYTORESPONSE = new PropertyMap<InmuebleEntity, InmuebleResponse>() {
+        protected void configure() {
+            map().setTipoInmueblesId(source.getIdTipoInmueble().getIdTipoInmueble());
+        }
+    };
+
     default InmuebleEntity DTOToEntity(InmuebleDTO inmueble) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, InmuebleEntity.class);
+        InmuebleEntity inmuebleEntity = modelMapper.map(inmueble, InmuebleEntity.class);
+        return inmuebleEntity;
     }
 
     default InmuebleResponse EntityToResponse(InmuebleEntity inmueble) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, InmuebleResponse.class);
+        modelMapper.addMappings(ENTITYTORESPONSE);
+        InmuebleResponse inmuebleResponse = modelMapper.map(inmueble, InmuebleResponse.class);
+        return inmuebleResponse;
     }
 
-    List<InmuebleResponse> listarInmuebles();
+    List<InmuebleResponse> listarInmueblesIdAdministrador(int idAdministrador);
 
-    InmuebleResponse CrearInmuebles(InmuebleDTO inmuebleDTO);
+    List<InmuebleResponse> listarInmueblesIdInmueble(int idInmueble);
+
+    InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO);
 }

@@ -1,6 +1,6 @@
 package com.app.GestionInmuebles.DTO.Usuarios;
 
-import com.app.GestionInmuebles.DTO.Roles.RolesEntity;
+import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,6 +11,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @ToString
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsuariosEntity {
@@ -18,19 +19,22 @@ public class UsuariosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario", nullable = false)
     private int idUsuario;
-    @Column(name = "nombre")
+    @Column(name = "nombre", nullable = false)
     private String nombre;
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
+    @Column(name = "borrado")
+    private boolean borrado;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rol_id", nullable = false)
-    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
     private RolesEntity rolId;
+    @Column(name = "id_administrador")
+    private int administradorId;
 }

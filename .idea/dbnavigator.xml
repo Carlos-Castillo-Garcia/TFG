@@ -23,12 +23,13 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="315f8967-b290-4ef1-a96e-2cbba2d69d6d">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
+      <console name="Connection" type="STANDARD" schema="gestioninmuebles" session="Pool"><![CDATA[select * from gestioninmuebles.usuarios;
+select * from roles;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -62,30 +63,35 @@
     <diagnostics-history />
   </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
-    <recently-used-interfaces />
+    <recently-used-interfaces>
+      <mapping database-type="MYSQL" interface-id="DEFAULT" />
+    </recently-used-interfaces>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="315f8967-b290-4ef1-a96e-2cbba2d69d6d" active="true" signed="false">
+      <connection id="315f8967-b290-4ef1-a96e-2cbba2d69d6d" active="false" signed="false">
         <database>
-          <name value="Connection" />
+          <name value="TFG" />
           <description value="asd" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="8.0" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="mysql" />
+          <database value="gestionescastillo" />
           <type value="USER_PASSWORD" />
           <user value="root" />
-          <deprecated-pwd value="UGFzc3cwcmQ=" />
+          <deprecated-pwd value="UGFzc3cwcmQh" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
+          <properties>
+            <property key="serverTimezone" value="" />
+          </properties>
         </properties>
         <ssh-settings>
           <active value="false" />
@@ -111,7 +117,7 @@
           <connect-automatically value="true" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="false" />
-          <environment-type value="default" />
+          <environment-type value="development" />
           <connectivity-timeout value="5" />
           <idle-time-to-disconnect value="30" />
           <idle-time-to-disconnect-pool value="5" />
@@ -119,7 +125,7 @@
           <max-connection-pool-size value="7" />
           <alternative-statement-delimiter value="" />
         </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+        <object-filters hide-empty-schemas="true" hide-pseudo-columns="false">
           <object-type-filter use-master-settings="true">
             <object-type name="SCHEMA" enabled="true" />
             <object-type name="USER" enabled="true" />
@@ -147,7 +153,11 @@
             <object-type name="CLUSTER" enabled="true" />
             <object-type name="DBLINK" enabled="true" />
           </object-type-filter>
-          <object-name-filters />
+          <object-name-filters>
+            <filter join-type="AND" object-type="schema">
+              <simple-condition operator="EQUAL" text="GestionInmuebles" />
+            </filter>
+          </object-name-filters>
         </object-filters>
       </connection>
     </connections>
@@ -526,7 +536,7 @@
     </ddl-file-settings>
     <general-settings>
       <regional-settings>
-        <date-format value="MEDIUM" />
+        <date-format value="SHORT" />
         <number-format value="UNGROUPED" />
         <locale value="SYSTEM_DEFAULT" />
         <use-custom-formats value="false" />

@@ -23,5 +23,5 @@ RUN mvn package -D maven.test.skip=true
 FROM openjdk:11-jdk
 COPY --from=0 /build/target/GestionInmuebles-0.0.1-SNAPSHOT.jar /app/target/GestionInmuebles-0.0.1-SNAPSHOT.jar
 
-EXPOSE 8084
-ENTRYPOINT [ "java", "-jar", "/app/target/GestionInmuebles-0.0.1-SNAPSHOT.jar", "--server.port=8084" ]
+EXPOSE 8081
+ENTRYPOINT [ "java", "-jar", "/app/target/GestionInmuebles-0.0.1-SNAPSHOT.jar", "--server.port=8081" ]

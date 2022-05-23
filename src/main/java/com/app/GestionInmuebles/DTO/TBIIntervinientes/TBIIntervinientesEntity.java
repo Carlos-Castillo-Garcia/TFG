@@ -31,6 +31,7 @@ public class TBIIntervinientesEntity {
     private int usuarioId;
     @Column(name = "administrador_id", nullable = false)
     private int administradorId;
+
     
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)

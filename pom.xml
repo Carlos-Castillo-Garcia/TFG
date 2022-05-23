@@ -9,7 +9,7 @@
 		<version>2.6.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
+ 
 	<groupId>com.app</groupId>
 	<artifactId>GestionInmuebles</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

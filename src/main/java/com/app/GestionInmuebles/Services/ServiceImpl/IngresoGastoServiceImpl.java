@@ -22,7 +22,7 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
     @Override
     public List<IngresoGastoResponse> listarIngresoGastoInmuebleId(int id) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
-        for (IngresoGastoEntity i : ingresoGastoRepository.getByinmuebleId(id)) {
+        for (IngresoGastoEntity i : ingresoGastoRepository.findByInmuebleId_IdInmueble(id)) {
             if (!i.isBorrado()) {
                 ingresoGastoResponseList.add(EntityToResponse(i));
             }
@@ -33,7 +33,7 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
     @Override
     public List<IngresoGastoResponse> listarIngresoGastoId(int id) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
-        for (IngresoGastoEntity i : ingresoGastoRepository.getByinmuebleId(id)) {
+        for (IngresoGastoEntity i : ingresoGastoRepository.findByIdInGa(id)) {
             ingresoGastoResponseList.add(EntityToResponse(i));
         }
         return ingresoGastoResponseList;

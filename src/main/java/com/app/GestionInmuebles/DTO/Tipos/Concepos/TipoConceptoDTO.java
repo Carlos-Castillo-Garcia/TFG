@@ -1,23 +1,24 @@
 package com.app.GestionInmuebles.DTO.Tipos.Concepos;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TipoConceptoDTO {
     private int idTipoConcepto;
     private String tipoConcepto;
+    private String tipoEspecifico;
 
     private boolean borrado;
     private Date createTime;
     private Date updateTime;
+
     private int usuarioId;
     private int administradorId;
 }

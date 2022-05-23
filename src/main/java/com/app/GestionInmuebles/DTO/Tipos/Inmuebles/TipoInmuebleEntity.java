@@ -18,6 +18,8 @@ public class TipoInmuebleEntity {
     private int idTipoInmueble;
     @Column(name = "tipoinmueble", nullable = false)
     private String tipoInmueble;
+    @Column(name = "tipo_especifico", nullable = false)
+    private String tipoEspecifico;
 
     @Column(name = "create_time")
     private Date createTime;

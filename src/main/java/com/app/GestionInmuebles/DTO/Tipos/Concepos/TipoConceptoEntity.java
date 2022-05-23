@@ -18,16 +18,18 @@ public class TipoConceptoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_concepto", nullable = false)
-    private Long idTipoConcepto;
+    private int idTipoConcepto;
     @Column(name = "tipo_concepto", nullable = false)
-    private String tipoConcepo;
+    private String tipoConcepto;
+    @Column(name = "tipo_especifico", nullable = false)
+    private String tipoEspecifico;
 
+    @Column(name = "borrado")
+    private boolean borrado;
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
-    @Column(name = "borrado")
-    private boolean borrado;
 
     @Column(name = "usuario_id")
     private int usuarioId;

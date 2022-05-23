@@ -10,10 +10,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class IngresoGastoDetalleResponse {
-    private long inGaDetalle;
+    private int inGaDetalle;
     private String conceptoDetalle;
-    private float ingreso;
-    private float gasto;
+    private float pv;
+    private float descuento;
     private int ivaPorcentaje;
     private int cantidad;
 

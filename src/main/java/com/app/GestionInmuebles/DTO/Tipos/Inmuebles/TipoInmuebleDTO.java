@@ -1,19 +1,19 @@
 package com.app.GestionInmuebles.DTO.Tipos.Inmuebles;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TipoInmuebleDTO {
     private int idTipoInmueble;
     private String tipoInmueble;
+    private String tipoEspecifico;
 
     private boolean borrado;
     private Date createTime;

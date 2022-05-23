@@ -23,7 +23,7 @@ public class RolesServiceImpl implements RolesService {
     @Override
     public List<RolesResponse> listarRolesadministradorId(int id) {
         List<RolesResponse> rolesResponseList = new ArrayList<>();
-        for (RolesEntity i : rolesRepository.findAllByadministradorId(id)) {
+        for (RolesEntity i : rolesRepository.findByAdministradorIdOrAdministradorId(0, id)) {
             if (!i.isBorrado()) {
                 rolesResponseList.add(EntityToResponse(i));
             }

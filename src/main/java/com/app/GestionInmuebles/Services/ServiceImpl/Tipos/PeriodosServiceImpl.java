@@ -22,7 +22,7 @@ public class PeriodosServiceImpl implements PeriodosService {
     @Override
     public List<PeriodosResponse> listarPeriodosadministradorId(int id) {
         List<PeriodosResponse> list = new ArrayList<>();
-        for (PeriodosEntity i : tipoPeriodoRepository.getByadministradorId(id)) {
+        for (PeriodosEntity i : tipoPeriodoRepository.findByAdministradorIdOrAdministradorId(0, id)) {
             if (!i.isBorrado()) {
                 list.add(EntityToResponse(i));
             }

@@ -9,6 +9,8 @@ import com.app.GestionInmuebles.DTO.Tipos.Inmuebles.TipoInmuebleDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Inmuebles.TipoInmuebleResponse;
 import com.app.GestionInmuebles.DTO.Tipos.Intervinientes.IntervinientesDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Intervinientes.IntervinientesResponse;
+import com.app.GestionInmuebles.DTO.Tipos.Pagos.PagosDTO;
+import com.app.GestionInmuebles.DTO.Tipos.Pagos.PagosResponse;
 import com.app.GestionInmuebles.DTO.Tipos.Periodos.PeriodosDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Periodos.PeriodosResponse;
 import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesDTO;
@@ -50,6 +52,10 @@ public class TiposController {
     @Autowired
     @Qualifier("TipoConceptoServiceImpl")
     private TipoConceptoServiceImpl tipoConceptoService;
+
+    @Autowired
+    @Qualifier("PagosServiceImpl")
+    private PagosServiceImpl pagosService;
 
 
     @PostMapping("/contratos")
@@ -180,6 +186,28 @@ public class TiposController {
     @PutMapping("/concepto")
     public TipoConceptoResponse updateTipoConcepto(@Valid @RequestBody TipoConceptoDTO tipoConceptoDTO){
         return tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
+    }
+
+
+
+    @PostMapping("/pago")
+    public PagosResponse crearTipoPagos(@Valid @RequestBody PagosDTO pagosDTO){
+        return pagosService.createUpdatePagos(pagosDTO);
+    }
+
+    @GetMapping("/pago/{id}")
+    public List<PagosResponse> listarTipoPagosAdministradorId(@Valid @PathVariable("id") int id){
+        return pagosService.listarPagosIdAdministrador(id);
+    }
+
+    @GetMapping("pago/detalle/{id}")
+    public List<PagosResponse> listarTipoPagosId(@Valid @PathVariable("id") int id){
+        return pagosService.listarPagosIdPagos(id);
+    }
+
+    @PutMapping("/pago")
+    public PagosResponse updateTipoPagos(@Valid @RequestBody PagosDTO pagosDTO){
+        return pagosService.createUpdatePagos(pagosDTO);
     }
 
 }

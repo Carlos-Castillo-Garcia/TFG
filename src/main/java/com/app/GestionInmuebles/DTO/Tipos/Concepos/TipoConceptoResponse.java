@@ -14,6 +14,7 @@ import java.util.Date;
 public class TipoConceptoResponse {
     private int idTipoConcepto;
     private String tipoConcepto;
+    private String tipoEspecifico;
 
     private boolean borrado;
     private Date createTime;

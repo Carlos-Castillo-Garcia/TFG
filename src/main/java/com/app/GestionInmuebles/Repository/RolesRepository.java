@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository("RolesRepository")
 public interface RolesRepository extends JpaRepository<RolesEntity, Serializable> {
-    List<RolesEntity> findAllByadministradorId(int id);
+    List<RolesEntity> findByAdministradorIdOrAdministradorId(int id, int especifico);
 
     List<RolesEntity> findAllByidRol(int id);
 }

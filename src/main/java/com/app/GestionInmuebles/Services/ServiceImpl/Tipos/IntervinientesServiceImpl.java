@@ -22,7 +22,7 @@ public class IntervinientesServiceImpl implements IntervinientesService {
     @Override
     public List<IntervinientesResponse> listTipoIntervinientesadministradorId(int id) {
         List<IntervinientesResponse> list = new ArrayList<>();
-        for (IntervinientesEntity i : tipoIntervinienteRepository.getByadministradorId(id)) {
+        for (IntervinientesEntity i : tipoIntervinienteRepository.findByAdministradorIdOrAdministradorId(0, id)) {
             if (!i.isBorrado()) {
                 list.add(EntityToResponse(i));
             }

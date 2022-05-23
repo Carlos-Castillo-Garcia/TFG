@@ -17,17 +17,17 @@ public class IngresoGastoDetalleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_in_ga_detalle", nullable = false)
-    private Long idInGaDetalle;
+    private int idInGaDetalle;
     @Column(name = "concepto_detalle", nullable = false)
     private String conceptoDetalle;
-    @Column(name = "ingreso", nullable = false)
-    private float ingreso;
-    @Column(name = "gasto", nullable = false)
-    private float gasto;
+    @Column(name = "pv", nullable = false)
+    private float pv;
+    @Column(name = "descuento", nullable = false)
+    private float descuento;
     @Column(name = "iva_Porcentaje", nullable = false)
-    private int ivaPorcentaje;
+    private float ivaPorcentaje;
     @Column(name = "cantidad", nullable = false)
-    private int cantidad;
+    private float cantidad;
 
     @ManyToOne
     @JoinColumn(name = "ingreso_gasto_id", nullable = false)

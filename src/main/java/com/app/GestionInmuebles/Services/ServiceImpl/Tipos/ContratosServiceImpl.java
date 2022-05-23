@@ -21,7 +21,7 @@ public class ContratosServiceImpl implements ContratosService {
     @Override
     public List<ContratosResponse> listarTiposContratoadministradorId(int id) {
         List<ContratosResponse> tipos_contratoResponses = new ArrayList<>();
-        for (ContratosEntity i : contratosRepository.getByadministradorId(id)) {
+        for (ContratosEntity i : contratosRepository.findByAdministradorIdOrAdministradorId(0, id)) {
             if (!i.isBorrado()) {
                 tipos_contratoResponses.add(EntityToResponse(i));
             }

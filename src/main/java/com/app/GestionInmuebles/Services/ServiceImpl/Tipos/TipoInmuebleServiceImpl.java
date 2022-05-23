@@ -22,7 +22,7 @@ public class TipoInmuebleServiceImpl implements TipoInmuebleService {
     @Override
     public List<TipoInmuebleResponse> listTipoInmuebleadministradorId(int id) {
         List<TipoInmuebleResponse> list = new ArrayList<>();
-        for (TipoInmuebleEntity i : tipoInmuebleRepository.getByadministradorId(id)) {
+        for (TipoInmuebleEntity i : tipoInmuebleRepository.findByAdministradorIdOrAdministradorId(0, id)) {
             list.add(EntityToResponse(i));
         }
         return list;

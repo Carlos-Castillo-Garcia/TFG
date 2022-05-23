@@ -63,11 +63,6 @@ public class IngresoGastoController {
     )
     @GetMapping("/{id}")
     public List<IngresoGastoResponse> listContratosInmuebleId(
-            @Parameter(
-                    name = "Id del Inmueble",
-                    description = "Id Inmueble asociado al Contrato para su posterior uso en el filtrado",
-                    required = true
-            )
             @Valid @PathVariable("id") int id) {
         return ingresoGastoService.listarIngresoGastoInmuebleId(id);
     }
@@ -79,11 +74,6 @@ public class IngresoGastoController {
     )
     @GetMapping("/detalles/{id}")
     public List<IngresoGastoResponse> listContratosIdIngresoGasto(
-            @Parameter(
-                    name = "Id del  Ingreso Gasto",
-                    description = "Id  Ingreso Gasto para su posterior uso en el filtrado",
-                    required = true
-            )
             @Valid @PathVariable("id") int id) {
         return ingresoGastoService.listarIngresoGastoId(id);
     }

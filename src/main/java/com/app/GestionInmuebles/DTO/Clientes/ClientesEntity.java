@@ -1,11 +1,12 @@
 package com.app.GestionInmuebles.DTO.Clientes;
 
-import com.app.GestionInmuebles.DTO.TBIIntervinientes.TBIIntervinientesEntity;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "clientes")

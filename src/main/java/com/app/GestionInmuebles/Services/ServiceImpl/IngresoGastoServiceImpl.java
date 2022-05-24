@@ -3,6 +3,9 @@ package com.app.GestionInmuebles.Services.ServiceImpl;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoDTO;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoEntity;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoResponse;
+import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGastoDetalle.IngresoGastoDetalleEntity;
+import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGastoDetalle.IngresoGastoDetalleResponse;
+import com.app.GestionInmuebles.Repository.IngresoGastoDetalleRepository;
 import com.app.GestionInmuebles.Repository.IngresoGastoRepository;
 import com.app.GestionInmuebles.Services.IngresoGastoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,10 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
     @Autowired
     @Qualifier("IngresoGastoRepository")
     private IngresoGastoRepository ingresoGastoRepository;
+
+    @Autowired
+    @Qualifier("IngresoGastoDetalleRepository")
+    private IngresoGastoDetalleRepository ingresoGastoDetalleRepository;
 
     @Override
     public List<IngresoGastoResponse> listarIngresoGastoInmuebleId(int id) {

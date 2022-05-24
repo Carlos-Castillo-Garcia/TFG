@@ -28,7 +28,11 @@ public interface IngresoGastoDetalleService {
     default IngresoGastoDetalleResponse EntityToResponse(IngresoGastoDetalleEntity i) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
-        return modelMapper.map(i, IngresoGastoDetalleResponse.class);
+        IngresoGastoDetalleResponse ingresoGastoDetalleResponse = modelMapper.map(i, IngresoGastoDetalleResponse.class);
+        ingresoGastoDetalleResponse.setImporte(i.getPv()*i.getCantidad());
+        ingresoGastoDetalleResponse.setImporteTotal(ingresoGastoDetalleResponse.getImporte() - ((ingresoGastoDetalleResponse.getImporte() * i.getDescuento())/100));
+        ingresoGastoDetalleResponse.setValorTotal(ingresoGastoDetalleResponse.getImporteTotal() + ((ingresoGastoDetalleResponse.getImporteTotal() * i.getIvaPorcentaje())/100));
+        return ingresoGastoDetalleResponse;
     }
 
     List<IngresoGastoDetalleResponse> listarIngresoGastoDetalleAdministradorId(int id);

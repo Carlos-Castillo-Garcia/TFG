@@ -16,6 +16,9 @@ public class IngresoGastoDetalleResponse {
     private float descuento;
     private int ivaPorcentaje;
     private int cantidad;
+    private float importe;
+    private float importeTotal;
+    private float valorTotal;
 
     private int inGaId;
 

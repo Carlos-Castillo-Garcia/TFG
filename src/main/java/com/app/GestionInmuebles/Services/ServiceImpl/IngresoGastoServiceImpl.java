@@ -22,7 +22,7 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
     @Override
     public List<IngresoGastoResponse> listarIngresoGasto(int id) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
-        for (IngresoGastoEntity i : ingresoGastoRepository.findByAdministradorId(id)) {
+        for (IngresoGastoEntity i : ingresoGastoRepository.findByAdministradorIdOrderByFechaFacturaDesc(id)) {
             if (!i.isBorrado()) {
                 ingresoGastoResponseList.add(EntityToResponse(i));
             }

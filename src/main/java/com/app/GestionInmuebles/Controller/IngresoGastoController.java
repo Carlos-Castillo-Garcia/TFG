@@ -64,7 +64,7 @@ public class IngresoGastoController {
     @GetMapping("/{id}")
     public List<IngresoGastoResponse> listContratosInmuebleId(
             @Valid @PathVariable("id") int id) {
-        return ingresoGastoService.listarIngresoGastoInmuebleId(id);
+        return ingresoGastoService.listarIngresoGasto(id);
     }
 
     @Operation(
@@ -76,6 +76,12 @@ public class IngresoGastoController {
     public List<IngresoGastoResponse> listContratosIdIngresoGasto(
             @Valid @PathVariable("id") int id) {
         return ingresoGastoService.listarIngresoGastoId(id);
+    }
+
+    @GetMapping("/anio/{id}")
+    public List<String> listfechas(
+            @Valid @PathVariable("id") int id) {
+        return ingresoGastoService.listarfechas(id);
     }
 
 }

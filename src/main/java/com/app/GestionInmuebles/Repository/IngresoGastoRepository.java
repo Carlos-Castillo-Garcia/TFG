@@ -10,7 +10,13 @@ import java.util.List;
 
 @Repository("IngresoGastoRepository")
 public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity, Serializable> {
-    List<IngresoGastoEntity> findByInmuebleId_IdInmueble(int idInmueble);
+    List<IngresoGastoEntity> findByAdministradorId(int idAdministrador);
 
     List<IngresoGastoEntity> findByIdInGa(int idInGa);
+
+    @Query("select i from IngresoGastoEntity i where i.administradorId = ?1 order by i.fechaFactura DESC")
+    List<IngresoGastoEntity> obtencionFecha(int administradorId);
+
+
+
 }

@@ -3,9 +3,6 @@ package com.app.GestionInmuebles.Services;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoDTO;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoEntity;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoResponse;
-import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGastoDetalle.IngresoGastoDetalleResponse;
-import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
-import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
@@ -34,9 +31,11 @@ public interface IngresoGastoService {
         return modelMapper.map(i, IngresoGastoResponse.class);
     }
 
-    List<IngresoGastoResponse> listarIngresoGastoInmuebleId(int id);
+    List<IngresoGastoResponse> listarIngresoGasto(int id);
 
     List<IngresoGastoResponse> listarIngresoGastoId(int id);
+
+    List<String> listarfechas(int id);
 
     IngresoGastoResponse createUpdateIgresoGasto(IngresoGastoDTO i);
 }

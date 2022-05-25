@@ -58,88 +58,88 @@ public class TiposController {
     private PagosServiceImpl pagosService;
 
 
-    @PostMapping("/contratos")
+    @PostMapping("/contrato")
     public ContratosResponse createTiposContrato(@Valid @RequestBody ContratosDTO tiposContratoDTO){
         return contratosService.createUpdateTiposContrato(tiposContratoDTO);
     }
 
-    @GetMapping("/contratos/{id}")
+    @GetMapping("/contrato/{id}")
     public List<ContratosResponse> listTiposContratosadminstradorId(@Valid @PathVariable("id") int id){
         return contratosService.listarTiposContratoadministradorId(id);
     }
 
-    @GetMapping("/contratos/detalle/{id}")
+    @GetMapping("/contrato/detalle/{id}")
     public List<ContratosResponse> listTiposContratosIdTipoContrato(@Valid @PathVariable("id") int id){
         return contratosService.listarTiposContratoidContrato(id);
     }
 
-    @PutMapping("/contratos")
+    @PutMapping("/contrato")
     public ContratosResponse updateTiposContrato(@Valid @RequestBody ContratosDTO tiposContratoDTO){
         return contratosService.createUpdateTiposContrato(tiposContratoDTO);
     }
 
 
 
-    @PostMapping("/intervinientes")
+    @PostMapping("/interviniente")
     public IntervinientesResponse createTiposIntervinientes(@Valid @RequestBody IntervinientesDTO tipoIntervinienteDTO){
         return intervinientesService.createUpdateTipoIntervinientes(tipoIntervinienteDTO);
     }
 
-    @GetMapping("/intervinientes/{id}")
+    @GetMapping("/interviniente/{id}")
     public List<IntervinientesResponse> listTiposIntervininetesadminstradorId(@Valid @PathVariable("id") int id){
         return intervinientesService.listTipoIntervinientesadministradorId(id);
     }
 
-    @GetMapping("/intervinientes/detalle/{id}")
+    @GetMapping("/interviniente/detalle/{id}")
     public List<IntervinientesResponse> listTiposIntervininetesIdTipoIntervinientes(@Valid @PathVariable("id") int id){
         return intervinientesService.listTipoIntervinientesidIntervinientes(id);
     }
 
-    @PutMapping("/intervinientes")
+    @PutMapping("/interviniente")
     public IntervinientesResponse updateTiposIntervinientes(@Valid @RequestBody IntervinientesDTO tipoIntervinienteDTO){
         return intervinientesService.createUpdateTipoIntervinientes(tipoIntervinienteDTO);
     }
 
 
 
-    @PostMapping("/periodos")
+    @PostMapping("/periodo")
     public PeriodosResponse createTiposPeriodos(@Valid @RequestBody PeriodosDTO tipoPeriodosDTO){
         return periodosService.createUpdatePeriodos(tipoPeriodosDTO);
     }
 
-    @GetMapping("/periodos/{id}")
+    @GetMapping("/periodo/{id}")
     public List<PeriodosResponse> listTiposPeriodosadminstradorId(@Valid @PathVariable("id") int id){
         return periodosService.listarPeriodosadministradorId(id);
     }
 
-    @GetMapping("/periodos/detalle/{id}")
+    @GetMapping("/periodo/detalle/{id}")
     public List<PeriodosResponse> listTiposPeriodosIdTipoPeriodos(@Valid @PathVariable("id") int id){
         return periodosService.listarPeriodosidPeriodos(id);
     }
 
-    @PutMapping("/periodos")
+    @PutMapping("/periodo")
     public PeriodosResponse updateTiposPeriodos(@Valid @RequestBody PeriodosDTO tipoPeriodosDTO){
         return periodosService.createUpdatePeriodos(tipoPeriodosDTO);
     }
 
 
 
-    @PostMapping("/inmuebles")
+    @PostMapping("/inmueble")
     public TipoInmuebleResponse createTipoInmueble(@Valid @RequestBody TipoInmuebleDTO tipoInmuebleDTO){
         return tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
     }
 
-    @GetMapping("/inmuebles/{id}")
+    @GetMapping("/inmueble/{id}")
     public List<TipoInmuebleResponse> listTipoInmuebleadminstradorId(@Valid @PathVariable("id") int id){
         return tipoInmuebleService.listTipoInmuebleadministradorId(id);
     }
 
-    @GetMapping("/inmuebles/detalle/{id}")
+    @GetMapping("/inmueble/detalle/{id}")
     public List<TipoInmuebleResponse> listTipoInmuebleIdTipoInmueble(@Valid @PathVariable("id") int id){
         return tipoInmuebleService.listTipoInmuebleidInmuebles(id);
     }
 
-    @PutMapping("/inmuebles")
+    @PutMapping("/inmueble")
     public TipoInmuebleResponse updateTipoInmueble(@Valid @RequestBody TipoInmuebleDTO tipoInmuebleDTO){
         return tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
     }

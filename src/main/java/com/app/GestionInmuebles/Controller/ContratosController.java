@@ -69,7 +69,7 @@ public class ContratosController {
             description = "Metodo para la obtencion del Contrato",
             method = "GET"
     )
-    @GetMapping("/detalles/{id}")
+    @GetMapping("/detalle/{id}")
     public List<TBIContratosResponse> listContratosIdContratos(@Valid @PathVariable("id") int id) {
         return tbiContratosService.listarContratosidContratos(id);
     }

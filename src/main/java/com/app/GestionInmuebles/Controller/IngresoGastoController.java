@@ -72,7 +72,7 @@ public class IngresoGastoController {
             description = "Metodo para la obtencion del Ingreso Gasto",
             method = "GET"
     )
-    @GetMapping("/detalles/{id}")
+    @GetMapping("/detalle/{id}")
     public List<IngresoGastoResponse> listContratosIdIngresoGasto(
             @Valid @PathVariable("id") int id) {
         return ingresoGastoService.listarIngresoGastoId(id);

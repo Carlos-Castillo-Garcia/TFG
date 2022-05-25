@@ -13,6 +13,7 @@ public class IngresoGastoResponse {
     private int idInGa;
     private String concepto;
     private Date fechaFactura;
+    private Date fechaPago;
     private String numeroFactura;
     private float totalBaseImponible;
     private float totalImpuestoIva;

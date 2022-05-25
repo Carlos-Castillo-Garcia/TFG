@@ -25,6 +25,8 @@ public class IngresoGastoEntity {
     private String concepto;
     @Column(name = "fecha_factura", nullable = false)
     private Date fechaFactura;
+    @Column(name = "fecha_pago", nullable = false)
+    private Date fechaPago;
     @Column(name = "numero_factura", nullable = false)
     private String numeroFactura;
     @Column(name = "t_base_imponible", nullable = false)

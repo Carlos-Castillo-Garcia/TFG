@@ -1,3 +1,4 @@
+
 package com.app.GestionInmuebles.Repository;
 
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoEntity;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Repository("IngresoGastoRepository")
 public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity, Serializable> {
-    List<IngresoGastoEntity> findByAdministradorId(int idAdministrador);
+    List<IngresoGastoEntity> findByAdministradorIdOrderByFechaFacturaDesc(int idAdministrador);
 
     List<IngresoGastoEntity> findByIdInGa(int idInGa);
 

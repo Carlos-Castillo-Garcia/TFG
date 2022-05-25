@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("api/v1/inmuebles")
+@RequestMapping("api/v1/inmueble")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class InmueblesController {
 

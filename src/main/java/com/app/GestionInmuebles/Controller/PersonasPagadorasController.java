@@ -19,7 +19,7 @@ import javax.validation.Valid;
 
 //Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
 @RestController
-@RequestMapping("/api/v1/personaspagadoras")
+@RequestMapping("/api/v1/personaspagadora")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class PersonasPagadorasController {
 

@@ -14,7 +14,7 @@ import java.util.List;
 
 //Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
 @RestController
-@RequestMapping("/api/v1/clientes")
+@RequestMapping("/api/v1/cliente")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ClientesController {
 

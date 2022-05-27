@@ -125,7 +125,10 @@ public class InicializacionTipos implements ApplicationRunner {
 
     public void tipoContratos(){
         List<String> contratos = new ArrayList<>();
-        contratos.add("administrador");
+        contratos.add("alquiler");
+        contratos.add("compraventa");
+        contratos.add("servicios");
+        contratos.add("");
         ContratosDTO contratosDTO = new ContratosDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(contratosService.listarTiposContratoadministradorId(0).size() == 0){
             for (String contrato : contratos) {

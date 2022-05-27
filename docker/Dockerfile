@@ -24,4 +24,8 @@ FROM openjdk:11-jdk
 COPY --from=0 /build/target/GestionInmuebles-0.0.1-SNAPSHOT.jar /app/target/GestionInmuebles-0.0.1-SNAPSHOT.jar
 
 EXPOSE 8081
+<<<<<<< HEAD
 ENTRYPOINT [ "java", "-jar", "/app/target/GestionInmuebles-0.0.1-SNAPSHOT.jar", "--server.port=8081" ]
+=======
+ENTRYPOINT [ "java", "-jar", "/app/target/GestionInmuebles-0.0.1-SNAPSHOT.jar", "--server.port=8081" ]
+>>>>>>> 2709993df4d95d05540241c5364a79256be3b162

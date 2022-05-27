@@ -1,10 +1,8 @@
 package com.app.GestionInmuebles.Controller;
 
-import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosDTO;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.TBIContratosServiceImpl;
-import com.fasterxml.jackson.databind.node.BaseJsonNode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +58,7 @@ public class ContratosController {
     }
 
     @GetMapping("/{id}")
-    public List<TBIContratosResponse> listContratosIdAdministrador(@Valid @PathVariable("id") int id){
+    public List<TBIContratosResponse> listContratosIdAdministrador(@Valid @PathVariable("id") int id) {
         return tbiContratosService.listarContratosadministradorId(id);
     }
 

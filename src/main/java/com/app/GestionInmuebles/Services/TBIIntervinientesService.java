@@ -13,6 +13,7 @@ public interface TBIIntervinientesService {
     PropertyMap<TBIIntervinientesEntity, TBIIntervinientesResponse> ENTITYTORESPONSE = new PropertyMap<TBIIntervinientesEntity, TBIIntervinientesResponse>() {
         protected void configure() {
             map().setTipoIntervinienteId(source.getTipoIntervinienteId().getIdTipoInterviniente());
+            map().setTipoInterviniente(source.getTipoIntervinienteId().getTipoInterviniente());
             map().setClienteId(source.getClienteId().getIdCliente());
             map().setContratosId(source.getContratosId().getIdContratos());
         }
@@ -26,7 +27,10 @@ public interface TBIIntervinientesService {
     default TBIIntervinientesResponse EntityToResponse(TBIIntervinientesEntity inmueble) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
-        return modelMapper.map(inmueble, TBIIntervinientesResponse.class);
+        TBIIntervinientesResponse tbiIntervinientesResponse = modelMapper.map(inmueble, TBIIntervinientesResponse.class);
+        tbiIntervinientesResponse.setApellidosNombreCliente(inmueble.getClienteId().getApellidos() + ", " + inmueble.getClienteId().getNombre());
+
+        return tbiIntervinientesResponse;
     }
 
     List<TBIIntervinientesResponse> listarIntervinientesContratoId(int id);

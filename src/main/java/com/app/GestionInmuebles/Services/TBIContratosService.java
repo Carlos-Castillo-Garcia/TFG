@@ -30,6 +30,9 @@ public interface TBIContratosService {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
         TBIContratosResponse contratosResponse = modelMapper.map(contratos, TBIContratosResponse.class);
+        contratosResponse.setAliasInmueble(contratos.getInmuebleId().getAlias());
+        contratosResponse.setTipoContrato(contratos.getTipoContratoId().getTipoContrato());
+        contratosResponse.setTipoPeriodo(contratos.getTipoPeriodoId().getTipoPeriodo());
         return contratosResponse;
     }
 

@@ -111,7 +111,7 @@ public class InicializacionTipos implements ApplicationRunner {
         List<String> tipoInterviniente = new ArrayList<>();
         tipoInterviniente.add("comprador");
         tipoInterviniente.add("vendedor");
-        tipoInterviniente.add("arredador");
+        tipoInterviniente.add("arrendador");
         tipoInterviniente.add("arrendatario");
         tipoInterviniente.add("avalista");
         IntervinientesDTO intervinientesDTO = new IntervinientesDTO(0, "", false, new Date(), new Date(), 0, 0);

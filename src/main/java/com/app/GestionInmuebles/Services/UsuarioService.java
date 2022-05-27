@@ -11,7 +11,7 @@ import java.util.List;
 public interface UsuarioService {
     PropertyMap<UsuariosEntity, UsuariosResponse> ENTITYTORESPONSE = new PropertyMap<UsuariosEntity, UsuariosResponse>() {
         protected void configure() {
-            map().setIdRol(source.getRolId().getIdRol());
+            map().setRolId(source.getRolId().getIdRol());
         }
     };
 
@@ -25,6 +25,7 @@ public interface UsuarioService {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
         UsuariosResponse usuariosResponse = modelMapper.map(user, UsuariosResponse.class);
+        usuariosResponse.setNombreRol(user.getRolId().getNombreRol());
         return usuariosResponse;
     }
 

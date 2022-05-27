@@ -17,7 +17,7 @@ public interface IngresoGastoService {
             map().setTipoPagoId(source.getTipoPagoId().getIdTipoPago());
             map().setUsuarioId(source.getUsuarioId());
             map().setAdministradorId(source.getAdministradorId());
-            map().setNombreApellidos(source.getClienteId().getNombre() + " " + source.getClienteId().getApellidos());
+            map().setTipoConcepto(source.getTipoConceptoId().getTipoConcepto());
         }
     };
 
@@ -29,7 +29,9 @@ public interface IngresoGastoService {
     default IngresoGastoResponse EntityToResponse(IngresoGastoEntity i) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
-        return modelMapper.map(i, IngresoGastoResponse.class);
+        IngresoGastoResponse ingresoGastoResponse = modelMapper.map(i, IngresoGastoResponse.class);
+        ingresoGastoResponse.setNombreApellidosCliente(i.getClienteId().getApellidos() + ", " + i.getClienteId().getNombre());
+        return ingresoGastoResponse;
     }
 
     List<IngresoGastoResponse> listarIngresoGasto(int id);

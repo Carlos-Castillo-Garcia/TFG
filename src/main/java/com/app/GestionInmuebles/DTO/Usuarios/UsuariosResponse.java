@@ -19,6 +19,7 @@ public class UsuariosResponse {
     private Date updateTime;
     private boolean borrado;
 
-    private int idRol;
+    private int rolId;
+    private String nombreRol;
     private int administradorId;
 }

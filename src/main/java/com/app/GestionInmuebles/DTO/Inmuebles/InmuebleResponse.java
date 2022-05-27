@@ -30,4 +30,6 @@ public class InmuebleResponse {
     private int usuarioId;
     private int administradorId;
     private int tipoInmueblesId;
+    private String tipoInmueble;
+    private String tipoEspecifico;
 }

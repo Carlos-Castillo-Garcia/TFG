@@ -26,6 +26,9 @@ public class TBIContratosResponse {
     private int usuarioId;
     private int administradorId;
     private int inmuebleId;
+    private String aliasInmueble;
     private int tipoPeriodoId;
+    private String tipoPeriodo;
     private int tipoContratoId;
+    private String tipoContrato;
 }

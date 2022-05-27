@@ -12,6 +12,8 @@ public interface InmuebleService {
     PropertyMap<InmuebleEntity, InmuebleResponse> ENTITYTORESPONSE = new PropertyMap<InmuebleEntity, InmuebleResponse>() {
         protected void configure() {
             map().setTipoInmueblesId(source.getIdTipoInmueble().getIdTipoInmueble());
+            map().setTipoInmueble(source.getIdTipoInmueble().getTipoInmueble());
+            map().setTipoEspecifico(source.getIdTipoInmueble().getTipoEspecifico());
         }
     };
 
@@ -25,6 +27,7 @@ public interface InmuebleService {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
         InmuebleResponse inmuebleResponse = modelMapper.map(inmueble, InmuebleResponse.class);
+
         return inmuebleResponse;
     }
 

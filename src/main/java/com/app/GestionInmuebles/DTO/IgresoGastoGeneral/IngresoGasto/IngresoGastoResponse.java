@@ -25,6 +25,7 @@ public class IngresoGastoResponse {
     private int tipoConceptoId;
     private int tipoPagoId;
     private int clienteId;
+    private String nombreApellidos;
     private int inmuebleId;
 
     private Date createTime;

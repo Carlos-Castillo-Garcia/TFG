@@ -17,6 +17,7 @@ public interface IngresoGastoService {
             map().setTipoPagoId(source.getTipoPagoId().getIdTipoPago());
             map().setUsuarioId(source.getUsuarioId());
             map().setAdministradorId(source.getAdministradorId());
+            map().setNombreApellidos(source.getClienteId().getNombre() + " " + source.getClienteId().getApellidos());
         }
     };
 

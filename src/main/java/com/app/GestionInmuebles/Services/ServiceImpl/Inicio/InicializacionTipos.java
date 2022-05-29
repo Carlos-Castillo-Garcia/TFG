@@ -1,5 +1,7 @@
 package com.app.GestionInmuebles.Services.ServiceImpl.Inicio;
 
+import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaDTO;
+import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Concepos.TipoConceptoDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Contrato.ContratosDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Inmuebles.TipoInmuebleDTO;
@@ -51,6 +53,10 @@ public class InicializacionTipos implements ApplicationRunner {
     @Qualifier("PagosServiceImpl")
     private PagosServiceImpl pagosService;
 
+    @Autowired
+    @Qualifier("TipoCategoriaServiceImpl")
+    private TipoCategoriaServiceImpl tipoCategoriaService;
+
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -58,10 +64,12 @@ public class InicializacionTipos implements ApplicationRunner {
         this.tipoPeriodos();
         this.tipoIntervinientes();
         this.tipoContratos();
+        this.tipoCategoria();
         this.tiposInmuebles();
         this.tipoConcepto();
         this.tipoPagos();
     }
+
 
     public void roles(){
         List<String> nombreRoles = new ArrayList<>();
@@ -137,6 +145,23 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    public void tipoCategoria(){
+        List<String> categoria = new ArrayList<>();
+        categoria.add("Vivinedas");
+        categoria.add("Industria");
+        categoria.add("Suelo");
+        categoria.add("Suministros");
+        categoria.add("Reformas");
+        categoria.add("Mobiliario");
+        TipoCategoriaDTO tipoCategoriaDTO = new TipoCategoriaDTO(0, "", false, new Date(), new Date(), 0, 0);
+        if(tipoCategoriaService.listarCategoriaAdministradorId(0).size() == 0){
+            for (String nombreCategoria : categoria) {
+                tipoCategoriaDTO.setCategoria(nombreCategoria);
+                tipoCategoriaService.createUpdateCategoria(tipoCategoriaDTO);
+            }
+        }
+    }
+
     public void tiposInmuebles(){
         List<String> tipoInmuebleViviendas = new ArrayList<>();
         List<String> tipoInmuebleIndustria = new ArrayList<>();
@@ -155,21 +180,21 @@ public class InicializacionTipos implements ApplicationRunner {
         tipoInmuebleSuelo.add("parcela");
         tipoInmuebleSuelo.add("solar");
 
-        TipoInmuebleDTO tipoInmuebleDTO = new TipoInmuebleDTO(0, "", "", false, new Date(), new Date(), 0, 0);
+        TipoInmuebleDTO tipoInmuebleDTO = new TipoInmuebleDTO(0, "", 0, false, new Date(), new Date(), 0, 0);
         if (tipoInmuebleService.listTipoInmuebleadministradorId(0).size() == 0){
             for (String tipoInmueble: tipoInmuebleViviendas) {
-                tipoInmuebleDTO.setTipoInmueble("viviendas");
-                tipoInmuebleDTO.setTipoEspecifico(tipoInmueble);
+                tipoInmuebleDTO.setCategoriaId(1);
+                tipoInmuebleDTO.setTipoInmueble(tipoInmueble);
                 tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
             }
             for (String tipoInmueble: tipoInmuebleIndustria) {
-                tipoInmuebleDTO.setTipoInmueble("industria");
-                tipoInmuebleDTO.setTipoEspecifico(tipoInmueble);
+                tipoInmuebleDTO.setCategoriaId(2);
+                tipoInmuebleDTO.setTipoInmueble(tipoInmueble);
                 tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
             }
             for (String tipoInmueble: tipoInmuebleSuelo) {
-                tipoInmuebleDTO.setTipoInmueble("suelo");
-                tipoInmuebleDTO.setTipoEspecifico(tipoInmueble);
+                tipoInmuebleDTO.setCategoriaId(3);
+                tipoInmuebleDTO.setTipoInmueble(tipoInmueble);
                 tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
             }
         }
@@ -197,21 +222,21 @@ public class InicializacionTipos implements ApplicationRunner {
         tipoConceptoMobiliario.add("dormitorios");
         tipoConceptoMobiliario.add("salon");
 
-        TipoConceptoDTO tipoConceptoDTO = new TipoConceptoDTO(0, "", "", false, new Date(), new Date(), 0, 0);
+        TipoConceptoDTO tipoConceptoDTO = new TipoConceptoDTO(0, "", 0, false, new Date(), new Date(), 0, 0);
         if (tipoConceptoService.listarTiposConceptoAdministradorId(0).size() == 0){
             for (String tipoConcepto: tipoConceptoSuministros) {
-                tipoConceptoDTO.setTipoConcepto("Suministros");
-                tipoConceptoDTO.setTipoEspecifico(tipoConcepto);
+                tipoConceptoDTO.setCategoriaId(4);
+                tipoConceptoDTO.setTipoConcepto(tipoConcepto);
                 tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
             }
             for (String tipoConcepto: tipoConceptoReformas) {
-                tipoConceptoDTO.setTipoConcepto("Reformas");
-                tipoConceptoDTO.setTipoEspecifico(tipoConcepto);
+                tipoConceptoDTO.setCategoriaId(5);
+                tipoConceptoDTO.setTipoConcepto(tipoConcepto);
                 tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
             }
             for (String tipoConcepto: tipoConceptoMobiliario) {
-                tipoConceptoDTO.setTipoConcepto("Mobiliario");
-                tipoConceptoDTO.setTipoEspecifico(tipoConcepto);
+                tipoConceptoDTO.setCategoriaId(6);
+                tipoConceptoDTO.setTipoConcepto(tipoConcepto);
                 tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
             }
         }

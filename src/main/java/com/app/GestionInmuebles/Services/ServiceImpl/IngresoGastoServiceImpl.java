@@ -60,4 +60,13 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
     public IngresoGastoResponse createUpdateIgresoGasto(IngresoGastoDTO i) {
         return EntityToResponse(ingresoGastoRepository.save(DTOToEntity(i)));
     }
+
+    @Override
+    public List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId) {
+        List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
+        for (IngresoGastoEntity i : ingresoGastoRepository.findByAdministradorIdAndFechaPagoIsNull(administradorId)) {
+            ingresoGastoResponseList.add(EntityToResponse(i));
+        }
+        return ingresoGastoResponseList;
+    }
 }

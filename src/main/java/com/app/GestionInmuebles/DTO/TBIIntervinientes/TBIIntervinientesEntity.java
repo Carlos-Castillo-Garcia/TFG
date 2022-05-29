@@ -20,19 +20,7 @@ public class TBIIntervinientesEntity {
     private int idInterviniente;
     @Column(name = "porcentaje_propiedad", nullable = false)
     private int porcentajePropiedad;
-    @Column(name = "create_time")
-    private Date createTime;
-    @Column(name = "update_time")
-    private Date updateTime;
-    @Column(name = "borrado")
-    private boolean borrado;
 
-    @Column(name = "usuario_id", nullable = false)
-    private int usuarioId;
-    @Column(name = "administrador_id", nullable = false)
-    private int administradorId;
-
-    
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private ClientesEntity clienteId;
@@ -44,4 +32,18 @@ public class TBIIntervinientesEntity {
     @ManyToOne
     @JoinColumn(name = "tipos_interviniente_id", nullable = false)
     private IntervinientesEntity tipoIntervinienteId;
+
+
+    @Column(name = "create_time")
+    private Date createTime;
+    @Column(name = "update_time")
+    private Date updateTime;
+    @Column(name = "borrado")
+    private boolean borrado;
+    @Column(name = "usuario_id", nullable = false)
+    private int usuarioId;
+    @Column(name = "administrador_id", nullable = false)
+    private int administradorId;
+
+
 }

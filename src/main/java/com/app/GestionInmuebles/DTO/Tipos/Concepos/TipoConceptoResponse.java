@@ -14,7 +14,8 @@ import java.util.Date;
 public class TipoConceptoResponse {
     private int idTipoConcepto;
     private String tipoConcepto;
-    private String tipoEspecifico;
+    private int categoriaId;
+    private String categoria;
 
     private boolean borrado;
     private Date createTime;

@@ -25,16 +25,18 @@ public class UsuariosEntity {
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id", nullable = false)
+    private RolesEntity rolId;
+
     @Column(name = "create_time")
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
     @Column(name = "borrado")
     private boolean borrado;
-
-    @ManyToOne
-    @JoinColumn(name = "rol_id")
-    private RolesEntity rolId;
-    @Column(name = "id_administrador")
+    @Column(name = "id_administrador", nullable = false)
     private int administradorId;
+
 }

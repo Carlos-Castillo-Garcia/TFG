@@ -34,11 +34,6 @@ public class PersonasPagadorasController {
     )
     @PostMapping
     public PersonasPagadorasResponse createPersonasPagadoras(
-            @Parameter(
-                    name = "Persona Pagadora",
-                    description = "Objeto de tipo Cliente para la creacion del registro",
-                    required = true
-            )
             @Valid @RequestBody PersonasPagadorasDTO personasPagadorasDTO) {
         return personasPagadorasService.createUpdatePersonasPagadoras(personasPagadorasDTO);
     }

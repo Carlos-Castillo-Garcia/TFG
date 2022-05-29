@@ -1,5 +1,6 @@
 package com.app.GestionInmuebles.DTO.Tipos.Concepos;
 
+import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,8 +22,10 @@ public class TipoConceptoEntity {
     private int idTipoConcepto;
     @Column(name = "tipo_concepto", nullable = false)
     private String tipoConcepto;
-    @Column(name = "tipo_especifico", nullable = false)
-    private String tipoEspecifico;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private TipoCategoriaEntity categoriaId;
 
     @Column(name = "borrado")
     private boolean borrado;
@@ -30,7 +33,6 @@ public class TipoConceptoEntity {
     private Date createTime;
     @Column(name = "update_time")
     private Date updateTime;
-
     @Column(name = "usuario_id")
     private int usuarioId;
     @Column(name = "administrador_id")

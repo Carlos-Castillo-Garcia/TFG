@@ -31,9 +31,9 @@ public class PersonasPagadorasEntity {
     private String localidad;
     @Column(name = "codigo_postal", nullable = false)
     private int codigoPostal;
-    @Column(name = "fecha_nacimiento", nullable = false)
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
-    @Column(name = "tlf", nullable = false)
+    @Column(name = "tlf")
     private int tlf;
     @Column(name = "tlf_movil", nullable = false)
     private int tlfMovil;

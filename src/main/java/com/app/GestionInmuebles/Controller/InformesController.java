@@ -66,4 +66,6 @@ public class InformesController {
         return informesService.informeByAnioMesesXInmuebles(administradorId, anio, mes);
     }
 
+
+
 }

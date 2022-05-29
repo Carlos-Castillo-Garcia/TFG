@@ -29,13 +29,13 @@ public class ClientesEntity {
     private String nombre;
     @Column(name = "apellidos", nullable = false)
     private String apellidos;
-    @Column(name = "fecha_nacimiento", nullable = false)
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
-    @Column(name = "nie", nullable = false)
+    @Column(name = "nie", nullable = false, unique = true)
     private String nie;
     @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "tlf", nullable = false)
+    @Column(name = "tlf")
     private int tlf;
     @Column(name = "tlf_movil", nullable = false)
     private int tlfMovil;

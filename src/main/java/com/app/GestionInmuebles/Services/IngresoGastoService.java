@@ -13,11 +13,13 @@ public interface IngresoGastoService {
         protected void configure() {
             map().setInmuebleId(source.getInmuebleId().getIdInmueble());
             map().setClienteId(source.getClienteId().getIdCliente());
+            map().setTipoCategoriaId(source.getTipoConceptoId().getCategoriaId().getIdCategoria());
+            map().setTipoCategoria(source.getTipoConceptoId().getCategoriaId().getCategoria());
             map().setTipoConceptoId(source.getTipoConceptoId().getIdTipoConcepto());
+            map().setTipoConcepto(source.getTipoConceptoId().getTipoConcepto());
             map().setTipoPagoId(source.getTipoPagoId().getIdTipoPago());
             map().setUsuarioId(source.getUsuarioId());
             map().setAdministradorId(source.getAdministradorId());
-            map().setTipoConcepto(source.getTipoConceptoId().getTipoConcepto());
         }
     };
 
@@ -31,6 +33,7 @@ public interface IngresoGastoService {
         modelMapper.addMappings(ENTITYTORESPONSE);
         IngresoGastoResponse ingresoGastoResponse = modelMapper.map(i, IngresoGastoResponse.class);
         ingresoGastoResponse.setNombreApellidosCliente(i.getClienteId().getApellidos() + ", " + i.getClienteId().getNombre());
+        ingresoGastoResponse.setAliasInmueble(i.getInmuebleId().getAlias());
         return ingresoGastoResponse;
     }
 
@@ -41,4 +44,6 @@ public interface IngresoGastoService {
     List<String> listarfechas(int id);
 
     IngresoGastoResponse createUpdateIgresoGasto(IngresoGastoDTO i);
+
+    List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId);
 }

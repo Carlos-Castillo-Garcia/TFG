@@ -1,7 +1,6 @@
 package com.app.GestionInmuebles.Repository.Tipos;
 
 import com.app.GestionInmuebles.DTO.Tipos.Concepos.TipoConceptoEntity;
-import com.app.GestionInmuebles.DTO.Tipos.Contrato.ContratosEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -17,8 +17,7 @@ public interface UsuarioService {
 
     default UsuariosEntity DTOToEntity(UsuariosDTO user) {
         ModelMapper modelMapper = new ModelMapper();
-        UsuariosEntity usuariosEntity = modelMapper.map(user, UsuariosEntity.class);
-        return usuariosEntity;
+        return modelMapper.map(user, UsuariosEntity.class);
     }
 
     default UsuariosResponse EntityToResponse(UsuariosEntity user) {

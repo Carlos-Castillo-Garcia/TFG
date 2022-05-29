@@ -22,7 +22,7 @@ public class IngresoGastoDetalleEntity {
     private String conceptoDetalle;
     @Column(name = "pv", nullable = false)
     private float pv;
-    @Column(name = "descuento", nullable = false)
+    @Column(name = "descuento")
     private float descuento;
     @Column(name = "iva_Porcentaje", nullable = false)
     private float ivaPorcentaje;

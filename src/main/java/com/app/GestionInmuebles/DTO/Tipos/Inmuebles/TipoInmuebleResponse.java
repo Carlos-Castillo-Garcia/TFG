@@ -14,7 +14,8 @@ import java.util.Date;
 public class TipoInmuebleResponse {
     private int idTipoInmueble;
     private String tipoInmueble;
-    private String tipoEspecifico;
+    private int categoriaId;
+    private String categoria;
 
     private Date createTime;
     private Date updateTime;

@@ -22,26 +22,15 @@ public class TBIContratosEntity {
     private int idContratos;
     @Column(name = "fecha_contrato", nullable = false)
     private Date fechaContrato;
-    @Column(name = "valor_contrato", nullable = false)
+    @Column(name = "valor_contrato")
     private float valorContrato;
     @Column(name = "fecha_inicio", nullable = false)
     private Date fechaInicio;
-    @Column(name = "fecha_fin", nullable = false)
+    @Column(name = "fecha_fin")
     private Date fechaFin;
     @Column(name = "cantidad_periodo", nullable = false)
     private int cantidadPeriodo;
 
-    @Column(name = "create_time")
-    private Date createTime;
-    @Column(name = "update_time")
-    private Date updateTime;
-    @Column(name = "borrado")
-    private boolean borrado;
-
-    @Column(name = "usuario_id")
-    private int usuarioId;
-    @Column(name = "administrador_id")
-    private int administradorId;
     @ManyToOne
     @JoinColumn(name = "id_inmueble", nullable = false)
     private InmuebleEntity inmuebleId;
@@ -53,5 +42,17 @@ public class TBIContratosEntity {
     @ManyToOne
     @JoinColumn(name = "id_tipo_contrato", nullable = false)
     private ContratosEntity tipoContratoId;
+
+
+    @Column(name = "create_time")
+    private Date createTime;
+    @Column(name = "update_time")
+    private Date updateTime;
+    @Column(name = "borrado")
+    private boolean borrado;
+    @Column(name = "usuario_id", nullable = false)
+    private int usuarioId;
+    @Column(name = "administrador_id", nullable = false)
+    private int administradorId;
 
 }

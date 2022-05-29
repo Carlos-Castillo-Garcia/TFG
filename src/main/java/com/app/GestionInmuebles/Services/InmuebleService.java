@@ -11,9 +11,10 @@ import java.util.List;
 public interface InmuebleService {
     PropertyMap<InmuebleEntity, InmuebleResponse> ENTITYTORESPONSE = new PropertyMap<InmuebleEntity, InmuebleResponse>() {
         protected void configure() {
+            map().setTipoCategoriaId(source.getIdTipoInmueble().getCategoriaId().getIdCategoria());
+            map().setTipoCategoria(source.getIdTipoInmueble().getCategoriaId().getCategoria());
             map().setTipoInmueblesId(source.getIdTipoInmueble().getIdTipoInmueble());
             map().setTipoInmueble(source.getIdTipoInmueble().getTipoInmueble());
-            map().setTipoEspecifico(source.getIdTipoInmueble().getTipoEspecifico());
         }
     };
 

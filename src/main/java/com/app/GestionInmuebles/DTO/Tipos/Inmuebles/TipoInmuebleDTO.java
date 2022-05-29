@@ -13,7 +13,7 @@ import java.util.Date;
 public class TipoInmuebleDTO {
     private int idTipoInmueble;
     private String tipoInmueble;
-    private String tipoEspecifico;
+    private int categoriaId;
 
     private boolean borrado;
     private Date createTime;

@@ -2,6 +2,7 @@ package com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto;
 
 import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
+import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Concepos.TipoConceptoEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Pagos.PagosEntity;
 import lombok.*;
@@ -21,11 +22,9 @@ public class IngresoGastoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ingreso_gasto", nullable = false)
     private int idInGa;
-    @Column(name = "concepto", nullable = false)
-    private String concepto;
     @Column(name = "fecha_factura", nullable = false)
     private Date fechaFactura;
-    @Column(name = "fecha_pago", nullable = false)
+    @Column(name = "fecha_pago")
     private Date fechaPago;
     @Column(name = "numero_factura", nullable = false)
     private String numeroFactura;
@@ -37,9 +36,9 @@ public class IngresoGastoEntity {
     private float totalGasto;
     @Column(name = "total_ingreso", nullable = false)
     private float totalIngreso;
-    @Column(name = "cuenta_corrient_proveedor", nullable = false)
+    @Column(name = "cuenta_corrient_proveedor")
     private String cuentaCorrienteProveedor;
-    @Column(name = "cuenta_corriente_cliente", nullable = false)
+    @Column(name = "cuenta_corriente_cliente")
     private String cuentaCorrienteCliente;
 
     @ManyToOne

@@ -1,5 +1,6 @@
 package com.app.GestionInmuebles.DTO.Tipos.Inmuebles;
 
+import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,8 +19,10 @@ public class TipoInmuebleEntity {
     private int idTipoInmueble;
     @Column(name = "tipoinmueble", nullable = false)
     private String tipoInmueble;
-    @Column(name = "tipo_especifico", nullable = false)
-    private String tipoEspecifico;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private TipoCategoriaEntity categoriaId;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -27,7 +30,6 @@ public class TipoInmuebleEntity {
     private Date updateTime;
     @Column(name = "borrado")
     private boolean borrado;
-
     @Column(name = "usuario_id")
     private int usuarioId;
     @Column(name = "administrador_id")

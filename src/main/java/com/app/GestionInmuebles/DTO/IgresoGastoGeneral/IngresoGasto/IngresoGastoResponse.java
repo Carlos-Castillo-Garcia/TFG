@@ -22,12 +22,15 @@ public class IngresoGastoResponse {
     private String cuentaCorrienteProveedor;
     private String cuentaCorrienteCliente;
 
+    private int tipoCategoriaId;
+    private String tipoCategoria;
     private int tipoConceptoId;
     private String tipoConcepto;
     private int tipoPagoId;
     private int clienteId;
     private String nombreApellidosCliente;
     private int inmuebleId;
+    private String aliasInmueble;
 
     private Date createTime;
     private Date updateTime;

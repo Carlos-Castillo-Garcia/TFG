@@ -13,7 +13,7 @@ import java.util.Date;
 public class TipoConceptoDTO {
     private int idTipoConcepto;
     private String tipoConcepto;
-    private String tipoEspecifico;
+    private int categoriaId;
 
     private boolean borrado;
     private Date createTime;

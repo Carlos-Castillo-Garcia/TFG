@@ -84,4 +84,9 @@ public class IngresoGastoController {
         return ingresoGastoService.listarfechas(id);
     }
 
+    @GetMapping("/avisos/facturasinpagadas/{administradorId}")
+    public  List<IngresoGastoResponse> avisosFacturas(@Valid @PathVariable("administradorId") int id){
+        return ingresoGastoService.avisosFacturasAdministradorId(id);
+    }
+
 }

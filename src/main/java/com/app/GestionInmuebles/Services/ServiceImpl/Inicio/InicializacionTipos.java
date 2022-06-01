@@ -153,6 +153,8 @@ public class InicializacionTipos implements ApplicationRunner {
         categoria.add("Suministros");
         categoria.add("Reformas");
         categoria.add("Mobiliario");
+        categoria.add("Alquiler");
+        categoria.add("Compra");
         TipoCategoriaDTO tipoCategoriaDTO = new TipoCategoriaDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(tipoCategoriaService.listarCategoriaAdministradorId(0).size() == 0){
             for (String nombreCategoria : categoria) {
@@ -204,6 +206,8 @@ public class InicializacionTipos implements ApplicationRunner {
         List<String> tipoConceptoSuministros = new ArrayList<>();
         List<String> tipoConceptoReformas = new ArrayList<>();
         List<String> tipoConceptoMobiliario = new ArrayList<>();
+        List<String> tipoConceptoAlquiler = new ArrayList<>();
+        List<String> tipoConceptoCompraVenta = new ArrayList<>();
         tipoConceptoSuministros.add("agua");
         tipoConceptoSuministros.add("luz");
         tipoConceptoSuministros.add("gas");
@@ -222,6 +226,13 @@ public class InicializacionTipos implements ApplicationRunner {
         tipoConceptoMobiliario.add("dormitorios");
         tipoConceptoMobiliario.add("salon");
 
+        tipoConceptoAlquiler.add("Alquiler");
+        tipoConceptoAlquiler.add("Fianza");
+
+        tipoConceptoCompraVenta.add("Compra");
+        tipoConceptoCompraVenta.add("Venta");
+        tipoConceptoCompraVenta.add("Arras");
+
         TipoConceptoDTO tipoConceptoDTO = new TipoConceptoDTO(0, "", 0, false, new Date(), new Date(), 0, 0);
         if (tipoConceptoService.listarTiposConceptoAdministradorId(0).size() == 0){
             for (String tipoConcepto: tipoConceptoSuministros) {
@@ -236,6 +247,16 @@ public class InicializacionTipos implements ApplicationRunner {
             }
             for (String tipoConcepto: tipoConceptoMobiliario) {
                 tipoConceptoDTO.setCategoriaId(6);
+                tipoConceptoDTO.setTipoConcepto(tipoConcepto);
+                tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
+            }
+            for (String tipoConcepto: tipoConceptoAlquiler) {
+                tipoConceptoDTO.setCategoriaId(7);
+                tipoConceptoDTO.setTipoConcepto(tipoConcepto);
+                tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
+            }
+            for (String tipoConcepto: tipoConceptoCompraVenta) {
+                tipoConceptoDTO.setCategoriaId(8);
                 tipoConceptoDTO.setTipoConcepto(tipoConcepto);
                 tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
             }

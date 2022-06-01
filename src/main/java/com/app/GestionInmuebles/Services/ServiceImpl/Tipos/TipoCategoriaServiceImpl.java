@@ -44,7 +44,7 @@ public class TipoCategoriaServiceImpl implements TipoCategoriaService {
     @Override
     public List<TipoCategoriaResponse> ListarCategoriaConcepto() {
         List<TipoCategoriaResponse> list = new ArrayList<>();
-        for (TipoCategoriaEntity i : tipoCategoriaRepository.categoriaConcepto(4, 6)) {
+        for (TipoCategoriaEntity i : tipoCategoriaRepository.categoriaConcepto(4, 8)) {
             if (!i.isBorrado()) {
                 list.add(EntityToResponse(i));
             }

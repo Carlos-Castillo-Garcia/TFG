@@ -15,6 +15,8 @@ public interface InmuebleService {
             map().setTipoCategoria(source.getIdTipoInmueble().getCategoriaId().getCategoria());
             map().setTipoInmueblesId(source.getIdTipoInmueble().getIdTipoInmueble());
             map().setTipoInmueble(source.getIdTipoInmueble().getTipoInmueble());
+            map().setLatitud(source.getLatitud());
+            map().setLongitud(source.getLongitud());
         }
     };
 

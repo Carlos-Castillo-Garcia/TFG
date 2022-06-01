@@ -184,6 +184,11 @@ public class TiposController {
         return tipoConceptoService.listarTiposConceptoAdministradorId(id);
     }
 
+    @GetMapping("/concepto/categoria/{id}/{idCategoria}")
+    public List<TipoConceptoResponse> listarTipoConceptoAdministradorIdCategoriaId(@Valid @PathVariable("id") int id, @Valid @PathVariable("idCategoria") int idCategoria){
+        return tipoConceptoService.listarTiposConceptoAdministradorIdConceptoId(id, idCategoria);
+    }
+
     @GetMapping("concepto/detalle/{id}")
     public List<TipoConceptoResponse> listarTipoConceptoId(@Valid @PathVariable("id") int id){
         return tipoConceptoService.listarTiposConceptoId(id);

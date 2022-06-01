@@ -32,6 +32,8 @@ public interface TipoConceptoService {
 
     List<TipoConceptoResponse> listarTiposConceptoAdministradorId(int id);
 
+    List<TipoConceptoResponse> listarTiposConceptoAdministradorIdConceptoId(int idAdministrador, int idConcepto);
+
     List<TipoConceptoResponse> listarTiposConceptoId(int id);
 
     TipoConceptoResponse createUpdateTiposConcepto(TipoConceptoDTO tipoConceptoDTO);

@@ -1,6 +1,8 @@
 package com.app.GestionInmuebles.Controller;
 
 
+import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaDTO;
+import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaResponse;
 import com.app.GestionInmuebles.DTO.Tipos.Concepos.TipoConceptoDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Concepos.TipoConceptoResponse;
 import com.app.GestionInmuebles.DTO.Tipos.Contrato.ContratosDTO;
@@ -52,6 +54,10 @@ public class TiposController {
     @Autowired
     @Qualifier("TipoConceptoServiceImpl")
     private TipoConceptoServiceImpl tipoConceptoService;
+
+    @Autowired
+    @Qualifier("TipoCategoriaServiceImpl")
+    private TipoCategoriaServiceImpl tipoCategoriaService;
 
     @Autowired
     @Qualifier("PagosServiceImpl")
@@ -212,23 +218,23 @@ public class TiposController {
 
 
     @PostMapping("/categoria")
-    public TipoConceptoResponse crearTipoCategoria(@Valid @RequestBody TipoConceptoDTO tipoConceptoDTO){
-        return tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
+    public TipoCategoriaResponse crearTipoCategoria(@Valid @RequestBody TipoCategoriaDTO tipoConceptoDTO){
+        return tipoCategoriaService.createUpdateCategoria(tipoConceptoDTO);
     }
 
     @GetMapping("/categoria/{id}")
-    public List<TipoConceptoResponse> listarTipoCategoriaAdministradorId(@Valid @PathVariable("id") int id){
-        return tipoConceptoService.listarTiposConceptoAdministradorId(id);
+    public List<TipoCategoriaResponse> listarTipoCategoriaAdministradorId(@Valid @PathVariable("id") int id){
+        return tipoCategoriaService.listarCategoriaAdministradorId(id);
     }
 
     @GetMapping("categoria/detalle/{id}")
-    public List<TipoConceptoResponse> listarTipoCategoriaId(@Valid @PathVariable("id") int id){
-        return tipoConceptoService.listarTiposConceptoId(id);
+    public List<TipoCategoriaResponse> listarTipoCategoriaId(@Valid @PathVariable("id") int id){
+        return tipoCategoriaService.listarCategoriaIdCategoria(id);
     }
 
     @PutMapping("/categoria")
-    public TipoConceptoResponse updateTipoCategoria(@Valid @RequestBody TipoConceptoDTO tipoConceptoDTO){
-        return tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
+    public TipoCategoriaResponse updateTipoCategoria(@Valid @RequestBody TipoCategoriaDTO tipoConceptoDTO){
+        return tipoCategoriaService.createUpdateCategoria(tipoConceptoDTO);
     }
 
 }

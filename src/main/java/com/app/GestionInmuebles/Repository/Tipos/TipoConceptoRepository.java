@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository("TipoConceptoRepository")
 public interface TipoConceptoRepository extends JpaRepository<TipoConceptoEntity, Serializable> {
-    List<TipoConceptoEntity> findByAdministradorIdOrAdministradorIdAndCategoriaId_IdCategoria(int administradorId, int administradorId1, int idCategoria);
+    List<TipoConceptoEntity> findByAdministradorIdAndCategoriaId_IdCategoriaOrAdministradorId(int administradorId,int idCategoria, int administradorId1);
 
     List<TipoConceptoEntity> findByAdministradorIdOrAdministradorId(int administradorId, int administradorId1);
 

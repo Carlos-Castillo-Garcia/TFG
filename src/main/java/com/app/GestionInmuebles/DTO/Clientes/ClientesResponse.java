@@ -16,7 +16,7 @@ public class ClientesResponse {
     private int codigoPostal;
     private String nombre;
     private String apellidos;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String nie;
     private String email;
     private int tlf;

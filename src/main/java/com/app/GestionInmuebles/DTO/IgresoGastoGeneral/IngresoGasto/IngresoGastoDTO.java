@@ -22,6 +22,7 @@ public class IngresoGastoDTO {
     private float totalIngreso;
     private String cuentaCorrienteProveedor;
     private String cuentaCorrienteCliente;
+    private String conceptoPersonal;
 
     private int tipoConceptoId;
     private int tipoPagoId;

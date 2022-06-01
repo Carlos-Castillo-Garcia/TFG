@@ -21,6 +21,7 @@ public class IngresoGastoResponse {
     private float totalIngreso;
     private String cuentaCorrienteProveedor;
     private String cuentaCorrienteCliente;
+    private String conceptoPersonal;
 
     private int tipoCategoriaId;
     private String tipoCategoria;

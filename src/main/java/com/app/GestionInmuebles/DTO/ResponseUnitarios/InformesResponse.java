@@ -1,10 +1,8 @@
-package com.app.GestionInmuebles.DTO.IgresoGastoGeneral;
+package com.app.GestionInmuebles.DTO.ResponseUnitarios;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 
 @Setter
 @Getter

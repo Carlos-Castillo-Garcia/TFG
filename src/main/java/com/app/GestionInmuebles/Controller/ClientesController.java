@@ -2,7 +2,10 @@ package com.app.GestionInmuebles.Controller;
 
 import com.app.GestionInmuebles.DTO.Clientes.ClientesDTO;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.ClientesXInmueblesResponse;
+import com.app.GestionInmuebles.Services.ClientesXInmueblesService;
 import com.app.GestionInmuebles.Services.ServiceImpl.ClienteServiceImpl;
+import com.app.GestionInmuebles.Services.ServiceImpl.ClientesXInmueblesServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,10 @@ public class ClientesController {
     @Autowired
     @Qualifier("ClienteServiceImpl")
     private ClienteServiceImpl clienteService;
+
+    @Autowired
+    @Qualifier("ClientesXInmueblesServiceImpl")
+    private ClientesXInmueblesServiceImpl clientesXInmueblesService;
 
     //-------------------------------------------Metodos del controller de Clientes-------------------------------------------------------
     @Operation(
@@ -88,4 +95,19 @@ public class ClientesController {
         return clienteService.listarClientesidCliente(id);
     }
 
+    @Operation(
+            summary = "Listado de Clientes",
+            description = "Metodo para la obtencion del Cliente",
+            method = "GET"
+    )
+    @GetMapping("xinmueble/{id}")
+    public List<ClientesXInmueblesResponse> listClientesXInmuebles(
+            @Parameter(
+                    name = "Id",
+                    description = "Id cliente para su posterior uso en el filtrado",
+                    required = true
+            )
+            @Valid @PathVariable("id") int id) {
+        return clientesXInmueblesService.temp(id);
+    }
 }

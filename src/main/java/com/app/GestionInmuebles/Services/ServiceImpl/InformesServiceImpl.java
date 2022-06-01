@@ -1,8 +1,9 @@
 package com.app.GestionInmuebles.Services.ServiceImpl;
 
-import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.InformesResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InformesResponse;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoEntity;
 import com.app.GestionInmuebles.Repository.IngresoGastoRepository;
+import com.app.GestionInmuebles.Services.CastersUnitarios;
 import com.app.GestionInmuebles.Services.InformesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("InformesServiceImpl")
-public class InformesServiceImpl implements InformesService {
+public class InformesServiceImpl implements InformesService, CastersUnitarios {
 
     @Autowired
     @Qualifier("IngresoGastoRepository")
@@ -37,7 +38,7 @@ public class InformesServiceImpl implements InformesService {
     public List<InformesResponse> informeXInmueble(int adminisitradorId) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
         for (String i: ingresoGastoRepository.findInformeXInmueble(adminisitradorId)) {
-            informesResponseList.add(bbddToResponse(i));
+            informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
     }
@@ -46,7 +47,7 @@ public class InformesServiceImpl implements InformesService {
     public List<InformesResponse> informeByInmuebleXAnio(int id, int adminisitradorId) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
         for (String i: ingresoGastoRepository.findInformeByInmuebleXAnios(id, adminisitradorId)) {
-            informesResponseList.add(bbddToResponse(i));
+            informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
     }
@@ -55,7 +56,7 @@ public class InformesServiceImpl implements InformesService {
     public List<InformesResponse> informeByInmuebleAnioXMes(int id, int anio, int adminisitradorId) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
         for (String i: ingresoGastoRepository.findInformeByInuebleAnioXMes(id, anio, adminisitradorId)) {
-            informesResponseList.add(bbddToResponse(i));
+            informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
     }
@@ -64,7 +65,7 @@ public class InformesServiceImpl implements InformesService {
     public List<InformesResponse> informeXAnio(int adminisitradorId) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
         for (String i: ingresoGastoRepository.findInformeXAnios(adminisitradorId)) {
-            informesResponseList.add(bbddToResponse(i));
+            informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
     }
@@ -73,7 +74,7 @@ public class InformesServiceImpl implements InformesService {
     public List<InformesResponse> informeByAnioXMeses(int adminisitradorId, int anio) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
         for (String i: ingresoGastoRepository.findInformeByAniosXMeses(adminisitradorId, anio)) {
-            informesResponseList.add(bbddToResponse(i));
+            informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
     }
@@ -82,7 +83,7 @@ public class InformesServiceImpl implements InformesService {
     public List<InformesResponse> informeByAnioMesesXInmuebles(int adminisitradorId, int anio, int mes) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
         for (String i: ingresoGastoRepository.findInformeByAniosMesesXInmuebles(adminisitradorId, anio, mes)) {
-            informesResponseList.add(bbddToResponse(i));
+            informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
     }

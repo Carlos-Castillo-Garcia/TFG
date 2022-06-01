@@ -210,4 +210,25 @@ public class TiposController {
         return pagosService.createUpdatePagos(pagosDTO);
     }
 
+
+    @PostMapping("/categoria")
+    public TipoConceptoResponse crearTipoCategoria(@Valid @RequestBody TipoConceptoDTO tipoConceptoDTO){
+        return tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
+    }
+
+    @GetMapping("/categoria/{id}")
+    public List<TipoConceptoResponse> listarTipoCategoriaAdministradorId(@Valid @PathVariable("id") int id){
+        return tipoConceptoService.listarTiposConceptoAdministradorId(id);
+    }
+
+    @GetMapping("categoria/detalle/{id}")
+    public List<TipoConceptoResponse> listarTipoCategoriaId(@Valid @PathVariable("id") int id){
+        return tipoConceptoService.listarTiposConceptoId(id);
+    }
+
+    @PutMapping("/categoria")
+    public TipoConceptoResponse updateTipoCategoria(@Valid @RequestBody TipoConceptoDTO tipoConceptoDTO){
+        return tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
+    }
+
 }

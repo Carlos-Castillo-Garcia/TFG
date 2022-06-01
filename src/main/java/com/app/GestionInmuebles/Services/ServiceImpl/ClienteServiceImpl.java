@@ -22,10 +22,8 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<ClientesResponse> listarClientesadministradorId(int id) {
         List<ClientesResponse> clientesResponseList = new ArrayList<>();
-        for (ClientesEntity i : clientesRepository.findByadministradorId(id)) {
-            if (!i.isBorrado()) {
-                clientesResponseList.add(EntityToResponse(i));
-            }
+        for (ClientesEntity i : clientesRepository.findByadministradorIdAndBorradoIsFalse(id)) {
+            clientesResponseList.add(EntityToResponse(i));
         }
         return clientesResponseList;
     }
@@ -33,7 +31,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<ClientesResponse> listarClientesidCliente(int id) {
         List<ClientesResponse> clientesResponseList = new ArrayList<>();
-        for (ClientesEntity i : clientesRepository.findByidCliente(id)) {
+        for (ClientesEntity i : clientesRepository.findByidClienteAndBorradoIsFalse(id)) {
             clientesResponseList.add(EntityToResponse(i));
         }
         return clientesResponseList;
@@ -43,4 +41,5 @@ public class ClienteServiceImpl implements ClienteService {
     public ClientesResponse createUpdateClientes(ClientesDTO i) {
         return EntityToResponse(clientesRepository.save(DTOToEntity(i)));
     }
+
 }

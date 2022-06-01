@@ -1,6 +1,6 @@
 package com.app.GestionInmuebles.Controller;
 
-import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.InformesResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InformesResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.InformesServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;

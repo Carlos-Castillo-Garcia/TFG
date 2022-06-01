@@ -22,7 +22,7 @@ public class IngresoGastoDetalleServiceImpl implements IngresoGastoDetalleServic
     @Override
     public List<IngresoGastoDetalleResponse> listarIngresoGastoDetalleAdministradorId(int id) {
         List<IngresoGastoDetalleResponse> detalleResponseList = new ArrayList<>();
-        for (IngresoGastoDetalleEntity i : ingresoGastoDetalleRepository.findByInGaId_IdInGa(id)) {
+        for (IngresoGastoDetalleEntity i : ingresoGastoDetalleRepository.findByInGaId_IdInGaAndBorradoIsFalse(id)) {
             if (!i.isBorrado()) {
                 detalleResponseList.add(EntityToResponse(i));
             }
@@ -33,7 +33,7 @@ public class IngresoGastoDetalleServiceImpl implements IngresoGastoDetalleServic
     @Override
     public List<IngresoGastoDetalleResponse> listarIngresoGastoDetalleId(int id) {
         List<IngresoGastoDetalleResponse> detalleResponseList = new ArrayList<>();
-        for (IngresoGastoDetalleEntity i : ingresoGastoDetalleRepository.findByIdInGaDetalle(id)) {
+        for (IngresoGastoDetalleEntity i : ingresoGastoDetalleRepository.findByIdInGaDetalleAndBorradoIsFalse(id)) {
             detalleResponseList.add(EntityToResponse(i));
         }
         return detalleResponseList;

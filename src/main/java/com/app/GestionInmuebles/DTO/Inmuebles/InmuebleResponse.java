@@ -22,6 +22,8 @@ public class InmuebleResponse {
     private int nHabitaciones;
     private int mCuadrados;
     private int nBanos;
+    private float latitud;
+    private float longitud;
 
     private Date createTime;
     private Date updateTime;

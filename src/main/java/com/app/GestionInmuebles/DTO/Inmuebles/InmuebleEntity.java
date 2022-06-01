@@ -39,6 +39,10 @@ public class InmuebleEntity {
     private int mCuadrados;
     @Column(name = "n_banos")
     private int nBanos;
+    @Column(name = "latitud")
+    private float latitud;
+    @Column(name = "longitud")
+    private float longitud;
 
     @Column(name = "create_time")
     private Date createTime;

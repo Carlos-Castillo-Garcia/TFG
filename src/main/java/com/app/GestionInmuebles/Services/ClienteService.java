@@ -3,8 +3,11 @@ package com.app.GestionInmuebles.Services;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesDTO;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.ClientesXInmueblesResponse;
 import org.modelmapper.ModelMapper;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public interface ClienteService {
@@ -23,4 +26,5 @@ public interface ClienteService {
     List<ClientesResponse> listarClientesidCliente(int id);
 
     ClientesResponse createUpdateClientes(ClientesDTO i);
+
 }

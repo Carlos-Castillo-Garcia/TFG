@@ -40,6 +40,8 @@ public class IngresoGastoEntity {
     private String cuentaCorrienteProveedor;
     @Column(name = "cuenta_corriente_cliente")
     private String cuentaCorrienteCliente;
+    @Column(name = "concepto_personal")
+    private String conceptoPersonal;
 
     @ManyToOne
     @JoinColumn(name = "tipo_concepto_id", nullable = false)

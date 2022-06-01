@@ -31,6 +31,28 @@ public class TipoCategoriaServiceImpl implements TipoCategoriaService {
     }
 
     @Override
+    public List<TipoCategoriaResponse> listarCategoriaInmueble() {
+        List<TipoCategoriaResponse> list = new ArrayList<>();
+        for (TipoCategoriaEntity i : tipoCategoriaRepository.categoriaInmueble(1, 3)) {
+            if (!i.isBorrado()) {
+                list.add(EntityToResponse(i));
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public List<TipoCategoriaResponse> ListarCategoriaConcepto() {
+        List<TipoCategoriaResponse> list = new ArrayList<>();
+        for (TipoCategoriaEntity i : tipoCategoriaRepository.categoriaConcepto(4, 6)) {
+            if (!i.isBorrado()) {
+                list.add(EntityToResponse(i));
+            }
+        }
+        return list;
+    }
+
+    @Override
     public List<TipoCategoriaResponse> listarCategoriaIdCategoria(int id) {
         List<TipoCategoriaResponse> list = new ArrayList<>();
         for (TipoCategoriaEntity i : tipoCategoriaRepository.findByIdCategoria(id)) {

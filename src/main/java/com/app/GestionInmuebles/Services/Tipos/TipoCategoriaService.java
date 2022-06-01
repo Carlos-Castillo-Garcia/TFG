@@ -21,6 +21,10 @@ public interface TipoCategoriaService {
 
     List<TipoCategoriaResponse> listarCategoriaAdministradorId(int id);
 
+    List<TipoCategoriaResponse> listarCategoriaInmueble();
+
+    List<TipoCategoriaResponse> ListarCategoriaConcepto();
+
     List<TipoCategoriaResponse> listarCategoriaIdCategoria(int id);
 
     TipoCategoriaResponse createUpdateCategoria(TipoCategoriaDTO periodosDTO);

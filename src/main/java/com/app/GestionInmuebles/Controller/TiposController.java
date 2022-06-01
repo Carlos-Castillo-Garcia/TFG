@@ -227,9 +227,14 @@ public class TiposController {
         return tipoCategoriaService.createUpdateCategoria(tipoConceptoDTO);
     }
 
-    @GetMapping("/categoria/{id}")
-    public List<TipoCategoriaResponse> listarTipoCategoriaAdministradorId(@Valid @PathVariable("id") int id){
-        return tipoCategoriaService.listarCategoriaAdministradorId(id);
+    @GetMapping("/categoria/inmueble")
+    public List<TipoCategoriaResponse> listarTipoCategoriaInmueble(){
+        return tipoCategoriaService.listarCategoriaInmueble();
+    }
+
+    @GetMapping("/categoria/concepto")
+    public List<TipoCategoriaResponse> listarTipoCategoriaConcepto(){
+        return tipoCategoriaService.ListarCategoriaConcepto();
     }
 
     @GetMapping("categoria/detalle/{id}")

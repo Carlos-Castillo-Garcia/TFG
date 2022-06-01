@@ -15,8 +15,6 @@ public interface InmuebleService {
             map().setTipoCategoria(source.getIdTipoInmueble().getCategoriaId().getCategoria());
             map().setTipoInmueblesId(source.getIdTipoInmueble().getIdTipoInmueble());
             map().setTipoInmueble(source.getIdTipoInmueble().getTipoInmueble());
-            map().setLatitud(source.getLatitud());
-            map().setLongitud(source.getLongitud());
         }
     };
 
@@ -30,7 +28,6 @@ public interface InmuebleService {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
         InmuebleResponse inmuebleResponse = modelMapper.map(inmueble, InmuebleResponse.class);
-
         return inmuebleResponse;
     }
 

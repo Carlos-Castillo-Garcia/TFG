@@ -33,7 +33,7 @@ public class TipoConceptoServiceImpl implements TipoConceptoService {
     @Override
     public List<TipoConceptoResponse> listarTiposConceptoAdministradorIdConceptoId(int idAdministrador, int idConcepto) {
         List<TipoConceptoResponse> tipoConceptoResponseList = new ArrayList<>();
-        for (TipoConceptoEntity i : tipoConceptoRepository.findByAdministradorIdAndCategoriaId_IdCategoriaOrAdministradorId(0, idAdministrador, idConcepto)) {
+        for (TipoConceptoEntity i : tipoConceptoRepository.findByAdministradorIdAndCategoriaId_IdCategoriaOrAdministradorId(0, idConcepto, idAdministrador)) {
             if (!i.isBorrado()) {
                 tipoConceptoResponseList.add(EntityToResponse(i));
             }

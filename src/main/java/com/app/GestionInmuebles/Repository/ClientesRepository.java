@@ -23,7 +23,6 @@ public interface ClientesRepository extends JpaRepository<ClientesEntity, Serial
             " AND intervinientes.cliente_id = clientes.id_cliente " +
             " AND inmuebles.id_inmueble = contratos.id_inmueble " +
             " AND clientes.id_cliente = ? " +
-            " AND contratos.fecha_fin is null " +
-            " AND intervinientes.borrado is false", nativeQuery = true)
+            " AND contratos.fecha_fin is null", nativeQuery = true)
     List<String> inmueblesXCliente(int idCliente);
 }

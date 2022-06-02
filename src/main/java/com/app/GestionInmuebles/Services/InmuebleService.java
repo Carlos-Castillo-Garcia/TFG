@@ -3,6 +3,8 @@ package com.app.GestionInmuebles.Services;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleDTO;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InmueblesXClientesRespone;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
@@ -36,4 +38,8 @@ public interface InmuebleService {
     List<InmuebleResponse> listarInmueblesIdInmueble(int idInmueble);
 
     InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO);
+
+    List<InmueblesXClientesRespone> propiedad(int idCliente);
+
+    List<InversionResponse> inversion(int idInmueble);
 }

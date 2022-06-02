@@ -2,12 +2,14 @@ package com.app.GestionInmuebles.Controller;
 
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleDTO;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InmueblesXClientesRespone;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.InmueblesServiceImpl;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -39,5 +41,15 @@ public class InmueblesController {
     @PutMapping
     public InmuebleResponse updateInmueble(@Valid @RequestBody InmuebleDTO inmuebleDTO){
         return inmueblesService.createUpdateInmuebles(inmuebleDTO);
+    }
+
+    @GetMapping("/cliente/{idInmueble}")
+    public List<InmueblesXClientesRespone> listarInmueblesXClientes(@Valid @PathVariable("idInmueble") int id){
+        return inmueblesService.propiedad(id);
+    }
+
+    @GetMapping("/inversiones/{idInmueble}")
+    public List<InversionResponse> listarInversiones(@Valid @PathVariable("idInmueble") int id){
+        return inmueblesService.inversion(id);
     }
 }

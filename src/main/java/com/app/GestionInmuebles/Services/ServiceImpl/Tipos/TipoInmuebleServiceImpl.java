@@ -38,6 +38,15 @@ public class TipoInmuebleServiceImpl implements TipoInmuebleService {
     }
 
     @Override
+    public List<TipoInmuebleResponse> listTipoInmuebleidInmueblesByCategoria(int idCategoria, int idAdministrador) {
+        List<TipoInmuebleResponse> list = new ArrayList<>();
+        for (TipoInmuebleEntity i : tipoInmuebleRepository.findByAdministradorIdAndCategoriaId_IdCategoriaOrAdministradorId(0, idCategoria, idAdministrador)) {
+            list.add(EntityToResponse(i));
+        }
+        return list;
+    }
+
+    @Override
     public TipoInmuebleResponse createUpdateTipoInmueble(TipoInmuebleDTO tipoInmuebleDTO) {
         return EntityToResponse(tipoInmuebleRepository.save(DTOToEntity(tipoInmuebleDTO)));
     }

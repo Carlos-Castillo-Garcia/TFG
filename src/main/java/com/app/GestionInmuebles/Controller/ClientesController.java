@@ -3,7 +3,7 @@ package com.app.GestionInmuebles.Controller;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesDTO;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesResponse;
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.ClientesXInmueblesResponse;
-import com.app.GestionInmuebles.Services.ClientesXInmueblesService;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.ClienteServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.ClientesXInmueblesServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
@@ -97,12 +97,33 @@ public class ClientesController {
 
     @Operation(
             summary = "Listado de Clientes",
+            description = "Metodo para la obtencion de Clientes con filtrado del id de administrador",
+            method = "GET"
+    )
+    @GetMapping("/byinmuebles/{id}")
+    public List<ClientesResponse> listClientesByInmueble(@Valid @PathVariable("id") int id) {
+        return clienteService.clienteByInmueble(id);
+    }
+
+    @Operation(
+            summary = "Listado de Clientes",
             description = "Metodo para la obtencion del Cliente",
             method = "GET"
     )
     @GetMapping("xinmueble/{id}")
     public List<ClientesXInmueblesResponse> listClientesXInmuebles(
             @Valid @PathVariable("id") int id) {
-        return clientesXInmueblesService.temp(id);
+        return clientesXInmueblesService.clientesXInmueblesList(id);
+    }
+
+    @Operation(
+            summary = "Listado de Clientes",
+            description = "Metodo para la obtencion del Cliente",
+            method = "GET"
+    )
+    @GetMapping("inversion/{id}")
+    public List<InversionResponse> inversionResponseList(
+            @Valid @PathVariable("id") int id) {
+        return clienteService.inversion(id);
     }
 }

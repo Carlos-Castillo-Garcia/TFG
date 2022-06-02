@@ -1,6 +1,7 @@
 package com.app.GestionInmuebles.Services.ServiceImpl;
 
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.ClientesXInmueblesResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InmueblesXClientesRespone;
 import com.app.GestionInmuebles.Repository.ClientesRepository;
 import com.app.GestionInmuebles.Services.CastersUnitarios;
 import com.app.GestionInmuebles.Services.ClientesXInmueblesService;
@@ -19,11 +20,14 @@ public class ClientesXInmueblesServiceImpl implements ClientesXInmueblesService,
     private ClientesRepository clientesRepository;
 
     @Override
-    public List<ClientesXInmueblesResponse> temp(int idCliente){
+    public List<ClientesXInmueblesResponse> clientesXInmueblesList(int idCliente){
         List<ClientesXInmueblesResponse> clientesXInmueblesResponseList = new ArrayList<>();
-        for (String i: clientesRepository.inmueblesXCliente(idCliente)) {
+        for (String i: clientesRepository.inmueblesXCliente(idCliente, 1)) {
             clientesXInmueblesResponseList.add(bbddToResponseClientesXInmuebles(i));
         }
         return clientesXInmueblesResponseList;
     }
+
+
+
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository("TipoInmuebleRepository")
 public interface TipoInmuebleRepository extends JpaRepository<TipoInmuebleEntity, Serializable> {
+    List<TipoInmuebleEntity> findByAdministradorIdAndCategoriaId_IdCategoriaOrAdministradorId(int administradorId, int idCategoria, int administradorId1);
 
     List<TipoInmuebleEntity> findByAdministradorIdOrAdministradorId(int idGeneral, int idEspecifico);
 

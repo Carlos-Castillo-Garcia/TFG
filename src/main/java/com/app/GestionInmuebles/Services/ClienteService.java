@@ -4,6 +4,7 @@ import com.app.GestionInmuebles.DTO.Clientes.ClientesDTO;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesResponse;
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.ClientesXInmueblesResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 import org.modelmapper.ModelMapper;
 
 import java.text.DateFormat;
@@ -27,4 +28,7 @@ public interface ClienteService {
 
     ClientesResponse createUpdateClientes(ClientesDTO i);
 
+    List<ClientesResponse> clienteByInmueble(int idAdministrador);
+
+    List<InversionResponse> inversion(int idCliente);
 }

@@ -34,5 +34,7 @@ public interface TipoInmuebleService {
 
     List<TipoInmuebleResponse> listTipoInmuebleidInmuebles(int id);
 
+    List<TipoInmuebleResponse> listTipoInmuebleidInmueblesByCategoria(int idCategoria, int idAdministrador);
+
     TipoInmuebleResponse createUpdateTipoInmueble(TipoInmuebleDTO tipoInmuebleDTO);
 }

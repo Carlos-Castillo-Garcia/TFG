@@ -145,6 +145,12 @@ public class TiposController {
         return tipoInmuebleService.listTipoInmuebleidInmuebles(id);
     }
 
+    @GetMapping("/inmueble/categoria/{idCategoria}/{id}")
+    public List<TipoInmuebleResponse> listarTipoInmuebleAdministradorIdCategoriaId(@Valid @PathVariable("id") int id, @Valid @PathVariable("idCategoria") int idCategoria){
+        return tipoInmuebleService.listTipoInmuebleidInmueblesByCategoria(id, idCategoria);
+    }
+
+
     @PutMapping("/inmueble")
     public TipoInmuebleResponse updateTipoInmueble(@Valid @RequestBody TipoInmuebleDTO tipoInmuebleDTO){
         return tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
@@ -225,6 +231,11 @@ public class TiposController {
     @PostMapping("/categoria")
     public TipoCategoriaResponse crearTipoCategoria(@Valid @RequestBody TipoCategoriaDTO tipoConceptoDTO){
         return tipoCategoriaService.createUpdateCategoria(tipoConceptoDTO);
+    }
+
+    @GetMapping("/categoria/{id}")
+    public List<TipoCategoriaResponse> listarTipoCategoria(@Valid @PathVariable("id") int id){
+        return tipoCategoriaService.listarCategoriaAdministradorId(id);
     }
 
     @GetMapping("/categoria/inmueble")

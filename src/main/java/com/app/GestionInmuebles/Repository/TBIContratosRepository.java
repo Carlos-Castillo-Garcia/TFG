@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository("TBIContratosRepository")
 public interface TBIContratosRepository extends JpaRepository<TBIContratosEntity, Serializable> {
-    List<TBIContratosEntity> getByadministradorId(int id);
+    List<TBIContratosEntity> getByadministradorIdOrderByInmuebleId_AliasAsc(int id);
+
     List<TBIContratosEntity> getByidContratos(int id);
 }

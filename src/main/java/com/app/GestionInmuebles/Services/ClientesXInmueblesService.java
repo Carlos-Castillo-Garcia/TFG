@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ClientesXInmueblesService {
 
-    List<ClientesXInmueblesResponse> temp(int idCliente);
+    List<ClientesXInmueblesResponse> clientesXInmueblesList(int idCliente);
+
 }

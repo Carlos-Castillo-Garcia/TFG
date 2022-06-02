@@ -2,6 +2,8 @@ package com.app.GestionInmuebles.Services;
 
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.ClientesXInmueblesResponse;
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.InformesResponse;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InmueblesXClientesRespone;
+import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 
 public interface CastersUnitarios {
     default InformesResponse bbddToResponseInformes(String bbdd){
@@ -26,5 +28,27 @@ public interface CastersUnitarios {
         clientesXInmueblesResponse.setPorcentajePropiedad(Float.parseFloat(split[1]));
 
         return clientesXInmueblesResponse;
+    }
+
+    default InmueblesXClientesRespone bbddToResponseInmueblesXClientes(String bbdd){
+        InmueblesXClientesRespone inmueblesXClientesRespone = new InmueblesXClientesRespone();
+        String[] split = bbdd.split(",");
+        inmueblesXClientesRespone.setApellidos(split[0]);
+        inmueblesXClientesRespone.setNombre(split[1]);
+        inmueblesXClientesRespone.setPorcentajePropiedad(Float.parseFloat(split[2]));
+
+        return inmueblesXClientesRespone;
+    }
+
+    default InversionResponse bbddToResponseInversiones(String bbdd){
+        InversionResponse inversionResponse = new InversionResponse(0,0,0);
+        if(!bbdd.equals("null,null")) {
+            String[] split = bbdd.split(",");
+            inversionResponse.setCompra(Float.parseFloat(split[0]));
+            inversionResponse.setInversiones(Float.parseFloat(split[1]));
+            inversionResponse.setTotal(Float.parseFloat(split[0]) + Float.parseFloat(split[1]));
+            return inversionResponse;
+        }
+        return inversionResponse;
     }
 }

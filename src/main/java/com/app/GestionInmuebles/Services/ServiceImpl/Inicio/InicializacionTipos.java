@@ -91,6 +91,7 @@ public class InicializacionTipos implements ApplicationRunner {
         List<String> periodos = new ArrayList<>();
         periodos.add("año");
         periodos.add("mes");
+        periodos.add("unico");
         PeriodosDTO periodosDTO = new PeriodosDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(periodosService.listarPeriodosadministradorId(0).size() == 0){
             for (String periodo : periodos) {

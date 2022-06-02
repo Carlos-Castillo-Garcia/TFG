@@ -102,11 +102,6 @@ public class ClientesController {
     )
     @GetMapping("xinmueble/{id}")
     public List<ClientesXInmueblesResponse> listClientesXInmuebles(
-            @Parameter(
-                    name = "Id",
-                    description = "Id cliente para su posterior uso en el filtrado",
-                    required = true
-            )
             @Valid @PathVariable("id") int id) {
         return clientesXInmueblesService.temp(id);
     }

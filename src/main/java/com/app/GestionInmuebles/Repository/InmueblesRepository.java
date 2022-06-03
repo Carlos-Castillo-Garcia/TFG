@@ -28,8 +28,8 @@ public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Seria
             "\t\t\t\t\tON intervinientes.tipos_interviniente_id = \n" +
             "\t\t\t\t\ttipointervinientes. tipo_interviniente_id \n" +
             "WHERE\n" +
-            "\tclientes.id_cliente = 1 \n" +
-            "\tAND tipointervinientes.tipo_interviniente_id = 1 \n" +
+            "\tclientes.id_cliente = ? \n" +
+            "\tAND tipointervinientes.tipo_interviniente_id = ? \n" +
             "\tAND contratos.fecha_fin IS NULL \n" +
             "\tAND intervinientes.porcentaje_propiedad >= 1", nativeQuery = true)
     List<String> propiedad(int idInmueble, int tipoInterviniente);

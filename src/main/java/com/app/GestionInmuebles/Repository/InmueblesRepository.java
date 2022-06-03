@@ -13,20 +13,25 @@ public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Seria
     List<InmuebleEntity> getByadministradorId(int id);
     List<InmuebleEntity> getByidInmueble(int id);
 
-    @Query(value = "Select inmuebles.alias, intervinientes.porcentaje_propiedad   " +
-            "FROM gestioninmuebles.tbi_contratos as contratos  " +
-            "JOIN gestioninmuebles.tbi_intervinientes as intervinientes  " +
-            "JOIN gestioninmuebles.clientes as clientes  " +
-            "JOIN gestioninmuebles.inmuebles as inmuebles  " +
-            "JOIN gestioninmuebles.tipo_interviniente as tipoIntervinientes  " +
-            "WHERE intervinientes.tbi_contratos_id = contratos.contrato_id  " +
-            "AND intervinientes.cliente_id = clientes.id_cliente  " +
-            "AND inmuebles.id_inmueble = contratos.id_inmueble  " +
-            "AND intervinientes.tipos_interviniente_id = tipoIntervinientes.tipo_interviniente_id  " +
-            "AND clientes.id_cliente = ?  " +
-            "AND tipoIntervinientes.tipo_interviniente_id = ?  " +
-            "AND contratos.fecha_fin is null  " +
-            "AND intervinientes.borrado is false", nativeQuery = true)
+    @Query(value = "SELECT\n" +
+            "\tinmuebles.alias,\n" +
+            "\tintervinientes.porcentaje_propiedad \n" +
+            "FROM\n" +
+            "\ttbi_contratos AS contratos \n" +
+            "\t\tJOIN tbi_intervinientes AS intervinientes \n" +
+            "\t\tON intervinientes.tbi_contratos_id = contratos.contrato_id \n" +
+            "\t\t\tJOIN clientes AS clientes \n" +
+            "\t\t\tON intervinientes.cliente_id = clientes.id_cliente \n" +
+            "\t\t\t\tJOIN inmuebles AS inmuebles \n" +
+            "\t\t\t\tON inmuebles.id_inmueble = contratos.id_inmueble \n" +
+            "\t\t\t\t\tJOIN tipo_interviniente AS tipointervinientes \n" +
+            "\t\t\t\t\tON intervinientes.tipos_interviniente_id = \n" +
+            "\t\t\t\t\ttipointervinientes. tipo_interviniente_id \n" +
+            "WHERE\n" +
+            "\tclientes.id_cliente = 1 \n" +
+            "\tAND tipointervinientes.tipo_interviniente_id = 1 \n" +
+            "\tAND contratos.fecha_fin IS NULL \n" +
+            "\tAND intervinientes.porcentaje_propiedad >= 1", nativeQuery = true)
     List<String> propiedad(int idInmueble, int tipoInterviniente);
 
     @Query(value = "SELECT contratos.valor_contrato as compra,  " +

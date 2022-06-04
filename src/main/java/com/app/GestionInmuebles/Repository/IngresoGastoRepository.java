@@ -30,8 +30,8 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " month(inga.fecha_factura)" +
             " FROM ingreso_gasto as inga" +
             " join inmuebles as inmu " +
-            " WHERE inga.inmueble_id = inmu.id_inmueble " +
-            " AND inga.administrador_id = ? " +
+            " ON inga.inmueble_id = inmu.id_inmueble" +
+            " WHERE inga.administrador_id = ? " +
             " AND inga.borrado id false " +
             " group by inga.inmueble_id", nativeQuery = true)
     List<String> findInformeXInmueble(int idAdministrador);
@@ -45,9 +45,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " MONTHNAME(inga.fecha_factura)," +
             " month(inga.fecha_factura)" +
             " FROM ingreso_gasto as inga" +
-            " join inmuebles as inmu" +
-            " WHERE inga.inmueble_id = inmu.id_inmueble" +
-            " AND inga.inmueble_id = ?" +
+            " join inmuebles as inmu " +
+            " ON inga.inmueble_id = inmu.id_inmueble" +
+            " WHERE inga.inmueble_id = ?" +
             " AND inga.administrador_id = ? " +
             " AND inga.borrado id false " +
             " group by year(inga.fecha_factura)", nativeQuery = true)
@@ -63,8 +63,8 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " month(inga.fecha_factura)" +
             " FROM ingreso_gasto as inga" +
             " join inmuebles as inmu" +
-            " WHERE inga.inmueble_id = inmu.id_inmueble" +
-            " AND inga.inmueble_id = ?" +
+            " ON inga.inmueble_id = inmu.id_inmueble" +
+            " WHERE inga.inmueble_id = ?" +
             " AND year(inga.fecha_factura) = ?" +
             " AND inga.administrador_id = ? " +
             " AND inga.borrado id false " +
@@ -80,9 +80,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " MONTHNAME(inga.fecha_factura)," +
             " month(inga.fecha_factura)" +
             " FROM ingreso_gasto as inga" +
-            " join inmuebles as inmu" +
-            " WHERE inga.inmueble_id = inmu.id_inmueble" +
-            " AND inga.administrador_id = ? " +
+            " join inmuebles as inmu " +
+            " ON inga.inmueble_id = inmu.id_inmueble" +
+            " WHERE inga.administrador_id = ? " +
             " AND inga.borrado id false " +
             " group by year(inga.fecha_factura)", nativeQuery = true)
     List<String> findInformeXAnios(int administradorId);
@@ -97,8 +97,8 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " month(inga.fecha_factura)" +
             " FROM ingreso_gasto as inga" +
             " join inmuebles as inmu" +
-            " WHERE inga.inmueble_id = inmu.id_inmueble" +
-            " AND inga.administrador_id = ?" +
+            " ON inga.inmueble_id = inmu.id_inmueble" +
+            " WHERE inga.administrador_id = ?" +
             " AND year(inga.fecha_factura) = ? " +
             " AND inga.borrado id false " +
             " group by month(inga.fecha_factura)", nativeQuery = true)
@@ -114,8 +114,8 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " month(inga.fecha_factura)" +
             " FROM ingreso_gasto as inga" +
             " join inmuebles as inmu" +
-            " WHERE inga.inmueble_id = inmu.id_inmueble" +
-            " AND inga.administrador_id = ?" +
+            " ON inga.inmueble_id = inmu.id_inmueble" +
+            " WHERE inga.administrador_id = ?" +
             " AND year(inga.fecha_factura) = ?" +
             " AND month(inga.fecha_factura) = ? " +
             " AND inga.borrado id false " +

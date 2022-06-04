@@ -23,9 +23,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
             " inga.inmueble_id, " +
             " inga.fecha_factura) " +
-            " sum(inga.total_gasto)," +
-            " sum(inga.total_ingreso)," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto)," +
+            " sum(inga.total_gasto) as total_gasto," +
+            " sum(inga.total_ingreso) as total_ingreso," +
+            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
             " inga.inmueble_id," +
             " inmu.alias," +
             " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
@@ -44,9 +44,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
             " inga.inmueble_id, " +
             " inga.fecha_factura) " +
-            " sum(inga.total_gasto)," +
-            " sum(inga.total_ingreso)," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto)," +
+            " sum(inga.total_gasto) as total_gasto," +
+            " sum(inga.total_ingreso) as total_ingreso," +
+            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
             " inga.inmueble_id," +
             " inmu.alias," +
             " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
@@ -67,9 +67,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
             " inga.inmueble_id, " +
             " inga.fecha_factura) " +
-            " sum(inga.total_gasto)," +
-            " sum(inga.total_ingreso)," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto)," +
+            " sum(inga.total_gasto) as total_gasto," +
+            " sum(inga.total_ingreso) as total_ingreso," +
+            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
             " inga.inmueble_id," +
             " inmu.alias," +
             " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
@@ -91,9 +91,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
             " inga.inmueble_id, " +
             " inga.fecha_factura) " +
-            " sum(inga.total_gasto)," +
-            " sum(inga.total_ingreso)," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto)," +
+            " sum(inga.total_gasto) as total_gasto," +
+            " sum(inga.total_ingreso) as total_ingreso," +
+            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
             " inga.inmueble_id," +
             " inmu.alias," +
             " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
@@ -113,9 +113,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
             " inga.inmueble_id, " +
             " inga.fecha_factura) " +
-            " sum(inga.total_gasto)," +
-            " sum(inga.total_ingreso)," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto)," +
+            " sum(inga.total_gasto) as total_gasto," +
+            " sum(inga.total_ingreso) as total_ingreso," +
+            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
             " inga.inmueble_id," +
             " inmu.alias," +
             " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
@@ -136,9 +136,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
             " inga.inmueble_id, " +
             " inga.fecha_factura) " +
-            " sum(inga.total_gasto)," +
-            " sum(inga.total_ingreso)," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto)," +
+            " sum(inga.total_gasto) as total_gasto," +
+            " sum(inga.total_ingreso) as total_ingreso," +
+            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
             " inga.inmueble_id," +
             " inmu.alias," +
             " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +

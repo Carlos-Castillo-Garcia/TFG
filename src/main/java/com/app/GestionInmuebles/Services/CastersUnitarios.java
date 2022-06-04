@@ -54,7 +54,7 @@ public interface CastersUnitarios {
                 inversionResponse.setInversiones(Float.parseFloat(split[1]));
                 inversionResponse.setTotal(Float.parseFloat(split[0]) + Float.parseFloat(split[1]));
                 return inversionResponse;
-            }else if(!split[0].equals("null")){
+            }else if(!split[0].equals("null") && split[1].equals("null")){
                 inversionResponse.setCompra(Float.parseFloat(split[0]));
                 inversionResponse.setInversiones(0);
                 inversionResponse.setTotal(Float.parseFloat(split[0]) + Float.parseFloat(split[1]));

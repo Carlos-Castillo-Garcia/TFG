@@ -38,13 +38,16 @@ public class InformesController {
 
     @GetMapping("/inmueble/anio/{idInmueble}/{administradorId}")
     public List<InformesResponse> globalByInmuebleXAnio(
-            @Valid @PathVariable("idInmueble") int id, @Valid @PathVariable("administradorId") int administradorId) {
+            @Valid @PathVariable("idInmueble") int id,
+            @Valid @PathVariable("administradorId") int administradorId) {
         return informesService.informeByInmuebleXAnio(id, administradorId);
     }
 
     @GetMapping("/inmueble/mes/{idInmueble}/{anio}/{administradorId}")
     public List<InformesResponse> globalByInmuebleAnioXMes(
-            @Valid @PathVariable("idInmueble") int id, @Valid @PathVariable("anio") int anio, @Valid @PathVariable("administradorId") int administradorId) {
+            @Valid @PathVariable("idInmueble") int id,
+            @Valid @PathVariable("anio") int anio,
+            @Valid @PathVariable("administradorId") int administradorId) {
         return informesService.informeByInmuebleAnioXMes(id, anio, administradorId);
     }
 
@@ -54,7 +57,8 @@ public class InformesController {
     }
 
     @GetMapping("/anio/mes/{administradorId}/{anio}")
-    public List<InformesResponse> globalByAnioXMes(@Valid @PathVariable("administradorId") int administradorId, @Valid @PathVariable("anio") int anio) {
+    public List<InformesResponse> globalByAnioXMes(@Valid @PathVariable("administradorId") int administradorId,
+                                                   @Valid @PathVariable("anio") int anio) {
         return informesService.informeByAnioXMeses(administradorId, anio);
     }
 

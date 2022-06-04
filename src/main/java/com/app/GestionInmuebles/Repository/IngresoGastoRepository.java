@@ -67,7 +67,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " WHERE inga.inmueble_id = ?" +
             " AND year(inga.fecha_factura) = ?" +
             " AND inga.administrador_id = ? " +
-            " AND inga.borrado id false " +
+            " AND inga.borrado false " +
             " group by year(inga.fecha_factura)", nativeQuery = true)
     List<String> findInformeByInuebleAnioXMes(int idInmueble, int anio, int administradorId);
 

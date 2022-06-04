@@ -6,6 +6,9 @@ import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGasto
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public interface IngresoGastoService {
@@ -23,7 +26,7 @@ public interface IngresoGastoService {
         }
     };
 
-    default IngresoGastoEntity DTOToEntity(IngresoGastoDTO i) {
+    default IngresoGastoEntity DTOToEntity(IngresoGastoDTO i){
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(i, IngresoGastoEntity.class);
     }
@@ -43,7 +46,7 @@ public interface IngresoGastoService {
 
     List<String> listarfechas(int id);
 
-    IngresoGastoResponse createUpdateIgresoGasto(IngresoGastoDTO i);
+    IngresoGastoResponse createUpdateIgresoGasto(IngresoGastoDTO i) throws ParseException;
 
     List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId);
 }

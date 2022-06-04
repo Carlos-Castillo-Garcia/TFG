@@ -32,6 +32,7 @@ public interface CastersUnitarios {
 
     default InmueblesXClientesRespone bbddToResponseInmueblesXClientes(String bbdd){
         InmueblesXClientesRespone inmueblesXClientesRespone = new InmueblesXClientesRespone();
+        System.out.println(bbdd);
         String[] split = bbdd.split(",");
         inmueblesXClientesRespone.setApellidos(split[0]);
         inmueblesXClientesRespone.setNombre(split[1]);
@@ -42,24 +43,25 @@ public interface CastersUnitarios {
 
     default InversionResponse bbddToResponseInversiones(String bbdd){
         InversionResponse inversionResponse = new InversionResponse(0,0,0);
-        System.out.println(bbdd);
+        if(!bbdd.equals("null,null")){
             String[] split = bbdd.split(",");
-            if(!split[0].equals("null") && !split[1].equals("null")) {
+            if(!split[0].equals("null") && split[1].equals("null")) {
                 inversionResponse.setCompra(Float.parseFloat(split[0]));
-                inversionResponse.setInversiones(Float.parseFloat(split[1]));
-                inversionResponse.setTotal(Float.parseFloat(split[0]) + Float.parseFloat(split[1]));
+                inversionResponse.setInversiones(0);
+                inversionResponse.setTotal(Float.parseFloat(split[0]) + 0);
                 return inversionResponse;
             }else if(split[0].equals("null") && !split[1].equals("null")){
                 inversionResponse.setCompra(0);
                 inversionResponse.setInversiones(Float.parseFloat(split[1]));
-                inversionResponse.setTotal(Float.parseFloat(split[0]) + Float.parseFloat(split[1]));
+                inversionResponse.setTotal(0 + Float.parseFloat(split[1]));
                 return inversionResponse;
-            }else if(!split[0].equals("null") && split[1].equals("null")){
+            }else{
                 inversionResponse.setCompra(Float.parseFloat(split[0]));
-                inversionResponse.setInversiones(0);
+                inversionResponse.setInversiones(Float.parseFloat(split[1]));
                 inversionResponse.setTotal(Float.parseFloat(split[0]) + Float.parseFloat(split[1]));
                 return inversionResponse;
             }
+        }
         return inversionResponse;
     }
 }

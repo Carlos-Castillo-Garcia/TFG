@@ -15,10 +15,10 @@ public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Seria
     List<InmuebleEntity> getByidInmueble(int id);
 
     @Query(value = "SELECT  " +
-            "  inmuebles.alias, " +
-            "  intervinientes.porcentaje_propiedad " +
-            " FROM " +
-            " tbi_contratos AS contratos " +
+            " clientes.nombre, " +
+            " clientes.apellidos, " +
+            " intervinientes.porcentaje_propiedad " +
+            " FROM tbi_contratos AS contratos " +
             " JOIN tbi_intervinientes AS intervinientes " +
             " ON intervinientes.tbi_contratos_id = contratos.contrato_id " +
             " JOIN clientes AS clientes " +

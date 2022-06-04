@@ -151,7 +151,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND EXTRACT(YEAR FROM inga.fecha_factura) = ?" +
             " AND EXTRACT(MONTH FROM inga.fecha_factura) = ? " +
             " AND inga.borrado is false " +
-            " group by inga.inmueble_id" +
+            " group by inga.inmueble_id," +
             " inmu.alias, " +
             " inga.fecha_factura", nativeQuery = true)
     List<String> findInformeByAniosMesesXInmuebles(int administradorId, int anio, int mes);

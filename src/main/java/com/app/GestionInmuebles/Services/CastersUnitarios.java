@@ -42,6 +42,7 @@ public interface CastersUnitarios {
 
     default InversionResponse bbddToResponseInversiones(String bbdd){
         InversionResponse inversionResponse = new InversionResponse(0,0,0);
+        System.out.println(bbdd);
         if(!bbdd.equals("null,null")) {
             String[] split = bbdd.split(",");
             inversionResponse.setCompra(Float.parseFloat(split[0]));

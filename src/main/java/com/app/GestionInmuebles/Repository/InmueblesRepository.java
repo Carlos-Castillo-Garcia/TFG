@@ -36,16 +36,16 @@ public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Seria
 
     @Query(value = "SELECT sum(contratos.valor_contrato) as compra,   " +
             " sum((SELECT distinct sum(gasto.total_gasto)  " +
-            " FROM gestioninmuebles.ingreso_gasto as gasto  " +
-            " JOIN gestioninmuebles.tipo_concepto as concepto  " +
+            " FROM  ingreso_gasto as gasto  " +
+            " JOIN  tipo_concepto as concepto  " +
             " ON gasto.tipo_concepto_id = concepto.id_tipo_concepto  " +
-            " JOIN gestioninmuebles.tipo_categoria as categoria  " +
+            " JOIN  tipo_categoria as categoria  " +
             " ON concepto.categoria_id = categoria.categoria_id  " +
             " WHERE categoria.categoria_id between 5 and 6)) as inversion  " +
-            " FROM gestioninmuebles.tbi_contratos as contratos  " +
-            " JOIN gestioninmuebles.tbi_intervinientes as intervinientes  " +
+            " FROM  tbi_contratos as contratos  " +
+            " JOIN  tbi_intervinientes as intervinientes  " +
             " ON contratos.contrato_id = intervinientes.tbi_contratos_id  " +
-            " JOIN gestioninmuebles.clientes as clientes  " +
+            " JOIN  clientes as clientes  " +
             " ON intervinientes.cliente_id = clientes.id_cliente  " +
             " WHERE contratos.fecha_fin is null  " +
             " AND intervinientes.cliente_id = ?  " +

@@ -36,9 +36,9 @@ public interface ClientesRepository extends JpaRepository<ClientesEntity, Serial
     @Query(value = "SELECT sum(contratos.valor_contrato) as compra,  " +
             " sum((SELECT distinct sum(gasto.total_gasto) " +
             " FROM  ingreso_gasto as gasto " +
-            " JOIN  tipo_categoria as categoria " +
+            " JOIN tipo_concepto as concepto " +
             " ON gasto.tipo_concepto_id = concepto.id_tipo_concepto " +
-            " JOIN  tipo_concepto as concepto " +
+            " JOIN tipo_categoria as categoria " +
             " ON concepto.categoria_id = categoria.categoria_id " +
             " WHERE categoria.categoria_id between 5 and 6)) as inversion " +
             " FROM  tbi_contratos as contratos " +

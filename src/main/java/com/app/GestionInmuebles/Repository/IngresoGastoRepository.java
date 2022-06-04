@@ -82,7 +82,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND year(inga.fecha_factura) = ?" +
             " AND inga.administrador_id = ? " +
             " AND inga.borrado is false " +
-            " group by EXTRACT(YEAR FROM inga.fecha_factura)" +
+            " group by EXTRACT(YEAR FROM inga.fecha_factura), " +
             " inga.inmueble_id, " +
             " inmu.alias, " +
             " inga.fecha_factura", nativeQuery = true)
@@ -104,7 +104,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " ON inga.inmueble_id = inmu.id_inmueble" +
             " WHERE inga.administrador_id = ? " +
             " AND inga.borrado is false " +
-            " group by EXTRACT(YEAR FROM inga.fecha_factura)" +
+            " group by EXTRACT(YEAR FROM inga.fecha_factura), " +
             " inga.inmueble_id, " +
             " inmu.alias, " +
             " inga.fecha_factura", nativeQuery = true)
@@ -127,7 +127,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " WHERE inga.administrador_id = ?" +
             " AND year(inga.fecha_factura) = ? " +
             " AND inga.borrado is false " +
-            " group by EXTRACT(MONTH FROM inga.fecha_factura)" +
+            " group by EXTRACT(MONTH FROM inga.fecha_factura), " +
             " inga.inmueble_id, " +
             " inmu.alias, " +
             " inga.fecha_factura", nativeQuery = true)

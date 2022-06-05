@@ -59,8 +59,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND inga.borrado is false " +
             " group by EXTRACT(YEAR FROM inga.fecha_factura)," +
             " inga.inmueble_id, " +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
+            " inmu.alias", nativeQuery = true)
     List<String> findInformeByInmuebleXAnios(int idInmueble, int administradorId);
     
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
@@ -83,8 +82,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND inga.borrado is false " +
             " group by EXTRACT(MONTH FROM inga.fecha_factura), " +
             " inga.inmueble_id, " +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
+            " inmu.alias", nativeQuery = true)
     List<String> findInformeByInuebleAnioXMes(int idInmueble, int anio, int administradorId);
 
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
@@ -105,8 +103,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND inga.borrado is false " +
             " group by EXTRACT(YEAR FROM inga.fecha_factura), " +
             " inga.inmueble_id, " +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
+            " inmu.alias", nativeQuery = true)
     List<String> findInformeXAnios(int administradorId);
 
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
@@ -128,8 +125,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND inga.borrado is false " +
             " group by EXTRACT(MONTH FROM inga.fecha_factura), " +
             " inga.inmueble_id, " +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
+            " inmu.alias", nativeQuery = true)
     List<String> findInformeByAniosXMeses(int administradorId, int anio);
 
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
@@ -150,8 +146,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND EXTRACT(MONTH FROM inga.fecha_factura) = ? " +
             " AND inga.borrado is false " +
             " group by inga.inmueble_id," +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
+            " inmu.alias", nativeQuery = true)
     List<String> findInformeByAniosMesesXInmuebles(int administradorId, int anio, int mes);
 
     List<IngresoGastoEntity> findByAdministradorIdAndFechaPagoIsNull(int administradorId);

@@ -65,7 +65,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     
     @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
             " inga.inmueble_id," +
-            " EXTRACT(YEAR FROM inga.fecha_factura)) " +
+            " EXTRACT(MONTH FROM inga.fecha_factura)) " +
             " sum(inga.total_gasto) as total_gasto," +
             " sum(inga.total_ingreso) as total_ingreso," +
             " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
@@ -81,7 +81,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " AND EXTRACT(YEAR FROM inga.fecha_factura) = ?" +
             " AND inga.administrador_id = ? " +
             " AND inga.borrado is false " +
-            " group by EXTRACT(YEAR FROM inga.fecha_factura), " +
+            " group by EXTRACT(MONTH FROM inga.fecha_factura), " +
             " inga.inmueble_id, " +
             " inmu.alias, " +
             " inga.fecha_factura", nativeQuery = true)

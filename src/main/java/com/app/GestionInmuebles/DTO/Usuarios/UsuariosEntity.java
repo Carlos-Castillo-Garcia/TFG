@@ -29,6 +29,8 @@ public class UsuariosEntity {
     @ManyToOne
     @JoinColumn(name = "rol_id", nullable = false)
     private RolesEntity rolId;
+    @Column(name = "entidad", nullable = false)
+    private int entidadId;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -38,5 +40,4 @@ public class UsuariosEntity {
     private boolean borrado;
     @Column(name = "id_administrador", nullable = false)
     private int administradorId;
-
 }

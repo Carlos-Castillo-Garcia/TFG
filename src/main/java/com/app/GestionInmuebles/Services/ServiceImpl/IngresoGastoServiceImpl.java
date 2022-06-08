@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service("IngresoGastoServiceImpl")
 public class IngresoGastoServiceImpl implements IngresoGastoService {
@@ -45,12 +45,12 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
         List<String> listaFechas = new ArrayList<>();
         List<IngresoGastoEntity> ingresoGastoEntityList = ingresoGastoRepository.obtencionFecha(id);
         for (int i = 0; i < ingresoGastoEntityList.size(); i++) {
-            if (listaFechas.size() == 0){
-                listaFechas.add(ingresoGastoEntityList.get(i).getFechaFactura().toString().substring(0,4));
+            if (listaFechas.size() == 0) {
+                listaFechas.add(ingresoGastoEntityList.get(i).getFechaFactura().toString().substring(0, 4));
             }
             for (int j = listaFechas.size(); j != 0; j--) {
-                if (!ingresoGastoEntityList.get(i).getFechaFactura().toString().substring(0,4).equals(listaFechas.get(listaFechas.size()-1))){
-                    listaFechas.add(ingresoGastoEntityList.get(i).getFechaFactura().toString().substring(0,4));
+                if (!ingresoGastoEntityList.get(i).getFechaFactura().toString().substring(0, 4).equals(listaFechas.get(listaFechas.size() - 1))) {
+                    listaFechas.add(ingresoGastoEntityList.get(i).getFechaFactura().toString().substring(0, 4));
                 }
             }
         }
@@ -70,4 +70,6 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
         }
         return ingresoGastoResponseList;
     }
+
+
 }

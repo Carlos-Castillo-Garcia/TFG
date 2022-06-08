@@ -6,9 +6,7 @@ import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGasto
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public interface IngresoGastoService {

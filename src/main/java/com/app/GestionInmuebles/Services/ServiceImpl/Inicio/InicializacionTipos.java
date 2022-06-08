@@ -75,9 +75,7 @@ public class InicializacionTipos implements ApplicationRunner {
         List<String> nombreRoles = new ArrayList<>();
         nombreRoles.add("administrador");
         nombreRoles.add("gestor");
-        nombreRoles.add("inquilino");
         nombreRoles.add("propietario");
-        nombreRoles.add("visitante");
         RolesDTO rolesDTO = new RolesDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(rolesService.listarRolesadministradorId(0).size() == 0){
             for (String nombreRol : nombreRoles) {

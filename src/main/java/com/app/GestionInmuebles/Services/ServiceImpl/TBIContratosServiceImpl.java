@@ -31,6 +31,17 @@ public class TBIContratosServiceImpl implements TBIContratosService {
     }
 
     @Override
+    public List<TBIContratosResponse> listarContratosPropietario(int idAdministrador, int entidad) {
+        List<TBIContratosResponse> responses = new ArrayList<>();
+        for (TBIContratosEntity i : tbiContratosRespository.getByEntidadOrderByInmuebleId_AliasAsc(idAdministrador, entidad)) {
+            if (!i.isBorrado()) {
+                responses.add(EntityToResponse(i));
+            }
+        }
+        return responses;
+    }
+
+    @Override
     public List<TBIContratosResponse> listarContratosidContratos(int id) {
         List<TBIContratosResponse> responses = new ArrayList<>();
         for (TBIContratosEntity i : tbiContratosRespository.getByidContratos(id)) {

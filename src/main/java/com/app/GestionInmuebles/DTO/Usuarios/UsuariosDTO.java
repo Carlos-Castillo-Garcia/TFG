@@ -20,5 +20,6 @@ public class UsuariosDTO {
     private Date updateTime;
 
     private int rolId;
+    private int entidadId;
     private int administradorId;
 }

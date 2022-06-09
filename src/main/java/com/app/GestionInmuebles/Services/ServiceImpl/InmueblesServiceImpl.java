@@ -43,6 +43,15 @@ public class InmueblesServiceImpl implements InmuebleService, CastersUnitarios {
     }
 
     @Override
+    public List<InmuebleResponse> pruebaInmuebles(int idAdministrador, int entidad){
+        List<InmuebleResponse> inmuebleResponseList = new ArrayList<>();
+        for (InmuebleEntity i: inmueblesRepository.getByEntidadOrderByAlias(idAdministrador, entidad)) {
+            inmuebleResponseList.add(EntityToResponse(i));
+        }
+        return inmuebleResponseList;
+    }
+
+    @Override
     public InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO) {
         return EntityToResponse(inmueblesRepository.save(DTOToEntity(inmuebleDTO)));
     }

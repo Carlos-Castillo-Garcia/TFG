@@ -33,6 +33,11 @@ public class InmueblesController {
         return inmueblesService.listarInmueblesIdAdministrador(id);
     }
 
+    @GetMapping("/{idAdministrador}/{entidad}")
+    public List<InmuebleResponse> pruebaInmueble(@Valid @PathVariable("idAdministrador") int idAdministrador,
+                                                  @Valid @PathVariable("entidad") int entidad){
+        return inmueblesService.pruebaInmuebles(idAdministrador, entidad);
+    }
     @GetMapping("/detalle/{id}")
     public List<InmuebleResponse> listarInmueblesIdInmueble(@Valid @PathVariable("id") int id){
         return inmueblesService.listarInmueblesIdInmueble(id);
@@ -52,4 +57,5 @@ public class InmueblesController {
     public List<InversionResponse> listarInversiones(@Valid @PathVariable("idInmueble") int id){
         return inmueblesService.inversion(id);
     }
+
 }

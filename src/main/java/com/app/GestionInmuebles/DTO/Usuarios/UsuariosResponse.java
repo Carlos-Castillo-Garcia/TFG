@@ -21,5 +21,6 @@ public class UsuariosResponse {
 
     private int rolId;
     private String nombreRol;
+    private int entidadId;
     private int administradorId;
 }

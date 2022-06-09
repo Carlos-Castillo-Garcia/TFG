@@ -38,6 +38,8 @@ public interface TBIContratosService {
 
     List<TBIContratosResponse> listarContratosadministradorId(int id);
 
+    List<TBIContratosResponse> listarContratosPropietario(int idAdministrador, int entidad);
+
     List<TBIContratosResponse> listarContratosidContratos(int id);
 
     TBIContratosResponse createUpdateContratos(TBIContratosDTO tbiContratosDTO);

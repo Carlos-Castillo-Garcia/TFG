@@ -63,7 +63,11 @@ public class PersonasPagadorasServiceImpl implements PersonasPagadorasService {
         clientesDTO.setUpdateTime(personasPagadorasResponse.getUpdateTime());
         clientesDTO.setUsuarioId(userResponse.getIdUsuario());
         clientesDTO.setAdministradorId(personasPagadorasResponse.getIdPersonasPagadora());
-        clienteService.createUpdateClientes(clientesDTO);
+        ClientesResponse clientesResponse = clienteService.createUpdateClientes(clientesDTO);
+
+        usuariosDTO.setIdUsuario(userResponse.getIdUsuario());
+        usuariosDTO.setEntidadId(clientesResponse.getIdCliente());
+        usuarioService.createUpdateUsuarios(usuariosDTO);
 
         return personasPagadorasResponse;
     }

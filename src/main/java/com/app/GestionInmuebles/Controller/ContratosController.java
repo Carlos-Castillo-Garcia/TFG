@@ -62,6 +62,12 @@ public class ContratosController {
         return tbiContratosService.listarContratosadministradorId(id);
     }
 
+    @GetMapping("/{administradorId}/{entidad}")
+    public List<TBIContratosResponse> listContratosEntidad(@Valid @PathVariable("administradorId") int idAdministrador,
+                                                                   @Valid @PathVariable("entidad") int entidad) {
+        return tbiContratosService.listarContratosPropietario(idAdministrador, entidad);
+    }
+
     @Operation(
             summary = "Listado de Contrato",
             description = "Metodo para la obtencion del Contrato",

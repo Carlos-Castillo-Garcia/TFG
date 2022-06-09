@@ -37,6 +37,8 @@ public interface InmuebleService {
 
     List<InmuebleResponse> listarInmueblesIdInmueble(int idInmueble);
 
+    List<InmuebleResponse> pruebaInmuebles(int idAdministrador, int entidad);
+
     InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO);
 
     List<InmueblesXClientesRespone> propiedad(int idCliente);

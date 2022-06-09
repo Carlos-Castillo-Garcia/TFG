@@ -28,9 +28,9 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             "inga.inmueble_id,   " +
             "inmu.alias,   " +
             "EXTRACT(YEAR FROM inga.fecha_factura) AS anio,    " +
-            "MONTHNAME(MONTH ( inga.fecha_factura)) AS mes," +
+//            "MONTHNAME(MONTH ( inga.fecha_factura)) AS mes" +
             "TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\"    " +
-//            "(EXTRACT(MONTH FROM inga.fecha_factura))    " +
+            "(EXTRACT(MONTH FROM inga.fecha_factura))    " +
             "FROM ingreso_gasto AS inga     " +
             "JOIN inmuebles AS inmu      " +
             "ON inga.inmueble_id = inmu.id_inmueble     " +

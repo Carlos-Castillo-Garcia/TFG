@@ -29,7 +29,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             "inmu.alias,   " +
             "EXTRACT(YEAR FROM inga.fecha_factura) AS anio,    " +
 //            "MONTHNAME(MONTH ( inga.fecha_factura)) AS mes" +
-            "TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\"    " +
+            "TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\" ,   " +
             "(EXTRACT(MONTH FROM inga.fecha_factura))    " +
             "FROM ingreso_gasto AS inga     " +
             "JOIN inmuebles AS inmu      " +
@@ -54,7 +54,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             "    inga.inmueble_id, " +
             "    inmu.alias, " +
             "    EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            "TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\"    " +
+            "TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\" ,   " +
 //            "    MONTHNAME(inga.fecha_factura) AS mes, " +
             " (EXTRACT(MONTH FROM inga.fecha_factura))    " +
             "FROM ingreso_gasto AS inga " +
@@ -72,7 +72,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
             " inga.inmueble_id," +
             " inmu.alias," +
             " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            " TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\" " +
+            " TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\" ," +
 //            "    MONTHNAME(inga.fecha_factura) AS mes, " +
             " (EXTRACT(MONTH FROM inga.fecha_factura)) " +
             " FROM ingreso_gasto as inga" +

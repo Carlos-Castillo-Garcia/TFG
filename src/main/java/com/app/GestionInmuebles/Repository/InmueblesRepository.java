@@ -52,20 +52,20 @@ public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Seria
             " AND intervinientes.porcentaje_propiedad >= 1", nativeQuery = true)
     List<String> inversiones(int idInmueble);
 
-    @Query(value = "SELECT inmuebles.*\n" +
-            "FROM inmuebles as inmuebles\n" +
-            "JOIN tbi_contratos as contratos\n" +
-            "ON contratos.id_inmueble = inmuebles.id_inmueble\n" +
-            "JOIN tbi_intervinientes as intervinientes\n" +
-            "ON intervinientes.tbi_contratos_id = contratos.contrato_id\n" +
-            "JOIN tipo_interviniente as tipoIntervinientes\n" +
-            "ON intervinientes.tipos_interviniente_id = tipoIntervinientes.tipo_interviniente_id\n" +
-            "JOIN clientes as cliente \n" +
-            "ON intervinientes.cliente_id = cliente.id_cliente\n" +
-            "WHERE inmuebles.id_administrador = 2\n" +
-            "AND cliente.id_cliente = 2\n" +
-            "AND tipoIntervinientes.tipo_interviniente_id = 1\n" +
-            "AND inmuebles.borrado is not null\n" +
+    @Query(value = "SELECT inmuebles.* " +
+            "FROM inmuebles as inmuebles " +
+            "JOIN tbi_contratos as contratos " +
+            "ON contratos.id_inmueble = inmuebles.id_inmueble " +
+            "JOIN tbi_intervinientes as intervinientes " +
+            "ON intervinientes.tbi_contratos_id = contratos.contrato_id " +
+            "JOIN tipo_interviniente as tipoIntervinientes " +
+            "ON intervinientes.tipos_interviniente_id = tipoIntervinientes.tipo_interviniente_id " +
+            "JOIN clientes as cliente  " +
+            "ON intervinientes.cliente_id = cliente.id_cliente " +
+            "WHERE inmuebles.id_administrador = ? " +
+            "AND cliente.id_cliente = ? " +
+            "AND tipoIntervinientes.tipo_interviniente_id = 1 " +
+            "AND inmuebles.borrado is not null " +
             "ORDER BY inmuebles.alias DESC", nativeQuery = true)
     List<InmuebleEntity> getByEntidadOrderByAlias(int idAdministrador, int entidad);
 }

@@ -35,9 +35,9 @@ public class InformesServiceImpl implements InformesService, CastersUnitarios {
     }
 
     @Override
-    public List<InformesResponse> informeXInmueble(int adminisitradorId) {
+    public List<InformesResponse> informeXInmueble(int adminisitradorId, int idEntidad) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
-        for (String i: ingresoGastoRepository.findInformeXInmueble(adminisitradorId)) {
+        for (String i: ingresoGastoRepository.findInformeXInmueble(adminisitradorId, idEntidad)) {
             informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;

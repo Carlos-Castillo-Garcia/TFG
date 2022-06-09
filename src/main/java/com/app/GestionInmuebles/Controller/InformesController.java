@@ -31,9 +31,9 @@ public class InformesController {
         return informesService.informeGeneral(id);
     }
 
-    @GetMapping("/inmueble/{administradorId}")
-    public List<InformesResponse> globalXInmueble(@Valid @PathVariable("administradorId") int administradorId) {
-        return informesService.informeXInmueble(administradorId);
+    @GetMapping("/inmueble/{administradorId}/{idEntidad}")
+    public List<InformesResponse> globalXInmueble(@Valid @PathVariable("administradorId") int administradorId, @Valid @PathVariable("idEntidad") int idEntidad) {
+        return informesService.informeXInmueble(administradorId, idEntidad);
     }
 
     @GetMapping("/inmueble/anio/{idInmueble}/{administradorId}")

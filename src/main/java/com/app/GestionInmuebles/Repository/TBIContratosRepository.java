@@ -12,18 +12,21 @@ import java.util.List;
 public interface TBIContratosRepository extends JpaRepository<TBIContratosEntity, Serializable> {
     List<TBIContratosEntity> getByadministradorIdOrderByInmuebleId_AliasAsc(int id);
 
-    @Query(value = "SELECT * \n" +
+    @Query(value = "SELECT contratos.* \n" +
             "FROM tbi_contratos as contratos\n" +
             "JOIN tbi_intervinientes as intervinientes\n" +
             "ON intervinientes.tbi_contratos_id = contratos.contrato_id\n" +
             "JOIN clientes as clientes\n" +
             "ON clientes.id_cliente = intervinientes.cliente_id\n" +
-            "JOIN usuarios as user \n" +
-            "ON clientes.id_cliente = user.entidad\n" +
+            "JOIN usuarios as usuario \n" +
+            "ON clientes.id_cliente = usuario.entidad\n" +
             "JOIN inmuebles as inmuebles\n" +
             "ON contratos.id_inmueble = inmuebles.id_inmueble\n" +
             "WHERE contratos.administrador_id = ?\n" +
-            "AND user.entidad = ?\n" +
+            "AND usuario.entidad = ?\n" +
+            "GROUP BY usuario.entidad,\n" +
+            "contratos.contrato_id,\n" +
+            "inmuebles.alias " +
             "ORDER BY inmuebles.alias DESC", nativeQuery = true)
     List<TBIContratosEntity> getByEntidadOrderByInmuebleId_AliasAsc(int administradorId, int propietario);
 

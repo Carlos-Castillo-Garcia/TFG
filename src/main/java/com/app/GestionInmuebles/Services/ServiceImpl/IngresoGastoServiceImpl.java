@@ -41,6 +41,15 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
     }
 
     @Override
+    public List<IngresoGastoResponse> listarIngresoGastoEntidad(int idAdministrador, int entidad) {
+        List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
+        for (IngresoGastoEntity i : ingresoGastoRepository.findByEntidadOrderByFecha(idAdministrador, entidad)) {
+            ingresoGastoResponseList.add(EntityToResponse(i));
+        }
+        return ingresoGastoResponseList;
+    }
+
+    @Override
     public List<String> listarfechas(int id) {
         List<String> listaFechas = new ArrayList<>();
         List<IngresoGastoEntity> ingresoGastoEntityList = ingresoGastoRepository.obtencionFecha(id);

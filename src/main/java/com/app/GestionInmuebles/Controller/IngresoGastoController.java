@@ -78,6 +78,18 @@ public class IngresoGastoController {
         return ingresoGastoService.listarIngresoGastoId(id);
     }
 
+    @Operation(
+            summary = "Listado de Ingreso Gasto",
+            description = "Metodo para la obtencion del Ingreso Gasto",
+            method = "GET"
+    )
+    @GetMapping("/{idAdministrador}/{entidad}")
+    public List<IngresoGastoResponse> listContratosIdIngresoGasto(
+            @Valid @PathVariable("idAdministrador") int idAdministrador,
+            @Valid @PathVariable("entidad") int entidad) {
+        return ingresoGastoService.listarIngresoGastoEntidad(idAdministrador, entidad);
+    }
+
     @GetMapping("/anio/{id}")
     public List<String> listfechas(
             @Valid @PathVariable("id") int id) {

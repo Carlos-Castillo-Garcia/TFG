@@ -72,9 +72,9 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
     }
 
     @Override
-    public List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId) {
+    public List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId, int clienteId) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
-        for (IngresoGastoEntity i : ingresoGastoRepository.findByAdministradorIdAndFechaPagoIsNull(administradorId)) {
+        for (IngresoGastoEntity i : ingresoGastoRepository.findByAdministradorIdAndFechaPagoIsNullAndClienteId_IdCliente(administradorId, clienteId)) {
             ingresoGastoResponseList.add(EntityToResponse(i));
         }
         return ingresoGastoResponseList;

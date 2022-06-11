@@ -2,14 +2,11 @@
 package com.app.GestionInmuebles.Repository;
 
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoEntity;
-import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 @Repository("IngresoGastoRepository")
@@ -17,7 +14,7 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     List<IngresoGastoEntity> findByAdministradorIdOrderByFechaFacturaDesc(int idAdministrador);
     List<IngresoGastoEntity> findByIdInGa(int idInGa);
     List<IngresoGastoEntity> findByAdministradorId(int administradorId);
-    List<IngresoGastoEntity> findByAdministradorIdAndFechaPagoIsNull(int administradorId);
+    List<IngresoGastoEntity> findByAdministradorIdAndFechaPagoIsNullAndClienteId_IdCliente(int administradorId, int idCliente);
 
     @Query(value = "SELECT inga.* " +
             "FROM ingreso_gasto as inga " +

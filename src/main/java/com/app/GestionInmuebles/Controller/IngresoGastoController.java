@@ -96,9 +96,9 @@ public class IngresoGastoController {
         return ingresoGastoService.listarfechas(id);
     }
 
-    @GetMapping("/avisos/facturasinpagadas/{administradorId}")
-    public  List<IngresoGastoResponse> avisosFacturas(@Valid @PathVariable("administradorId") int id){
-        return ingresoGastoService.avisosFacturasAdministradorId(id);
+    @GetMapping("/avisos/facturasinpagadas/{administradorId}/{clienteId}")
+    public  List<IngresoGastoResponse> avisosFacturas(@Valid @PathVariable("administradorId") int id, @Valid @PathVariable("clienteId") int clienteId){
+        return ingresoGastoService.avisosFacturasAdministradorId(id, clienteId);
     }
 
 }

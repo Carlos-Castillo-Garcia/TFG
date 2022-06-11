@@ -48,5 +48,5 @@ public interface IngresoGastoService {
 
     IngresoGastoResponse createUpdateIgresoGasto(IngresoGastoDTO i) throws ParseException;
 
-    List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId);
+    List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId, int clienteId);
 }

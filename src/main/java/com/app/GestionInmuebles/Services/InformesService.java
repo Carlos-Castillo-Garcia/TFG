@@ -14,9 +14,4 @@ public interface InformesService {
 
     List<InformesResponse> informeByInmuebleAnioXMes(int id, int mes, int adminisitradorId);
 
-    List<InformesResponse> informeXAnio(int adminisitradorId);
-
-    List<InformesResponse> informeByAnioXMeses(int adminisitradorId, int anio);
-
-    List<InformesResponse> informeByAnioMesesXInmuebles(int adminisitradorId, int anio, int mes);
 }

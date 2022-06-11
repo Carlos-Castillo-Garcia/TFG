@@ -50,26 +50,4 @@ public class InformesController {
             @Valid @PathVariable("administradorId") int administradorId) {
         return informesService.informeByInmuebleAnioXMes(id, anio, administradorId);
     }
-
-    @GetMapping("/anio/{administradorId}")
-    public List<InformesResponse> globalXAnio(@Valid @PathVariable("administradorId") int administradorId) {
-        return informesService.informeXAnio(administradorId);
-    }
-
-    @GetMapping("/anio/mes/{administradorId}/{anio}")
-    public List<InformesResponse> globalByAnioXMes(@Valid @PathVariable("administradorId") int administradorId,
-                                                   @Valid @PathVariable("anio") int anio) {
-        return informesService.informeByAnioXMeses(administradorId, anio);
-    }
-
-    @GetMapping("/anio/inmueble/{administradorId}/{anio}/{mes}")
-    public List<InformesResponse> globalByAnioMesXInmueble(
-            @Valid @PathVariable("administradorId") int administradorId,
-            @Valid @PathVariable("anio") int anio,
-            @Valid @PathVariable("mes") int mes) {
-        return informesService.informeByAnioMesesXInmuebles(administradorId, anio, mes);
-    }
-
-
-
 }

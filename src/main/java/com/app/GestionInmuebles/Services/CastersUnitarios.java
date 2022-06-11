@@ -5,6 +5,8 @@ import com.app.GestionInmuebles.DTO.ResponseUnitarios.InformesResponse;
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.InmueblesXClientesRespone;
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 
+import java.text.DateFormatSymbols;
+
 public interface CastersUnitarios {
     default InformesResponse bbddToResponseInformes(String bbdd){
         InformesResponse informesResponse = new InformesResponse();
@@ -14,10 +16,18 @@ public interface CastersUnitarios {
         informesResponse.setTotalBalance(Float.parseFloat(split[2]));
         informesResponse.setIdInmueble(Integer.parseInt(split[3]));
         informesResponse.setInmuebleAlias(split[4]);
-        informesResponse.setAnio(split[5]);
-        informesResponse.setNombreMes(split[6]);
-        informesResponse.setNumeroMes(split[7]);
-
+        if (split.length == 6){
+            informesResponse.setAnio(split[5]);
+        }else{
+            informesResponse.setAnio("0");
+        }
+        if (split.length == 7){
+            informesResponse.setNombreMes(new DateFormatSymbols().getMonths()[ Integer.parseInt(split[6]) -1]);
+            informesResponse.setNumeroMes(split[6]);
+        }else{
+            informesResponse.setNombreMes("");
+            informesResponse.setNumeroMes("0");
+        }
         return informesResponse;
     }
 

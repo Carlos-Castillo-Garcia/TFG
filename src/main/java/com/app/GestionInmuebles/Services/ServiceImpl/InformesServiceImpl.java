@@ -37,7 +37,7 @@ public class InformesServiceImpl implements InformesService, CastersUnitarios {
     @Override
     public List<InformesResponse> informeXInmueble(int adminisitradorId, int idEntidad) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
-        for (String i: ingresoGastoRepository.findInformeXInmueble(adminisitradorId, idEntidad)) {
+        for (String i: ingresoGastoRepository.findInformeXInmueble(idEntidad)) {
             informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
@@ -46,7 +46,7 @@ public class InformesServiceImpl implements InformesService, CastersUnitarios {
     @Override
     public List<InformesResponse> informeByInmuebleXAnio(int id, int adminisitradorId) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
-        for (String i: ingresoGastoRepository.findInformeByInmuebleXAnios(id, adminisitradorId)) {
+        for (String i: ingresoGastoRepository.findInformeByInmuebleXAnios(id)) {
             informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;
@@ -55,34 +55,7 @@ public class InformesServiceImpl implements InformesService, CastersUnitarios {
     @Override
     public List<InformesResponse> informeByInmuebleAnioXMes(int id, int anio, int adminisitradorId) {
         List<InformesResponse> informesResponseList = new ArrayList<>();
-        for (String i: ingresoGastoRepository.findInformeByInuebleAnioXMes(id, anio, adminisitradorId)) {
-            informesResponseList.add(bbddToResponseInformes(i));
-        }
-        return informesResponseList;
-    }
-
-    @Override
-    public List<InformesResponse> informeXAnio(int adminisitradorId) {
-        List<InformesResponse> informesResponseList = new ArrayList<>();
-        for (String i: ingresoGastoRepository.findInformeXAnios(adminisitradorId)) {
-            informesResponseList.add(bbddToResponseInformes(i));
-        }
-        return informesResponseList;
-    }
-
-    @Override
-    public List<InformesResponse> informeByAnioXMeses(int adminisitradorId, int anio) {
-        List<InformesResponse> informesResponseList = new ArrayList<>();
-        for (String i: ingresoGastoRepository.findInformeByAniosXMeses(adminisitradorId, anio)) {
-            informesResponseList.add(bbddToResponseInformes(i));
-        }
-        return informesResponseList;
-    }
-
-    @Override
-    public List<InformesResponse> informeByAnioMesesXInmuebles(int adminisitradorId, int anio, int mes) {
-        List<InformesResponse> informesResponseList = new ArrayList<>();
-        for (String i: ingresoGastoRepository.findInformeByAniosMesesXInmuebles(adminisitradorId, anio, mes)) {
+        for (String i: ingresoGastoRepository.findInformeByInuebleAnioXMes(id, anio)) {
             informesResponseList.add(bbddToResponseInformes(i));
         }
         return informesResponseList;

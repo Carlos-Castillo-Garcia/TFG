@@ -22,7 +22,7 @@ public class TBIContratosServiceImpl implements TBIContratosService {
     @Override
     public List<TBIContratosResponse> listarContratosadministradorId(int id) {
         List<TBIContratosResponse> responses = new ArrayList<>();
-        for (TBIContratosEntity i : tbiContratosRespository.getByadministradorIdOrderByInmuebleId_AliasAsc(id)) {
+        for (TBIContratosEntity i : tbiContratosRespository.getByadministradorIdOrderByInmuebleId_AliasDesc(id)) {
             if (!i.isBorrado()) {
                 responses.add(EntityToResponse(i));
             }

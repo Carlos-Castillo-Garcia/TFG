@@ -19,150 +19,106 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
     List<IngresoGastoEntity> findByAdministradorId(int administradorId);
     List<IngresoGastoEntity> findByAdministradorIdAndFechaPagoIsNull(int administradorId);
 
-    @Query(value = "SELECT inga.*\n" +
-            "FROM ingreso_gasto as inga\n" +
-            "JOIN inmuebles as inmu\n" +
-            "ON inga.inmueble_id = inmu.id_inmueble\n" +
-            "JOIN tbi_contratos as contratos\n" +
-            "ON contratos.id_inmueble = inmu.id_inmueble\n" +
-            "JOIN tbi_intervinientes \n" +
-            "ON tbi_intervinientes.tbi_contratos_id = contratos.contrato_id\n" +
-            "JOIN clientes \n" +
-            "ON clientes.id_cliente = tbi_intervinientes.cliente_id\n" +
-            "WHERE inga.administrador_id = ?\n" +
-            "AND clientes.id_cliente = ?\n" +
+    @Query(value = "SELECT inga.* " +
+            "FROM ingreso_gasto as inga " +
+            "JOIN inmuebles as inmu " +
+            "ON inga.inmueble_id = inmu.id_inmueble " +
+            "JOIN tbi_contratos as contratos " +
+            "ON contratos.id_inmueble = inmu.id_inmueble " +
+            "JOIN tbi_intervinientes  " +
+            "ON tbi_intervinientes.tbi_contratos_id = contratos.contrato_id " +
+            "JOIN clientes  " +
+            "ON clientes.id_cliente = tbi_intervinientes.cliente_id " +
+            "WHERE inga.administrador_id = ? " +
+            "AND clientes.id_cliente = ? " +
+            "GROUP BY inga.id_ingreso_gasto " +
             "ORDER BY inga.fecha_factura DESC", nativeQuery = true)
     List<IngresoGastoEntity> findByEntidadOrderByFecha(int administradorId, int entidadId);
 
     @Query("select i from IngresoGastoEntity i where i.administradorId = ?1 order by i.fechaFactura DESC")
     List<IngresoGastoEntity> obtencionFecha(int administradorId);
-    @Query(value = "SELECT " +
-            "sum(inga.total_gasto) as total_gasto,   " +
-            "sum(inga.total_ingreso) as total_ingreso,   " +
-            "sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance,   " +
-            "inga.inmueble_id,   " +
-            "inmu.alias,   " +
-            "EXTRACT(YEAR FROM inga.fecha_factura) AS anio,    " +
-            "TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\" ,   " +
-            "(EXTRACT(MONTH FROM inga.fecha_factura))    " +
-            "FROM ingreso_gasto AS inga     " +
-            "JOIN inmuebles AS inmu      " +
-            "ON inga.inmueble_id = inmu.id_inmueble     " +
-            "JOIN tbi_contratos AS contratos    " +
-            "ON contratos.id_inmueble = inmu.id_inmueble    " +
-            "JOIN tbi_intervinientes AS intervinientes    " +
-            "ON intervinientes.tbi_contratos_id = contratos.contrato_id    " +
-            "JOIN clientes AS cl    " +
-            "ON intervinientes.cliente_id = cl.id_cliente    " +
-            "WHERE inga.administrador_id = ?   " +
-            "AND cl.id_cliente = ?   " +
-            "AND inga.borrado is false    " +
-            "group by inga.inmueble_id,    " +
-            "inmu.alias,    " +
-            "inga.fecha_factura", nativeQuery = true)
-    List<String> findInformeXInmueble(int idAdministrador, int idEntidad);
-    @Query(value = "SELECT  " +
-            "    SUM(inga.total_gasto) AS total_gasto, " +
-            "    SUM(inga.total_ingreso) AS total_ingreso, " +
-            "    SUM(inga.total_ingreso) - SUM(inga.total_gasto) AS total_balance, " +
-            "    inga.inmueble_id, " +
-            "    inmu.alias, " +
-            "    EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            "TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\" ,   " +
-            " (EXTRACT(MONTH FROM inga.fecha_factura))    " +
-            "FROM ingreso_gasto AS inga " +
-            "JOIN inmuebles AS inmu " +
-            "ON inga.inmueble_id = inmu.id_inmueble " +
-            "WHERE inga.inmueble_id = ? " +
-            "AND inga.administrador_id = ? " +
-            "AND inga.borrado IS FALSE " +
-            "GROUP BY EXTRACT(YEAR FROM inga.fecha_factura) , inga.inmueble_id , inmu.alias , inga.fecha_factura", nativeQuery = true)
-    List<String> findInformeByInmuebleXAnios(int idInmueble, int administradorId);
-    @Query(value = "SELECT " +
-            " sum(inga.total_gasto) as total_gasto," +
-            " sum(inga.total_ingreso) as total_ingreso," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
-            " inga.inmueble_id," +
-            " inmu.alias," +
-            " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            " TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\" ," +
-            " (EXTRACT(MONTH FROM inga.fecha_factura)) " +
-            " FROM ingreso_gasto as inga" +
-            " join inmuebles as inmu" +
-            " ON inga.inmueble_id = inmu.id_inmueble" +
-            " WHERE inga.inmueble_id = ?" +
-            " AND EXTRACT(YEAR FROM inga.fecha_factura) = ?" +
-            " AND inga.administrador_id = ? " +
-            " AND inga.borrado is false " +
-            " group by EXTRACT(MONTH FROM inga.fecha_factura), " +
-            " inga.inmueble_id, " +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
-    List<String> findInformeByInuebleAnioXMes(int idInmueble, int anio, int administradorId);
-    @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
-            " inga.inmueble_id," +
-            " EXTRACT(YEAR FROM inga.fecha_factura)) " +
-            " sum(inga.total_gasto) as total_gasto," +
-            " sum(inga.total_ingreso) as total_ingreso," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
-            " inga.inmueble_id," +
-            " inmu.alias," +
-            " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            " TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\", " +
-            " (EXTRACT(MONTH FROM inga.fecha_factura)) " +
-            " FROM ingreso_gasto as inga" +
-            " join inmuebles as inmu " +
-            " ON inga.inmueble_id = inmu.id_inmueble" +
-            " WHERE inga.administrador_id = ? " +
-            " AND inga.borrado is false " +
-            " group by EXTRACT(YEAR FROM inga.fecha_factura), " +
-            " inga.inmueble_id, " +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
-    List<String> findInformeXAnios(int administradorId);
-    @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
-            " inga.inmueble_id," +
-            " EXTRACT(MONTH FROM inga.fecha_factura)) " +
-            " sum(inga.total_gasto) as total_gasto," +
-            " sum(inga.total_ingreso) as total_ingreso," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
-            " inga.inmueble_id," +
-            " inmu.alias," +
-            " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            " TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\", " +
-            " (EXTRACT(MONTH FROM inga.fecha_factura)) " +
-            " FROM ingreso_gasto as inga" +
-            " join inmuebles as inmu" +
-            " ON inga.inmueble_id = inmu.id_inmueble" +
-            " WHERE inga.administrador_id = ?" +
-            " AND EXTRACT(YEAR FROM inga.fecha_factura) = ? " +
-            " AND inga.borrado is false " +
-            " group by EXTRACT(MONTH FROM inga.fecha_factura), " +
-            " inga.inmueble_id, " +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
-    List<String> findInformeByAniosXMeses(int administradorId, int anio);
-    @Query(value = "SELECT DISTINCT ON (inmu.alias, " +
-            " inga.inmueble_id " +
-            " sum(inga.total_gasto) as total_gasto," +
-            " sum(inga.total_ingreso) as total_ingreso," +
-            " sum(inga.total_ingreso) - sum(inga.total_gasto) as total_balance," +
-            " inga.inmueble_id," +
-            " inmu.alias," +
-            " EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            " TO_CHAR(inga.fecha_factura, 'Month') AS \"Month\", " +
-            " (EXTRACT(MONTH FROM inga.fecha_factura)) " +
-            " FROM ingreso_gasto as inga" +
-            " join inmuebles as inmu" +
-            " ON inga.inmueble_id = inmu.id_inmueble" +
-            " WHERE inga.administrador_id = ?" +
-            " AND EXTRACT(YEAR FROM inga.fecha_factura) = ?" +
-            " AND EXTRACT(MONTH FROM inga.fecha_factura) = ? " +
-            " AND inga.borrado is false " +
-            " group by inga.inmueble_id," +
-            " inmu.alias, " +
-            " inga.fecha_factura", nativeQuery = true)
-    List<String> findInformeByAniosMesesXInmuebles(int administradorId, int anio, int mes);
+    @Query(value = "SELECT SUM(inga2.total_gasto) AS total_gasto, " +
+            "SUM(inga2.total_ingreso) AS total_ingreso, " +
+            "SUM(inga2.total_ingreso) - SUM(inga2.total_gasto) AS total_balance, " +
+            "inga2.inmueble_id, " +
+            "inga2.alias " +
+            "FROM (SELECT inga.total_gasto, " +
+            "inga.total_ingreso, " +
+            "inga.inmueble_id, " +
+            "inmu.id_inmueble, " +
+            "inmu.alias, " +
+            "EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
+            "EXTRACT(MONTH FROM inga.fecha_factura) AS mes  " +
+            "FROM ingreso_gasto AS inga  " +
+            "JOIN inmuebles AS inmu  " +
+            "ON inga.inmueble_id = inmu.id_inmueble  " +
+            "JOIN tbi_contratos AS contratos  " +
+            "ON contratos.id_inmueble = inmu.id_inmueble  " +
+            "JOIN tbi_intervinientes AS intervinientes  " +
+            "ON intervinientes.tbi_contratos_id = contratos.contrato_id  " +
+            "JOIN clientes AS cl  " +
+            "ON intervinientes.cliente_id = cl.id_cliente  " +
+            "WHERE cl.id_cliente = ?) as inga2  " +
+            "GROUP BY inga2.alias,  " +
+            "inga2.inmueble_id", nativeQuery = true)
+    List<String> findInformeXInmueble(int idEntidad);
+    @Query(value = "SELECT SUM(inga2.total_gasto) AS total_gasto, " +
+            "SUM(inga2.total_ingreso) AS total_ingreso, " +
+            "SUM(inga2.total_ingreso) - SUM(inga2.total_gasto) AS total_balance, " +
+            "inga2.inmueble_id, " +
+            "inga2.alias, " +
+            "inga2.anio " +
+            "FROM (SELECT inga.total_gasto, " +
+            "inga.total_ingreso, " +
+            "inga.inmueble_id, " +
+            "inmu.id_inmueble, " +
+            "inmu.alias, " +
+            "EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
+            "EXTRACT(MONTH FROM inga.fecha_factura) AS mes  " +
+            "FROM ingreso_gasto AS inga  " +
+            "JOIN inmuebles AS inmu  " +
+            "ON inga.inmueble_id = inmu.id_inmueble  " +
+            "JOIN tbi_contratos AS contratos  " +
+            "ON contratos.id_inmueble = inmu.id_inmueble  " +
+            "JOIN tbi_intervinientes AS intervinientes  " +
+            "ON intervinientes.tbi_contratos_id = contratos.contrato_id  " +
+            "JOIN clientes AS cl  " +
+            "ON intervinientes.cliente_id = cl.id_cliente  " +
+            "WHERE inmu.id_inmueble = ?) as inga2  " +
+            "GROUP BY inga2.alias,  " +
+            "inga2.inmueble_id,  " +
+            "inga2.anio", nativeQuery = true)
+    List<String> findInformeByInmuebleXAnios(int idInmueble);
+    @Query(value = "SELECT SUM(inga2.total_gasto) AS total_gasto, " +
+            "SUM(inga2.total_ingreso) AS total_ingreso, " +
+            "SUM(inga2.total_ingreso) - SUM(inga2.total_gasto) AS total_balance, " +
+            "inga2.inmueble_id, " +
+            "inga2.alias, " +
+            "inga2.anio, " +
+            "inga2.mes " +
+            "FROM (SELECT inga.total_gasto, " +
+            "inga.total_ingreso, " +
+            "inga.inmueble_id, " +
+            "inmu.id_inmueble, " +
+            "inmu.alias, " +
+            "EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
+            "EXTRACT(MONTH FROM inga.fecha_factura) AS mes  " +
+            "FROM ingreso_gasto AS inga  " +
+            "JOIN inmuebles AS inmu  " +
+            "ON inga.inmueble_id = inmu.id_inmueble  " +
+            "JOIN tbi_contratos AS contratos  " +
+            "ON contratos.id_inmueble = inmu.id_inmueble  " +
+            "JOIN tbi_intervinientes AS intervinientes  " +
+            "ON intervinientes.tbi_contratos_id = contratos.contrato_id  " +
+            "JOIN clientes AS cl  " +
+            "ON intervinientes.cliente_id = cl.id_cliente  " +
+            "WHERE inmu.id_inmueble = ?1) as inga2  " +
+            "WHERE inga2.anio = ?2 " +
+            "GROUP BY inga2.alias,  " +
+            "inga2.inmueble_id,  " +
+            "inga2.anio,  " +
+            "inga2.mes", nativeQuery = true)
+    List<String> findInformeByInuebleAnioXMes(int idInmueble, int anio);
 
     @Query("select i from IngresoGastoEntity i where i.totalImpuestoIva = ?1")
     List<IngresoGastoEntity> findByTotalImpuestoIva(float totalImpuestoIva);

@@ -125,34 +125,26 @@ public interface IngresoGastoRepository extends JpaRepository<IngresoGastoEntity
      * @return String
      * Metodo para la obtencion de informes por meses filtrados por el inmueble y el año
      */
-    @Query(value = "SELECT SUM(inga2.total_gasto) AS total_gasto, " +
-            "SUM(inga2.total_ingreso) AS total_ingreso, " +
-            "SUM(inga2.total_ingreso) - SUM(inga2.total_gasto) AS total_balance, " +
-            "inga2.inmueble_id, " +
-            "inga2.alias, " +
-            "inga2.anio, " +
-            "inga2.mes " +
-            "FROM (SELECT inga.total_gasto, " +
-            "inga.total_ingreso, " +
-            "inga.inmueble_id, " +
-            "inmu.id_inmueble, " +
-            "inmu.alias, " +
-            "EXTRACT(YEAR FROM inga.fecha_factura) AS anio, " +
-            "EXTRACT(MONTH FROM inga.fecha_factura) AS mes  " +
-            "FROM ingreso_gasto AS inga  " +
-            "JOIN inmuebles AS inmu  " +
-            "ON inga.inmueble_id = inmu.id_inmueble  " +
-            "JOIN tbi_contratos AS contratos  " +
-            "ON contratos.id_inmueble = inmu.id_inmueble  " +
-            "JOIN tbi_intervinientes AS intervinientes  " +
-            "ON intervinientes.tbi_contratos_id = contratos.contrato_id  " +
-            "JOIN clientes AS cl  " +
-            "ON intervinientes.cliente_id = cl.id_cliente  " +
-            "WHERE inmu.id_inmueble = ?1) as inga2  " +
-            "WHERE inga2.anio = ?2 " +
-            "GROUP BY inga2.alias,  " +
-            "inga2.inmueble_id,  " +
-            "inga2.anio,  " +
-            "inga2.mes", nativeQuery = true)
+    @Query(value = "SELECT SUM(inga2.total_gasto) AS total_gasto,   " +
+            "  SUM(inga2.total_ingreso) AS total_ingreso,   " +
+            "  SUM(inga2.total_ingreso) - SUM(inga2.total_gasto) AS total_balance,   " +
+            "  inmu.id_inmueble,   " +
+            "  inmu.alias,   " +
+            "  inga2.anio,   " +
+            "  inga2.mes    " +
+            "FROM (SELECT inga.total_gasto,   " +
+            "      inga.total_ingreso,   " +
+            "      inga.inmueble_id as inmueble,   " +
+            "      EXTRACT(YEAR FROM inga.fecha_factura)  AS anio,   " +
+            "      EXTRACT(MONTH FROM inga.fecha_factura) AS mes    " +
+            "    FROM ingreso_gasto AS inga) AS inga2    " +
+            "    JOIN inmuebles as inmu   " +
+            "    ON inga2.inmueble = inmu.id_inmueble   " +
+            "WHERE inmu.id_inmueble = ?1   " +
+            "AND inga2.anio = ?2 " +
+            "GROUP BY inmu.alias,   " +
+            "  inmu.id_inmueble,   " +
+            "  inga2.anio,   " +
+            "  inga2.mes", nativeQuery = true)
     List<String> findInformeByInuebleAnioXMes(int idInmueble, int anio);
 }

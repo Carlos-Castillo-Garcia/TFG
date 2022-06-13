@@ -1,13 +1,11 @@
 package com.app.GestionInmuebles.Services.ServiceImpl.Inicio;
 
 import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaDTO;
-import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Concepos.TipoConceptoDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Contrato.ContratosDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Inmuebles.TipoInmuebleDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Intervinientes.IntervinientesDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Pagos.PagosDTO;
-import com.app.GestionInmuebles.DTO.Tipos.Pagos.PagosEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Periodos.PeriodosDTO;
 import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesDTO;
 import com.app.GestionInmuebles.Services.ServiceImpl.RolesServiceImpl;
@@ -22,9 +20,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Clase para la Auto Generacion de Registros al inicio de la aplicacion
+ * @author Carlos Castillo
+ */
 @Component
 public class InicializacionTipos implements ApplicationRunner {
 
+    //-------------------------------------------Variable Service de la inicializacion de Tipos----------------------------------------------
     @Autowired
     @Qualifier("RolesServiceImpl")
     private RolesServiceImpl rolesService;
@@ -57,7 +60,12 @@ public class InicializacionTipos implements ApplicationRunner {
     @Qualifier("TipoCategoriaServiceImpl")
     private TipoCategoriaServiceImpl tipoCategoriaService;
 
+    //-------------------------------------------Metodos de la Clase Inicializacion Tipos-------------------------------------------------------
 
+    /**
+     * Metodo para la ejecucion del resto de los metodos de la inicializacion de tipos
+     * @param args parametro necesario para la ejecucion del metodo
+     */
     @Override
     public void run(ApplicationArguments args) throws Exception {
         this.roles();
@@ -70,12 +78,14 @@ public class InicializacionTipos implements ApplicationRunner {
         this.tipoPagos();
     }
 
-
+    /**
+     * Inicializacion de Roles
+     */
     public void roles(){
         List<String> nombreRoles = new ArrayList<>();
-        nombreRoles.add("administrador");
-        nombreRoles.add("gestor");
-        nombreRoles.add("propietario");
+        nombreRoles.add("Administrador");
+        nombreRoles.add("Gestor");
+        nombreRoles.add("Propietario");
         RolesDTO rolesDTO = new RolesDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(rolesService.listarRolesadministradorId(0).size() == 0){
             for (String nombreRol : nombreRoles) {
@@ -85,11 +95,14 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    /**
+     * Inicializacion de Periodos
+     */
     public void tipoPeriodos(){
         List<String> periodos = new ArrayList<>();
-        periodos.add("año");
-        periodos.add("mes");
-        periodos.add("unico");
+        periodos.add("Año");
+        periodos.add("Mes");
+        periodos.add("Unico");
         PeriodosDTO periodosDTO = new PeriodosDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(periodosService.listarPeriodosadministradorId(0).size() == 0){
             for (String periodo : periodos) {
@@ -99,12 +112,15 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    /**
+     * Inicializacion de Pagos
+     */
     public void tipoPagos(){
         List<String> pagos = new ArrayList<>();
-        pagos.add("efectivo");
-        pagos.add("cuenta corriente");
-        pagos.add("tarjeta credito");
-        pagos.add("aplazado");
+        pagos.add("Efectivo");
+        pagos.add("Cuenta Corriente");
+        pagos.add("Tarjeta Credito");
+        pagos.add("Aplazado");
         PagosDTO pagosDTO = new PagosDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(pagosService.listarPagosIdAdministrador(0).size() == 0){
             for (String pago : pagos) {
@@ -114,13 +130,16 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    /**
+     * Inicializacion de Intervinientes
+     */
     public void tipoIntervinientes(){
         List<String> tipoInterviniente = new ArrayList<>();
-        tipoInterviniente.add("comprador");
-        tipoInterviniente.add("vendedor");
-        tipoInterviniente.add("arrendador");
-        tipoInterviniente.add("arrendatario");
-        tipoInterviniente.add("avalista");
+        tipoInterviniente.add("Comprador");
+        tipoInterviniente.add("Vendedor");
+        tipoInterviniente.add("Arrendador");
+        tipoInterviniente.add("Arrendatario");
+        tipoInterviniente.add("Avalista");
         IntervinientesDTO intervinientesDTO = new IntervinientesDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(intervinientesService.listTipoIntervinientesadministradorId(0).size() == 0){
             for (String interviniente : tipoInterviniente) {
@@ -130,11 +149,14 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    /**
+     * Inicializacion de Contratos
+     */
     public void tipoContratos(){
         List<String> contratos = new ArrayList<>();
-        contratos.add("alquiler");
-        contratos.add("compraventa");
-        contratos.add("servicios");
+        contratos.add("Alquiler");
+        contratos.add("Compraventa");
+        contratos.add("Servicios");
         ContratosDTO contratosDTO = new ContratosDTO(0, "", false, new Date(), new Date(), 0, 0);
         if(contratosService.listarTiposContratoadministradorId(0).size() == 0){
             for (String contrato : contratos) {
@@ -144,6 +166,9 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    /**
+     * Inicializacion de Categorias
+     */
     public void tipoCategoria(){
         List<String> categoria = new ArrayList<>();
         categoria.add("Vivinedas");
@@ -163,23 +188,26 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    /**
+     * Inicializacion de Inmuebles
+     */
     public void tiposInmuebles(){
         List<String> tipoInmuebleViviendas = new ArrayList<>();
         List<String> tipoInmuebleIndustria = new ArrayList<>();
         List<String> tipoInmuebleSuelo = new ArrayList<>();
-        tipoInmuebleViviendas.add("casa");
-        tipoInmuebleViviendas.add("piso");
-        tipoInmuebleViviendas.add("apartamento");
-        tipoInmuebleViviendas.add("chalet");
-        tipoInmuebleViviendas.add("loft");
-        tipoInmuebleViviendas.add("atico");
+        tipoInmuebleViviendas.add("Casa");
+        tipoInmuebleViviendas.add("Piso");
+        tipoInmuebleViviendas.add("Apartamento");
+        tipoInmuebleViviendas.add("Chalet");
+        tipoInmuebleViviendas.add("Loft");
+        tipoInmuebleViviendas.add("Atico");
 
-        tipoInmuebleIndustria.add("nave");
-        tipoInmuebleIndustria.add("local");
-        tipoInmuebleIndustria.add("oficina");
+        tipoInmuebleIndustria.add("Nave");
+        tipoInmuebleIndustria.add("Local");
+        tipoInmuebleIndustria.add("Oficina");
 
-        tipoInmuebleSuelo.add("parcela");
-        tipoInmuebleSuelo.add("solar");
+        tipoInmuebleSuelo.add("Parcela");
+        tipoInmuebleSuelo.add("Solar");
 
         TipoInmuebleDTO tipoInmuebleDTO = new TipoInmuebleDTO(0, "", 0, false, new Date(), new Date(), 0, 0);
         if (tipoInmuebleService.listTipoInmuebleadministradorId(0).size() == 0){
@@ -201,29 +229,32 @@ public class InicializacionTipos implements ApplicationRunner {
         }
     }
 
+    /**
+     * Inicializacion de Conceptos
+     */
     public void tipoConcepto(){
         List<String> tipoConceptoSuministros = new ArrayList<>();
         List<String> tipoConceptoReformas = new ArrayList<>();
         List<String> tipoConceptoMobiliario = new ArrayList<>();
         List<String> tipoConceptoAlquiler = new ArrayList<>();
         List<String> tipoConceptoCompraVenta = new ArrayList<>();
-        tipoConceptoSuministros.add("agua");
-        tipoConceptoSuministros.add("luz");
-        tipoConceptoSuministros.add("gas");
-        tipoConceptoSuministros.add("comunicaciones");
-        tipoConceptoSuministros.add("comunidades");
+        tipoConceptoSuministros.add("Agua");
+        tipoConceptoSuministros.add("Luz");
+        tipoConceptoSuministros.add("Gas");
+        tipoConceptoSuministros.add("Comunicaciones");
+        tipoConceptoSuministros.add("Comunidades");
 
-        tipoConceptoReformas.add("mano obra");
-        tipoConceptoReformas.add("albañileria");
-        tipoConceptoReformas.add("electricidad");
-        tipoConceptoReformas.add("fontaneria");
-        tipoConceptoReformas.add("cerramientos");
+        tipoConceptoReformas.add("Mano Obra");
+        tipoConceptoReformas.add("Albañileria");
+        tipoConceptoReformas.add("Electricidad");
+        tipoConceptoReformas.add("Fontaneria");
+        tipoConceptoReformas.add("Cerramientos");
 
-        tipoConceptoMobiliario.add("electrodomesticos");
-        tipoConceptoMobiliario.add("cocina");
-        tipoConceptoMobiliario.add("baños");
-        tipoConceptoMobiliario.add("dormitorios");
-        tipoConceptoMobiliario.add("salon");
+        tipoConceptoMobiliario.add("Electrodomesticos");
+        tipoConceptoMobiliario.add("Cocina");
+        tipoConceptoMobiliario.add("Baños");
+        tipoConceptoMobiliario.add("Dormitorios");
+        tipoConceptoMobiliario.add("Salon");
 
         tipoConceptoAlquiler.add("Alquiler");
         tipoConceptoAlquiler.add("Fianza");

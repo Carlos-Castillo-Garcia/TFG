@@ -11,12 +11,26 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+/**
+ * Interfaz de Clientes
+ * @author Carlos Castillo
+ */
 public interface ClienteService {
+    /**
+     * Mapper de DTO a Entity
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return ClientesEntity
+     */
     default ClientesEntity DTOToEntity(ClientesDTO i) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(i, ClientesEntity.class);
     }
 
+    /**
+     * Mapper de Entity a Response
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return ClientesResponse
+     */
     default ClientesResponse EntityToResponse(ClientesEntity i) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(i, ClientesResponse.class);

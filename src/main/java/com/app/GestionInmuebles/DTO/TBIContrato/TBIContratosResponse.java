@@ -1,12 +1,11 @@
 package com.app.GestionInmuebles.DTO.TBIContrato;
 
-import com.app.GestionInmuebles.DTO.Tipos.Contrato.ContratosEntity;
-import com.app.GestionInmuebles.DTO.Tipos.Periodos.PeriodosEntity;
-import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import java.util.Date;
 
+@ApiModel(value = "Contrato Response", description = "Objeto para la transferencia de datos de la parte Back a la parte Front con la respuesta de las peticiones a Base de datos")
 @Getter
 @Setter
 @ToString

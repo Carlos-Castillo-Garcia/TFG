@@ -10,8 +10,15 @@ import org.modelmapper.PropertyMap;
 
 import java.util.List;
 
+/**
+ * Interfaz de Contratos
+ * @author Carlos Castillo
+ */
 public interface TBIContratosService {
 
+    /**
+     * Configuracion del mapper Entity to Response
+     */
     PropertyMap<TBIContratosEntity, TBIContratosResponse> ENTITYTORESPONSE = new PropertyMap<TBIContratosEntity, TBIContratosResponse>() {
         protected void configure() {
             map().setTipoContratoId(source.getTipoContratoId().getIdTipoContrato());
@@ -20,12 +27,21 @@ public interface TBIContratosService {
         }
     };
 
+    /**
+     * Mapper de DTO a Entity
+     * @param contratos parametro necesario para la ejecucion del metodo
+     * @return TBIContratosEntity
+     */
     default TBIContratosEntity DTOToEntity(TBIContratosDTO contratos){
         ModelMapper modelMapper = new ModelMapper();
-        TBIContratosEntity contratosEntity = modelMapper.map(contratos, TBIContratosEntity.class);
-        return contratosEntity;
+        return modelMapper.map(contratos, TBIContratosEntity.class);
     }
 
+    /**
+     * Mapper de Entity a Response
+     * @param contratos parametro necesario para la ejecucion del metodo
+     * @return TBIContratosResponse
+     */
     default TBIContratosResponse EntityToResponse(TBIContratosEntity contratos){
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);

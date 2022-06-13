@@ -10,7 +10,15 @@ import org.modelmapper.PropertyMap;
 
 import java.util.List;
 
+/**
+ * Interfaz de Inmuebles
+ * @author Carlos Castillo
+ */
 public interface InmuebleService {
+
+    /**
+     * Configuracion del mapper Entity to Response
+     */
     PropertyMap<InmuebleEntity, InmuebleResponse> ENTITYTORESPONSE = new PropertyMap<InmuebleEntity, InmuebleResponse>() {
         protected void configure() {
             map().setTipoCategoriaId(source.getIdTipoInmueble().getCategoriaId().getIdCategoria());
@@ -20,24 +28,32 @@ public interface InmuebleService {
         }
     };
 
+    /**
+     * Mapper de DTO a Entity
+     * @param inmueble parametro necesario para la ejecucion del metodo
+     * @return InmuebleEntity
+     */
     default InmuebleEntity DTOToEntity(InmuebleDTO inmueble) {
         ModelMapper modelMapper = new ModelMapper();
-        InmuebleEntity inmuebleEntity = modelMapper.map(inmueble, InmuebleEntity.class);
-        return inmuebleEntity;
+        return modelMapper.map(inmueble, InmuebleEntity.class);
     }
 
+    /**
+     * Mapper de Entity a Response
+     * @param inmueble parametro necesario para la ejecucion del metodo
+     * @return InmuebleResponse
+     */
     default InmuebleResponse EntityToResponse(InmuebleEntity inmueble) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
-        InmuebleResponse inmuebleResponse = modelMapper.map(inmueble, InmuebleResponse.class);
-        return inmuebleResponse;
+        return modelMapper.map(inmueble, InmuebleResponse.class);
     }
 
     List<InmuebleResponse> listarInmueblesIdAdministrador(int idAdministrador);
 
     List<InmuebleResponse> listarInmueblesIdInmueble(int idInmueble);
 
-    List<InmuebleResponse> pruebaInmuebles(int idAdministrador, int entidad);
+    List<InmuebleResponse> inmueblesByPorcentajeContratoAndEntidad(int idAdministrador, int entidad);
 
     InmuebleResponse createUpdateInmuebles(InmuebleDTO inmuebleDTO);
 

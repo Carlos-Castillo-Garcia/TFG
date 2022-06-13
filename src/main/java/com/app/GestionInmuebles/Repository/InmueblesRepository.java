@@ -8,12 +8,30 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Clase para la generacion de metodos de peticiones a la base de datos
+ * @author Carlos Castillo
+  */
 @Repository("InmueblesRepository")
 public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Serializable> {
+    /**
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return InmuebleEntity
+     */
     List<InmuebleEntity> getByadministradorId(int id);
 
+    /**
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return InmuebleEntity
+     */
     List<InmuebleEntity> getByidInmueble(int id);
 
+    /**
+     * @param idEntidad parametro necesario para la ejecucion del metodo
+     * @param tipoInterviniente parametro necesario para la ejecucion del metodo
+     * @return String
+     * Metodo para la obtencion de nombre y apellidos de la entidad y su porcentaje sobre el inmueble filtrado por la entidad, el tipo de interviniente, fecha fin de contrato a nula y el porcentraje de porpiedad mayor a 1
+     */
     @Query(value = "SELECT  " +
             " clientes.nombre, " +
             " clientes.apellidos, " +
@@ -32,8 +50,13 @@ public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Seria
             " AND tipointervinientes.tipo_interviniente_id = ?   " +
             " AND contratos.fecha_fin IS NULL   " +
             " AND intervinientes.porcentaje_propiedad >= 1", nativeQuery = true)
-    List<String> propiedad(int idInmueble, int tipoInterviniente);
+    List<String> propiedad(int idEntidad, int tipoInterviniente);
 
+     /**
+     * @param idEntidad parametro necesario para la ejecucion del metodo
+     * @return String
+     * Metodo para la obtencion de las inversiones filtradas por el id de la entidad, la fecha de contrato fin a nula
+     */
     @Query(value = "SELECT sum(contratos.valor_contrato) as compra,   " +
             " sum((SELECT distinct sum(gasto.total_gasto)  " +
             " FROM  ingreso_gasto as gasto  " +
@@ -50,8 +73,14 @@ public interface InmueblesRepository extends JpaRepository<InmuebleEntity, Seria
             " WHERE contratos.fecha_fin is null  " +
             " AND intervinientes.cliente_id = ?  " +
             " AND intervinientes.porcentaje_propiedad >= 1", nativeQuery = true)
-    List<String> inversiones(int idInmueble);
+    List<String> inversiones(int idEntidad);
 
+    /**
+     * @param idAdministrador parametro necesario para la ejecucion del metodo
+     * @param entidad parametro necesario para la ejecucion del metodo
+     * @return String
+     * Metodo para la obtencion del inmueble filtrado por el administrador, la entidad, el tipo de interviniente y si esta borrado o no, ordenado por el alias del inmueble de forma descendente
+     */
     @Query(value = "SELECT inmuebles.* " +
             "FROM inmuebles as inmuebles " +
             "JOIN tbi_contratos as contratos " +

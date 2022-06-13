@@ -1,7 +1,7 @@
 package com.app.GestionInmuebles.DTO.Inmuebles;
 
-import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Inmuebles.TipoInmuebleEntity;
+import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -9,6 +9,11 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
+
+/**
+ * Objeto para el tratado de datos con la Base de datos
+ * @author Carlos Castillo
+  */
 
 @Entity
 @Table(name = "inmuebles")

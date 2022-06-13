@@ -3,10 +3,15 @@ package com.app.GestionInmuebles.DTO.TBIIntervinientes;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Intervinientes.IntervinientesEntity;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Objeto para el tratado de datos con la Base de datos
+ * @author Carlos Castillo
+  */
 @Entity
 @Table(name = "TBI_Intervinientes")
 @Getter

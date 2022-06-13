@@ -8,8 +8,15 @@ import org.modelmapper.PropertyMap;
 
 import java.util.List;
 
+/**
+ * Interfaz de Intervinientes
+ * @author Carlos Castillo
+ */
 public interface TBIIntervinientesService {
 
+    /**
+     * Configuracion del mapper Entity to Response
+     */
     PropertyMap<TBIIntervinientesEntity, TBIIntervinientesResponse> ENTITYTORESPONSE = new PropertyMap<TBIIntervinientesEntity, TBIIntervinientesResponse>() {
         protected void configure() {
             map().setTipoIntervinienteId(source.getTipoIntervinienteId().getIdTipoInterviniente());
@@ -19,16 +26,26 @@ public interface TBIIntervinientesService {
         }
     };
 
-    default TBIIntervinientesEntity DTOToEntity(TBIIntervinientesDTO inmueble) {
+    /**
+     * Mapper de DTO a Entity
+     * @param intervinientesDTO parametro necesario para la ejecucion del metodo
+     * @return TBIIntervinientesEntity
+     */
+    default TBIIntervinientesEntity DTOToEntity(TBIIntervinientesDTO intervinientesDTO) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(inmueble, TBIIntervinientesEntity.class);
+        return modelMapper.map(intervinientesDTO, TBIIntervinientesEntity.class);
     }
 
-    default TBIIntervinientesResponse EntityToResponse(TBIIntervinientesEntity inmueble) {
+    /**
+     * Mapper de Entity a Response
+     * @param tbiIntervinientesEntity parametro necesario para la ejecucion del metodo
+     * @return TBIIntervinientesResponse
+     */
+    default TBIIntervinientesResponse EntityToResponse(TBIIntervinientesEntity tbiIntervinientesEntity) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);
-        TBIIntervinientesResponse tbiIntervinientesResponse = modelMapper.map(inmueble, TBIIntervinientesResponse.class);
-        tbiIntervinientesResponse.setApellidosNombreCliente(inmueble.getClienteId().getApellidos() + ", " + inmueble.getClienteId().getNombre());
+        TBIIntervinientesResponse tbiIntervinientesResponse = modelMapper.map(tbiIntervinientesEntity, TBIIntervinientesResponse.class);
+        tbiIntervinientesResponse.setApellidosNombreCliente(tbiIntervinientesEntity.getClienteId().getApellidos() + ", " + tbiIntervinientesEntity.getClienteId().getNombre());
 
         return tbiIntervinientesResponse;
     }

@@ -10,8 +10,15 @@ import org.modelmapper.PropertyMap;
 
 import java.util.List;
 
+/**
+ * Interfaz de Tipo de Concepto
+ * @author Carlos Castillo
+ */
 public interface TipoConceptoService {
 
+    /**
+     * Configuracion del mapper Entity to Response
+     */
     PropertyMap<TipoConceptoEntity, TipoConceptoResponse> ENTITYTORESPONSE = new PropertyMap<TipoConceptoEntity, TipoConceptoResponse>() {
         protected void configure() {
             map().setCategoriaId(source.getCategoriaId().getIdCategoria());
@@ -19,11 +26,21 @@ public interface TipoConceptoService {
         }
     };
 
+    /**
+     * Mapper de DTO a Entity
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return TipoConceptoEntity
+     */
     default TipoConceptoEntity DTOToEntity(TipoConceptoDTO i) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(i, TipoConceptoEntity.class);
     }
 
+    /**
+     * Mapper de DTO a Entity
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return  TipoConceptoResponse
+     */
     default TipoConceptoResponse EntityToResponse(TipoConceptoEntity i) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);

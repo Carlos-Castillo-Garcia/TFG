@@ -7,35 +7,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
+//Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
 @RestController
 @RequestMapping("/api/v1/interviniente")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class IntervinientesController {
 
+    //-------------------------------------------Variable Service del controller de Inmuebles----------------------------------------------
+
     @Autowired
     @Qualifier("TBIIntervinientesServiceImpl")
     private TBIIntervinientesServiceImpl tbiIntervinientesService;
 
+    //-------------------------------------------Metodos del controller de Inmuebles-------------------------------------------------------
+
     @GetMapping("/{id}")
-    public List<TBIIntervinientesResponse> listIntervinientesContratosId(@Valid @PathVariable("id") int id){
+    public List<TBIIntervinientesResponse> listIntervinientesContratosId( @PathVariable("id") int id){
         return tbiIntervinientesService.listarIntervinientesContratoId(id);
     }
 
     @GetMapping("/detalle/{id}")
-    public List<TBIIntervinientesResponse> listIntervinientesidIntervininetes(@Valid @PathVariable("id") int id){
+    public List<TBIIntervinientesResponse> listIntervinientesidIntervininetes( @PathVariable("id") int id){
         return tbiIntervinientesService.listarIntervinientesidIntervinientes(id);
     }
 
     @PostMapping
-    public TBIIntervinientesResponse createIntervinientes(@Valid @RequestBody TBIIntervinientesDTO intervinientesDTO){
+    public TBIIntervinientesResponse createIntervinientes( @RequestBody TBIIntervinientesDTO intervinientesDTO){
         return tbiIntervinientesService.createUpdateIntervinientes(intervinientesDTO);
     }
 
     @PutMapping
-    public TBIIntervinientesResponse updateIntervinientes(@Valid @RequestBody TBIIntervinientesDTO intervinientesDTO){
+    public TBIIntervinientesResponse updateIntervinientes( @RequestBody TBIIntervinientesDTO intervinientesDTO){
         return tbiIntervinientesService.createUpdateIntervinientes(intervinientesDTO);
     }
 }

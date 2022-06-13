@@ -12,12 +12,25 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
 @Service("IngresoGastoDetalleServiceImpl")
 public class IngresoGastoDetalleServiceImpl implements IngresoGastoDetalleService {
 
+    //-------------------------------------------Variable Service de Ingreso Gasto Detalle Repository----------------------------------------------
     @Autowired
     @Qualifier("IngresoGastoDetalleRepository")
     private IngresoGastoDetalleRepository ingresoGastoDetalleRepository;
+
+    //-------------------------------------------Metodos de la Clase Ingreso Gasto Detalle Service Impl-------------------------------------------------------
+
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de IngresoGastoDetalleResponse
+     */
 
     @Override
     public List<IngresoGastoDetalleResponse> listarIngresoGastoDetalleAdministradorId(int id) {
@@ -30,6 +43,12 @@ public class IngresoGastoDetalleServiceImpl implements IngresoGastoDetalleServic
         return detalleResponseList;
     }
 
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de IngresoGastoDetalleResponse
+     */
+
     @Override
     public List<IngresoGastoDetalleResponse> listarIngresoGastoDetalleId(int id) {
         List<IngresoGastoDetalleResponse> detalleResponseList = new ArrayList<>();
@@ -39,6 +58,11 @@ public class IngresoGastoDetalleServiceImpl implements IngresoGastoDetalleServic
         return detalleResponseList;
     }
 
+    /**
+      * Metodo usado para la creacion y modificacion
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return IngresoGastoDetalleResponse
+     */
     @Override
     public IngresoGastoDetalleResponse createUpdateIngresoGastoDetalle(IngresoGastoDetalleDTO i) {
         return EntityToResponse(ingresoGastoDetalleRepository.save(DTOToEntity(i)));

@@ -1,11 +1,16 @@
 package com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGastoDetalle;
 
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoEntity;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Objeto para el tratado de datos con la Base de datos
+ * @author Carlos Castillo
+  */
 @Entity
 @Table(name = "ingreso_gasto_detalle")
 @Setter

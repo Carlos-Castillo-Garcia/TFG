@@ -12,13 +12,25 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
 @Service("PeriodosServiceImpl")
 public class PeriodosServiceImpl implements PeriodosService {
 
+    //-------------------------------------------Variable Service de Periodos Repository----------------------------------------------
     @Autowired
     @Qualifier("PeriodosRepository")
     private PeriodosRepository tipoPeriodoRepository;
 
+    //-------------------------------------------Metodos de la Clase Periodos Service Impl-------------------------------------------------------
+
+    /**
+     * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de PeriodosResponse
+     */
     @Override
     public List<PeriodosResponse> listarPeriodosadministradorId(int id) {
         List<PeriodosResponse> list = new ArrayList<>();
@@ -30,6 +42,12 @@ public class PeriodosServiceImpl implements PeriodosService {
         return list;
     }
 
+
+    /**
+     * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de PeriodosResponse
+     */
     @Override
     public List<PeriodosResponse> listarPeriodosidPeriodos(int id) {
         List<PeriodosResponse> list = new ArrayList<>();
@@ -39,6 +57,11 @@ public class PeriodosServiceImpl implements PeriodosService {
         return list;
     }
 
+    /**
+     * Metodo para la usado creacion y modificacion
+     * @param periodosDTO parametro necesario para la ejecucion del metodo
+     * @return PeriodosResponse
+     */
     @Override
     public PeriodosResponse createUpdatePeriodos(PeriodosDTO periodosDTO) {
         return EntityToResponse(tipoPeriodoRepository.save(DTOToEntity(periodosDTO)));

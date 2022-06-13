@@ -9,7 +9,15 @@ import org.modelmapper.PropertyMap;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Interfaz de Ingreso Gasto
+ * @author Carlos Castillo
+ */
 public interface IngresoGastoService {
+
+    /**
+     * Configuracion del mapper Entity to Response
+     */
     PropertyMap<IngresoGastoEntity, IngresoGastoResponse> ENTITYTORESPONSE = new PropertyMap<IngresoGastoEntity, IngresoGastoResponse>() {
         protected void configure() {
             map().setInmuebleId(source.getInmuebleId().getIdInmueble());
@@ -24,11 +32,21 @@ public interface IngresoGastoService {
         }
     };
 
+    /**
+     * Mapper de DTO a Entity
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return IngresoGastoEntity
+     */
     default IngresoGastoEntity DTOToEntity(IngresoGastoDTO i){
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(i, IngresoGastoEntity.class);
     }
 
+    /**
+     * Mapper de Entity a Response
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return IngresoGastoResponse
+     */
     default IngresoGastoResponse EntityToResponse(IngresoGastoEntity i) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);

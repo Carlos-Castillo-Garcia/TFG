@@ -8,18 +8,30 @@ import org.modelmapper.ModelMapper;
 
 import java.util.List;
 
+/**
+ * Interfaz de Pagos
+ * @author Carlos Castillo
+ */
 public interface PagosService {
 
-    default PagosEntity DTOToEntity(PagosDTO inmueble) {
+    /**
+     * Mapper de DTO a Entity
+     * @param pagosDTO parametro necesario para la ejecucion del metodo
+     * @return PagosEntity
+     */
+    default PagosEntity DTOToEntity(PagosDTO pagosDTO) {
         ModelMapper modelMapper = new ModelMapper();
-        PagosEntity inmuebleEntity = modelMapper.map(inmueble, PagosEntity.class);
-        return inmuebleEntity;
+        return modelMapper.map(pagosDTO, PagosEntity.class);
     }
 
-    default PagosResponse EntityToResponse(PagosEntity inmueble) {
+    /**
+     * Mapper de Entity a Response
+     * @param pagosEntity parametro necesario para la ejecucion del metodo
+     * @return PagosResponse
+     */
+    default PagosResponse EntityToResponse(PagosEntity pagosEntity) {
         ModelMapper modelMapper = new ModelMapper();
-        PagosResponse inmuebleResponse = modelMapper.map(inmueble, PagosResponse.class);
-        return inmuebleResponse;
+        return modelMapper.map(pagosEntity, PagosResponse.class);
     }
 
     List<PagosResponse> listarPagosIdAdministrador(int id);

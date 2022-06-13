@@ -4,14 +4,16 @@ import com.app.GestionInmuebles.DTO.ResponseUnitarios.InformesResponse;
 
 import java.util.List;
 
+/**
+ * Interfaz de Informes
+ * @author Carlos Castillo
+ */
 public interface InformesService {
 
-    InformesResponse informeGeneral(int id);
+    List<InformesResponse> informeXInmueble(int idEntidad);
 
-    List<InformesResponse> informeXInmueble(int adminisitradorId, int idEntidad);
+    List<InformesResponse> informeByInmuebleXAnio(int id);
 
-    List<InformesResponse> informeByInmuebleXAnio(int id, int adminisitradorId);
-
-    List<InformesResponse> informeByInmuebleAnioXMes(int id, int mes, int adminisitradorId);
+    List<InformesResponse> informeByInmuebleAnioXMes(int id, int mes);
 
 }

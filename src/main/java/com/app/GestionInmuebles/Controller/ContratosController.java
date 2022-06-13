@@ -3,13 +3,10 @@ package com.app.GestionInmuebles.Controller;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosDTO;
 import com.app.GestionInmuebles.DTO.TBIContrato.TBIContratosResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.TBIContratosServiceImpl;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 //Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
@@ -25,57 +22,32 @@ public class ContratosController {
 
     //-------------------------------------------Metodos del controller de Contratos-------------------------------------------------------
 
-    @Operation(
-            summary = "Creado de Contratos",
-            description = "Metodo para la creacion de Contratos",
-            method = "POST"
-    )
     @PostMapping
     public TBIContratosResponse createContratos(
-            @Parameter(
-                    name = "Contrato",
-                    description = "Objeto de tipo contrato para la creacion del registro",
-                    required = true
-            )
-            @Valid @RequestBody TBIContratosDTO tbiContratosDTO) {
+            @RequestBody TBIContratosDTO tbiContratosDTO) {
         return tbiContratosService.createUpdateContratos(tbiContratosDTO);
     }
 
-    @Operation(
-            summary = "Modificacion de Contratos",
-            description = "Metodo para la modificacion de Contratos",
-            method = "PUT"
-    )
     @PutMapping
     public TBIContratosResponse updateContratos(
-            @Parameter(
-                    name = "Contratos",
-                    description = "Objeto de tipo contrato para la modificacion del registro",
-                    required = true
-            )
-            @Valid @RequestBody TBIContratosDTO tbiContratosDTO) {
+            @RequestBody TBIContratosDTO tbiContratosDTO) {
         return tbiContratosService.createUpdateContratos(tbiContratosDTO);
     }
 
     @GetMapping("/{id}")
-    public List<TBIContratosResponse> listContratosIdAdministrador(@Valid @PathVariable("id") int id) {
-        return tbiContratosService.listarContratosadministradorId(id);
+    public List<TBIContratosResponse> listContratosIdAdministrador(@PathVariable("id") int idAdministrador) {
+        return tbiContratosService.listarContratosadministradorId(idAdministrador);
     }
 
     @GetMapping("/{administradorId}/{entidad}")
-    public List<TBIContratosResponse> listContratosEntidad(@Valid @PathVariable("administradorId") int idAdministrador,
-                                                                   @Valid @PathVariable("entidad") int entidad) {
+    public List<TBIContratosResponse> listContratosEntidad(@PathVariable("administradorId") int idAdministrador,
+                                                           @PathVariable("entidad") int entidad) {
         return tbiContratosService.listarContratosPropietario(idAdministrador, entidad);
     }
 
-    @Operation(
-            summary = "Listado de Contrato",
-            description = "Metodo para la obtencion del Contrato",
-            method = "GET"
-    )
     @GetMapping("/detalle/{id}")
-    public List<TBIContratosResponse> listContratosIdContratos(@Valid @PathVariable("id") int id) {
-        return tbiContratosService.listarContratosidContratos(id);
+    public List<TBIContratosResponse> listContratosIdContratos(@PathVariable("id") int idContrato) {
+        return tbiContratosService.listarContratosidContratos(idContrato);
     }
 
 

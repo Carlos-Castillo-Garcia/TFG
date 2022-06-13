@@ -7,40 +7,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
+
+//Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
 
 @RestController
 @RequestMapping("api/v1/usuario")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class UsuarioController {
 
+    //-------------------------------------------Variable Service del controller de Inmuebles----------------------------------------------
+
     @Autowired
     @Qualifier(value = "UsuarioServiceImpl")
     private UsuarioServiceImpl usuarioService;
 
+    //-------------------------------------------Metodos del controller de Inmuebles-------------------------------------------------------
+
+
     @PostMapping
-    public UsuariosResponse crearUsuario(@Valid @RequestBody UsuariosDTO usuariosDTO) {
+    public UsuariosResponse crearUsuario( @RequestBody UsuariosDTO usuariosDTO) {
         return usuarioService.createUpdateUsuarios(usuariosDTO);
     }
 
     @GetMapping("{id}")
-    public List<UsuariosResponse> listarUsuariosIdAdministrador(@Valid @PathVariable("id") int idAdministrador) {
+    public List<UsuariosResponse> listarUsuariosIdAdministrador( @PathVariable("id") int idAdministrador) {
         return usuarioService.listarUsuariosIdAdministrador(idAdministrador);
     }
 
     @GetMapping("detalle/{id}")
-    public List<UsuariosResponse> listarUsuarios(@Valid @PathVariable("id") int idUsuario) {
+    public List<UsuariosResponse> listarUsuarios( @PathVariable("id") int idUsuario) {
         return usuarioService.listarUsuariosIdUsuario(idUsuario);
     }
 
     @GetMapping("/loggin/{email}/{password}")
-    public UsuariosResponse loggin(@Valid @PathVariable("email") String email, @Valid @PathVariable("password") String password) {
+    public UsuariosResponse loggin( @PathVariable("email") String email,  @PathVariable("password") String password) {
         return usuarioService.loggin(email, password);
     }
 
     @PutMapping
-    public UsuariosResponse updateUsuario(@Valid @RequestBody UsuariosDTO usuariosDTO) {
+    public UsuariosResponse updateUsuario( @RequestBody UsuariosDTO usuariosDTO) {
         return usuarioService.createUpdateUsuarios(usuariosDTO);
     }
 

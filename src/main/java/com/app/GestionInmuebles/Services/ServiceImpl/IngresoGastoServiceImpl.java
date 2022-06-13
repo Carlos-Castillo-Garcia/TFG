@@ -12,14 +12,25 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
 @Service("IngresoGastoServiceImpl")
 public class IngresoGastoServiceImpl implements IngresoGastoService {
 
+    //-------------------------------------------Variable Service de Ingreso Gasto Repository----------------------------------------------
     @Autowired
     @Qualifier("IngresoGastoRepository")
     private IngresoGastoRepository ingresoGastoRepository;
 
+    //-------------------------------------------Metodos de la Clase Ingreso Gasto Service Impl-------------------------------------------------------
+
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de IngresoGastoResponse
+     */
     @Override
     public List<IngresoGastoResponse> listarIngresoGasto(int id) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
@@ -31,6 +42,11 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
         return ingresoGastoResponseList;
     }
 
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de IngresoGastoResponse
+     */
     @Override
     public List<IngresoGastoResponse> listarIngresoGastoId(int id) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
@@ -40,6 +56,11 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
         return ingresoGastoResponseList;
     }
 
+    /**
+      * Metodo para la obtencion de un listado de registros filtrado por el administrador y la entidad
+     * @param entidad parametro necesario para la ejecucion del metodo
+     * @return Lista de IngresoGastoResponse
+     */
     @Override
     public List<IngresoGastoResponse> listarIngresoGastoEntidad(int idAdministrador, int entidad) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();
@@ -49,6 +70,11 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
         return ingresoGastoResponseList;
     }
 
+    /**
+     * Metodo para la obtencion de un listado de fechas de las facturas filtradas por el administrador
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de String
+     */
     @Override
     public List<String> listarfechas(int id) {
         List<String> listaFechas = new ArrayList<>();
@@ -66,11 +92,22 @@ public class IngresoGastoServiceImpl implements IngresoGastoService {
         return listaFechas;
     }
 
+    /**
+      * Metodo usado para la creacion y modificacion
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return IngresoGastoResponse
+     */
     @Override
     public IngresoGastoResponse createUpdateIgresoGasto(IngresoGastoDTO i) {
         return EntityToResponse(ingresoGastoRepository.save(DTOToEntity(i)));
     }
 
+    /**
+      * Metodo para la obtencion de un listado de registros filtrado por el administrador y la entidad
+     * @param administradorId parametro necesario para la ejecucion del metodo
+     * @param clienteId parametro necesario para la ejecucion del metodo
+     * @return Lista de IngresoGastoResponse
+     */
     @Override
     public List<IngresoGastoResponse> avisosFacturasAdministradorId(int administradorId, int clienteId) {
         List<IngresoGastoResponse> ingresoGastoResponseList = new ArrayList<>();

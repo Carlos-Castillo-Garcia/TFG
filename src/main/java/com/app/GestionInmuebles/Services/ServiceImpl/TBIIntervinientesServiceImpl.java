@@ -13,13 +13,26 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
+
 @Service("TBIIntervinientesServiceImpl")
 public class TBIIntervinientesServiceImpl implements TBIIntervinientesService {
 
+    //-------------------------------------------Variable Service de Intervinientes Repository----------------------------------------------
     @Autowired
     @Qualifier("TBIIntervinientesRepository")
     private TBIIntervinientesRepository tbiIntervinientesRepository;
 
+    //-------------------------------------------Metodos de la Clase Intervinientes Service Impl-------------------------------------------------------
+
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de TBIIntervinientesResponse
+     */
     @Override
     public List<TBIIntervinientesResponse> listarIntervinientesContratoId(int id) {
         List<TBIIntervinientesResponse> intervinientesEntities = new ArrayList<>();
@@ -31,6 +44,11 @@ public class TBIIntervinientesServiceImpl implements TBIIntervinientesService {
         return intervinientesEntities;
     }
 
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de TBIIntervinientesResponse
+     */
     @Override
     public List<TBIIntervinientesResponse> listarIntervinientesidIntervinientes(int id) {
         List<TBIIntervinientesResponse> intervinientes = new ArrayList<>();
@@ -40,6 +58,11 @@ public class TBIIntervinientesServiceImpl implements TBIIntervinientesService {
         return intervinientes;
     }
 
+    /**
+     * Metodo usado para la creacion y modificacion
+     * @param intervinientesDTO parametro necesario para la ejecucion del metodo
+     * @return TBIIntervinientesResponse
+     */
     @Override
     public TBIIntervinientesResponse createUpdateIntervinientes(TBIIntervinientesDTO intervinientesDTO) {
         return EntityToResponse(tbiIntervinientesRepository.save(DTOToEntity(intervinientesDTO)));

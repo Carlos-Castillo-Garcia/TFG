@@ -1,10 +1,12 @@
 package com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto;
 
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.persistence.Column;
 import java.util.Date;
 
+@ApiModel(value = "Ingreso Gasto Data Transfer Object", description = "Objeto para la transferencia de datos de la parte Front a la parte Back")
 @Setter
 @Getter
 @Builder

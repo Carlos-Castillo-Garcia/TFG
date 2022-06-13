@@ -1,10 +1,11 @@
 package com.app.GestionInmuebles.DTO.Clientes;
 
+//import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
-
-import javax.persistence.Column;
 import java.util.Date;
 
+@ApiModel(value = "Clientes Data Transfer Object", description = "Objeto para la transferencia de datos de la parte Front a la parte Back")
 @Getter
 @Setter
 @ToString

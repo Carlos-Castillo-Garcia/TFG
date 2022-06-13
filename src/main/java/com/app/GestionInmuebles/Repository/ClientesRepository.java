@@ -8,12 +8,29 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Clase para la generacion de metodos de peticiones a la base de datos
+ * @author Carlos Castillo
+  */
 @Repository("ClientesRepository")
 public interface ClientesRepository extends JpaRepository<ClientesEntity, Serializable> {
+    /**
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return ClientesEntity
+     */
     List<ClientesEntity> findByadministradorIdAndBorradoIsFalse(int id);
 
+    /**
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return ClientesEntity
+     */
     List<ClientesEntity> findByidClienteAndBorradoIsFalse(int id);
 
+    /**
+     * @param idCliente parametro necesario para la ejecucion del metodo
+     * @param tipoInterviniente parametro necesario para la ejecucion del metodo
+     * @return String
+     */
     @Query(value = "SELECT " +
             " inmuebles.alias, " +
             " intervinientes.porcentaje_propiedad  " +
@@ -33,6 +50,11 @@ public interface ClientesRepository extends JpaRepository<ClientesEntity, Serial
             " AND intervinientes.porcentaje_propiedad >= 1", nativeQuery = true)
     List<String> inmueblesXCliente(int idCliente, int tipoInterviniente);
 
+    /**
+     * @param idCliente parametro necesario para la ejecucion del metodo
+     * @return String
+     * Obtencion de la inversion total sobre todos los inmuebles filtrado por la fecha fin del contrato distinta de nula y el porcentaje de propiedad en el contrato mayor a 1
+     */
     @Query(value = "SELECT sum(contratos.valor_contrato) as compra,  " +
             " sum((SELECT distinct sum(gasto.total_gasto) " +
             " FROM  ingreso_gasto as gasto " +
@@ -51,6 +73,11 @@ public interface ClientesRepository extends JpaRepository<ClientesEntity, Serial
             " AND intervinientes.porcentaje_propiedad >= 1", nativeQuery = true)
     List<String> inversion(int idCliente);
 
+    /**
+     * @param idAdministrador parametro necesario para la ejecucion del metodo
+     * @return ClienteEntity
+     * Obtencion de los clientes filtrado por administrador y por porcentaje de propiedad mayor a 1 en el contrato
+     */
     @Query(value = "SELECT DISTINCT clientes.* " +
             "FROM  tbi_contratos as contratos " +
             "JOIN  tbi_intervinientes as intervinientes " +

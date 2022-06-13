@@ -4,10 +4,15 @@ package com.app.GestionInmuebles.DTO.TBIContrato;
 import com.app.GestionInmuebles.DTO.Inmuebles.InmuebleEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Contrato.ContratosEntity;
 import com.app.GestionInmuebles.DTO.Tipos.Periodos.PeriodosEntity;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Objeto para el tratado de datos con la Base de datos
+ * @author Carlos Castillo
+  */
 @Entity
 @Table(name = "tbi_contratos")
 @Getter

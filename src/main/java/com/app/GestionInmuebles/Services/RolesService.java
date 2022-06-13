@@ -7,12 +7,27 @@ import org.modelmapper.ModelMapper;
 
 import java.util.List;
 
+/**
+ * Interfaz de Roles
+ * @author Carlos Castillo
+ */
 public interface RolesService {
+
+    /**
+     * Mapper de DTO a Entity
+     * @param rol parametro necesario para la ejecucion del metodo
+     * @return RolesEntity
+     */
     default RolesEntity DTOToEntity(RolesDTO rol) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(rol, RolesEntity.class);
     }
 
+    /**
+     * Mapper de Entity a Response
+     * @param rol parametro necesario para la ejecucion del metodo
+     * @return RolesResponse
+     */
     default RolesResponse EntityToResponse(RolesEntity rol) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(rol, RolesResponse.class);

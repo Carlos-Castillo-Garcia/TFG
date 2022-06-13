@@ -7,7 +7,19 @@ import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 
 import java.text.DateFormatSymbols;
 
+/**
+ * Interfaz de Casters Unitarios
+ * Interfaz para Mapeos de querys especificas
+ * @author Carlos Castillo
+ */
 public interface CastersUnitarios {
+
+    /**
+     * Mapper de String a Response
+     * Mapea el string devuelto por la query a Informes Response
+     * @param bbdd parametro necesario para la ejecucion del metodo
+     * @return InformesResponse
+     */
     default InformesResponse bbddToResponseInformes(String bbdd){
         InformesResponse informesResponse = new InformesResponse();
         String[] split = bbdd.split(",");
@@ -31,6 +43,12 @@ public interface CastersUnitarios {
         return informesResponse;
     }
 
+    /**
+     * Mapper de String a Response
+     * Mapea el string devuelto por la query a ClientesXInmuebles Response
+     * @param bbdd parametro necesario para la ejecucion del metodo
+     * @return ClientesXInmueblesResponse
+     */
     default ClientesXInmueblesResponse bbddToResponseClientesXInmuebles(String bbdd){
         ClientesXInmueblesResponse clientesXInmueblesResponse = new ClientesXInmueblesResponse();
         String[] split = bbdd.split(",");
@@ -40,6 +58,12 @@ public interface CastersUnitarios {
         return clientesXInmueblesResponse;
     }
 
+    /**
+     * Mapper de String a Response
+     * Mapea el string devuelto por la query a InmueblesXClientes Response
+     * @param bbdd parametro necesario para la ejecucion del metodo
+     * @return InmueblesXClientesRespone
+     */
     default InmueblesXClientesRespone bbddToResponseInmueblesXClientes(String bbdd){
         InmueblesXClientesRespone inmueblesXClientesRespone = new InmueblesXClientesRespone();
         System.out.println(bbdd);
@@ -51,6 +75,12 @@ public interface CastersUnitarios {
         return inmueblesXClientesRespone;
     }
 
+    /**
+     * Mapper de String a Response
+     * Mapea el string devuelto por la query a Inversion Response
+     * @param bbdd parametro necesario para la ejecucion del metodo
+     * @return InversionResponse
+     */
     default InversionResponse bbddToResponseInversiones(String bbdd){
         InversionResponse inversionResponse = new InversionResponse(0,0,0);
         if(!bbdd.equals("null,null")){

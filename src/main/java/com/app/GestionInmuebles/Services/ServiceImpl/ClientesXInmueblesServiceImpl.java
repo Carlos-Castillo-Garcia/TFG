@@ -12,13 +12,26 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
+
 @Service("ClientesXInmueblesServiceImpl")
 public class ClientesXInmueblesServiceImpl implements ClientesXInmueblesService, CastersUnitarios {
 
+    //-------------------------------------------Variable Service de Clientes X Inmuebles Repository----------------------------------------------
     @Autowired
     @Qualifier("ClientesRepository")
     private ClientesRepository clientesRepository;
 
+    //-------------------------------------------Metodos de la Clase Clientes X Inmuebles Service Impl-------------------------------------------------------
+
+    /**
+      * Metodo para la obtencion de un listado de registros filtrados por el cliente
+     * @param idCliente parametro necesario para la ejecucion del metodo
+     * @return Lista de ClientesXInmueblesResponse
+     */
     @Override
     public List<ClientesXInmueblesResponse> clientesXInmueblesList(int idCliente){
         List<ClientesXInmueblesResponse> clientesXInmueblesResponseList = new ArrayList<>();

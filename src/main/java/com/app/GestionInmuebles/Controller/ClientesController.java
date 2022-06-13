@@ -1,18 +1,19 @@
 package com.app.GestionInmuebles.Controller;
 
 import com.app.GestionInmuebles.DTO.Clientes.ClientesDTO;
+import com.app.GestionInmuebles.DTO.Clientes.ClientesEntity;
 import com.app.GestionInmuebles.DTO.Clientes.ClientesResponse;
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.ClientesXInmueblesResponse;
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.InversionResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.ClienteServiceImpl;
 import com.app.GestionInmuebles.Services.ServiceImpl.ClientesXInmueblesServiceImpl;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
+//import io.swagger.v3.oas.annotations.Operation;
+//import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 import java.util.List;
 
 //Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
@@ -31,99 +32,46 @@ public class ClientesController {
     private ClientesXInmueblesServiceImpl clientesXInmueblesService;
 
     //-------------------------------------------Metodos del controller de Clientes-------------------------------------------------------
-    @Operation(
-            summary = "Creado de Clientes",
-            description = "Metodo para la creacion de Clientes",
-            method = "POST"
-    )
+
     @PostMapping
     public ClientesResponse createCliente(
-            @Parameter(
-                    name = "Cliente",
-                    description = "Objeto de tipo Cliente para la creacion del registro",
-                    required = true
-            )
-            @Valid @RequestBody ClientesDTO cliente) {
+            @RequestBody ClientesDTO cliente) {
         return clienteService.createUpdateClientes(cliente);
     }
 
-    @Operation(
-            summary = "Modificacion de Clientes",
-            description = "Metodo para la modificacion de Clientes",
-            method = "PUT"
-    )
     @PutMapping
     public ClientesResponse updateCliente(
-            @Parameter(
-                    name = "Cliente",
-                    description = "Objeto de tipo Cliente para la modificacion del registro",
-                    required = true
-            )
-            @Valid @RequestBody ClientesDTO cliente) {
+            @RequestBody ClientesDTO cliente) {
         return clienteService.createUpdateClientes(cliente);
     }
 
-    @Operation(
-            summary = "Listado de Clientes",
-            description = "Metodo para la obtencion de Clientes con filtrado del id de administrador",
-            method = "GET"
-    )
     @GetMapping("/{id}")
-    public List<ClientesResponse> listClientesadministradorId(
-            @Parameter(
-                    name = "Id",
-                    description = "Id administrador asociado al Cliente para su posterior uso en el filtrado",
-                    required = true
-            )
-            @Valid @PathVariable("id") int id) {
-        return clienteService.listarClientesadministradorId(id);
+    public List<ClientesResponse> listClientesByAdministradorId(
+            @PathVariable("id") int idAdministrador) {
+        return clienteService.listarClientesadministradorId(idAdministrador);
     }
 
-    @Operation(
-            summary = "Listado de Clientes",
-            description = "Metodo para la obtencion del Cliente",
-            method = "GET"
-    )
     @GetMapping("detalle/{id}")
-    public List<ClientesResponse> listClientesidCliente(
-            @Parameter(
-                    name = "Id",
-                    description = "Id cliente para su posterior uso en el filtrado",
-                    required = true
-            )
-            @Valid @PathVariable("id") int id) {
-        return clienteService.listarClientesidCliente(id);
+    public List<ClientesResponse> listClientesByClienteId(
+            @PathVariable("id") int idCliente) {
+        return clienteService.listarClientesidCliente(idCliente);
     }
 
-    @Operation(
-            summary = "Listado de Clientes",
-            description = "Metodo para la obtencion de Clientes con filtrado del id de administrador",
-            method = "GET"
-    )
     @GetMapping("/byinmuebles/{id}")
-    public List<ClientesResponse> listClientesByInmueble(@Valid @PathVariable("id") int id) {
+    public List<ClientesResponse> listClientesByInmuebleId(
+            @PathVariable("id") int id) {
         return clienteService.clienteByInmueble(id);
     }
 
-    @Operation(
-            summary = "Listado de Clientes",
-            description = "Metodo para la obtencion del Cliente",
-            method = "GET"
-    )
     @GetMapping("xinmueble/{id}")
-    public List<ClientesXInmueblesResponse> listClientesXInmuebles(
-            @Valid @PathVariable("id") int id) {
-        return clientesXInmueblesService.clientesXInmueblesList(id);
+    public List<ClientesXInmueblesResponse> listClientesByInmuebles(
+             @PathVariable("id") int idCliente) {
+        return clientesXInmueblesService.clientesXInmueblesList(idCliente);
     }
 
-    @Operation(
-            summary = "Listado de Clientes",
-            description = "Metodo para la obtencion del Cliente",
-            method = "GET"
-    )
     @GetMapping("inversion/{id}")
     public List<InversionResponse> inversionResponseList(
-            @Valid @PathVariable("id") int id) {
-        return clienteService.inversion(id);
+             @PathVariable("id") int idCliente) {
+        return clienteService.inversion(idCliente);
     }
 }

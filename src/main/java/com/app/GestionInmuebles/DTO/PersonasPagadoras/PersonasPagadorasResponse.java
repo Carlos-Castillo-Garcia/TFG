@@ -1,9 +1,11 @@
 package com.app.GestionInmuebles.DTO.PersonasPagadoras;
 
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import java.util.Date;
 
+@ApiModel(value = "Personas Pagadoras Response", description = "Objeto para la transferencia de datos de la parte Back a la parte Front con la respuesta de las peticiones a Base de datos")
 @Getter
 @Setter
 @ToString

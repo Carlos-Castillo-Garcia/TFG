@@ -3,15 +3,13 @@ package com.app.GestionInmuebles.Controller;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoDTO;
 import com.app.GestionInmuebles.DTO.IgresoGastoGeneral.IngresoGasto.IngresoGastoResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.IngresoGastoServiceImpl;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
+//Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
 @RestController
 @RequestMapping("/api/v1/ingresogasto")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -24,80 +22,45 @@ public class IngresoGastoController {
 
     //-------------------------------------------Metodos del controller de IngresoGasto-------------------------------------------------------
 
-    @Operation(
-            summary = "Creado de Ingreso Gasto",
-            description = "Metodo para la creacion de Ingreso Gasto",
-            method = "POST"
-    )
     @PostMapping
-    public IngresoGastoResponse createContratos(
-            @Parameter(
-                    name = "Ingreso Gasto",
-                    description = "Objeto de tipo Ingreso Gasto para la creacion del registro",
-                    required = true
-            )
-            @Valid @RequestBody IngresoGastoDTO ingresoGastoDTO) {
+    public IngresoGastoResponse createIngresoGasto(
+             @RequestBody IngresoGastoDTO ingresoGastoDTO) {
         return ingresoGastoService.createUpdateIgresoGasto(ingresoGastoDTO);
     }
 
-    @Operation(
-            summary = "Modificacion de Ingreso Gasto",
-            description = "Metodo para la modificacion de Ingreso Gasto",
-            method = "PUT"
-    )
     @PutMapping
-    public IngresoGastoResponse updateContratos(
-            @Parameter(
-                    name = "Ingreso Gasto",
-                    description = "Objeto de tipo Ingreso Gasto para la modificacion del registro",
-                    required = true
-            )
-            @Valid @RequestBody  IngresoGastoDTO ingresoGastoDTO) {
+    public IngresoGastoResponse updateIngresoGasto(
+             @RequestBody  IngresoGastoDTO ingresoGastoDTO) {
         return ingresoGastoService.createUpdateIgresoGasto(ingresoGastoDTO);
     }
 
-    @Operation(
-            summary = "Listado de Ingreso Gasto",
-            description = "Metodo para la obtencion de Ingreso Gasto con filtrado del id de Inmueble",
-            method = "GET"
-    )
     @GetMapping("/{id}")
-    public List<IngresoGastoResponse> listContratosInmuebleId(
-            @Valid @PathVariable("id") int id) {
-        return ingresoGastoService.listarIngresoGasto(id);
+    public List<IngresoGastoResponse> listIngresoGastoInmuebleId(
+             @PathVariable("id") int idAdministrador) {
+        return ingresoGastoService.listarIngresoGasto(idAdministrador);
     }
 
-    @Operation(
-            summary = "Listado de Ingreso Gasto",
-            description = "Metodo para la obtencion del Ingreso Gasto",
-            method = "GET"
-    )
     @GetMapping("/detalle/{id}")
-    public List<IngresoGastoResponse> listContratosIdIngresoGasto(
-            @Valid @PathVariable("id") int id) {
-        return ingresoGastoService.listarIngresoGastoId(id);
+    public List<IngresoGastoResponse> listIngresoGastoIdIngresoGasto(
+             @PathVariable("id") int idInGa) {
+        return ingresoGastoService.listarIngresoGastoId(idInGa);
     }
 
-    @Operation(
-            summary = "Listado de Ingreso Gasto",
-            description = "Metodo para la obtencion del Ingreso Gasto",
-            method = "GET"
-    )
     @GetMapping("/{idAdministrador}/{entidad}")
-    public List<IngresoGastoResponse> listContratosIdIngresoGasto(
-            @Valid @PathVariable("idAdministrador") int idAdministrador,
-            @Valid @PathVariable("entidad") int entidad) {
+    public List<IngresoGastoResponse> listIngresoGastoIdIngresoGasto(
+             @PathVariable("idAdministrador") int idAdministrador,
+             @PathVariable("entidad") int entidad) {
         return ingresoGastoService.listarIngresoGastoEntidad(idAdministrador, entidad);
     }
 
     @GetMapping("/anio/{id}")
     public List<String> listfechas(
-            @Valid @PathVariable("id") int id) {
+             @PathVariable("id") int id) {
         return ingresoGastoService.listarfechas(id);
     }
 
     @GetMapping("/avisos/facturasinpagadas/{administradorId}/{clienteId}")
-    public  List<IngresoGastoResponse> avisosFacturas(@Valid @PathVariable("administradorId") int id, @Valid @PathVariable("clienteId") int clienteId){
+    public  List<IngresoGastoResponse> avisosFacturas( @PathVariable("administradorId") int id,  @PathVariable("clienteId") int clienteId){
         return ingresoGastoService.avisosFacturasAdministradorId(id, clienteId);
     }
 

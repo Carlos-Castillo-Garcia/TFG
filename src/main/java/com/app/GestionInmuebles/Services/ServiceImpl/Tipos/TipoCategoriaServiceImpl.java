@@ -12,13 +12,27 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
 @Service("TipoCategoriaServiceImpl")
 public class TipoCategoriaServiceImpl implements TipoCategoriaService {
+
+    //-------------------------------------------Variable Service de Tipo Categoria Repository----------------------------------------------
 
     @Autowired
     @Qualifier("TipoCategoriaRepository")
     private TipoCategoriaRepository tipoCategoriaRepository;
 
+    //-------------------------------------------Metodos de la Clase Tipo Categoria Service Impl-------------------------------------------------------
+
+
+    /**
+     * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de TipoCategoriaResponse
+     */
     @Override
     public List<TipoCategoriaResponse> listarCategoriaAdministradorId(int id) {
         List<TipoCategoriaResponse> list = new ArrayList<>();
@@ -30,6 +44,11 @@ public class TipoCategoriaServiceImpl implements TipoCategoriaService {
         return list;
     }
 
+
+    /**
+     * Metodo para la obtencion de un listado de registros filtrato por unos tipos de inmuebles en especifico
+     * @return Lista de TipoCategoriaResponse
+     */
     @Override
     public List<TipoCategoriaResponse> listarCategoriaInmueble() {
         List<TipoCategoriaResponse> list = new ArrayList<>();
@@ -41,6 +60,11 @@ public class TipoCategoriaServiceImpl implements TipoCategoriaService {
         return list;
     }
 
+
+    /**
+     * Metodo para la obtencion de un listado de registros filtrado por unos tipos de conceptos en especifico
+     * @return Lista de TipoCategoriaResponse
+     */
     @Override
     public List<TipoCategoriaResponse> ListarCategoriaConcepto() {
         List<TipoCategoriaResponse> list = new ArrayList<>();
@@ -52,6 +76,12 @@ public class TipoCategoriaServiceImpl implements TipoCategoriaService {
         return list;
     }
 
+
+    /**
+     * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de TipoCategoriaResponse
+     */
     @Override
     public List<TipoCategoriaResponse> listarCategoriaIdCategoria(int id) {
         List<TipoCategoriaResponse> list = new ArrayList<>();
@@ -61,6 +91,11 @@ public class TipoCategoriaServiceImpl implements TipoCategoriaService {
         return list;
     }
 
+    /**
+     * Metodo usado para la creacion y modificacion
+     * @param periodosDTO parametro necesario para la ejecucion del metodo
+     * @return TipoCategoriaResponse
+     */
     @Override
     public TipoCategoriaResponse createUpdateCategoria(TipoCategoriaDTO periodosDTO) {
         return EntityToResponse(tipoCategoriaRepository.save(DTOToEntity(periodosDTO)));

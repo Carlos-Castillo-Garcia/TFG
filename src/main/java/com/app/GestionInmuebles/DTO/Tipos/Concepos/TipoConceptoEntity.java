@@ -1,11 +1,16 @@
 package com.app.GestionInmuebles.DTO.Tipos.Concepos;
 
 import com.app.GestionInmuebles.DTO.Tipos.Categoria.TipoCategoriaEntity;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Objeto para el tratado de datos con la Base de datos
+ * @author Carlos Castillo
+  */
 @Entity
 @Table(name = "tipo_concepto")
 @Getter

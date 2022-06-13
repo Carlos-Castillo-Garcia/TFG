@@ -10,8 +10,14 @@ import org.modelmapper.PropertyMap;
 
 import java.util.List;
 
+/**
+ * Interfaz de Tipo de Inmueble
+ * @author Carlos Castillo
+ */
 public interface TipoInmuebleService {
-
+    /**
+     * Configuracion del mapper Entity to Response
+     */
     PropertyMap<TipoInmuebleEntity, TipoInmuebleResponse> ENTITYTORESPONSE = new PropertyMap<TipoInmuebleEntity, TipoInmuebleResponse>() {
         protected void configure() {
             map().setCategoriaId(source.getCategoriaId().getIdCategoria());
@@ -19,11 +25,21 @@ public interface TipoInmuebleService {
         }
     };
 
+    /**
+     * Mapper de DTO a Entity
+     * @param tipoInmuebleDTO parametro necesario para la ejecucion del metodo
+     * @return TipoInmuebleEntity
+     */
     default TipoInmuebleEntity DTOToEntity(TipoInmuebleDTO tipoInmuebleDTO) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(tipoInmuebleDTO, TipoInmuebleEntity.class);
     }
 
+    /**
+     * Mapper de Entity a Response
+     * @param tipoInmuebleEntity parametro necesario para la ejecucion del metodo
+     * @return TipoInmuebleResponse
+     */
     default TipoInmuebleResponse EntityToResponse(TipoInmuebleEntity tipoInmuebleEntity) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(ENTITYTORESPONSE);

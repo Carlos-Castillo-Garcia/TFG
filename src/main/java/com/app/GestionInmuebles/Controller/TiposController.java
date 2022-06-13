@@ -23,13 +23,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
+//Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
 @RestController
 @RequestMapping("/api/v1/tipos")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class TiposController {
+
+    //-------------------------------------------Variable Service del controller de Inmuebles----------------------------------------------
 
     @Autowired
     @Qualifier("ContratosServiceImpl")
@@ -63,198 +65,202 @@ public class TiposController {
     @Qualifier("PagosServiceImpl")
     private PagosServiceImpl pagosService;
 
+    //-------------------------------------------Metodos del controller de Inmuebles-------------------------------------------------------
+
+
+    //###########################################Contratos#######################################################
 
     @PostMapping("/contrato")
-    public ContratosResponse createTiposContrato(@Valid @RequestBody ContratosDTO tiposContratoDTO){
+    public ContratosResponse createTiposContrato(@RequestBody ContratosDTO tiposContratoDTO) {
         return contratosService.createUpdateTiposContrato(tiposContratoDTO);
     }
 
     @GetMapping("/contrato/{id}")
-    public List<ContratosResponse> listTiposContratosadminstradorId(@Valid @PathVariable("id") int id){
+    public List<ContratosResponse> listTiposContratosadminstradorId(@PathVariable("id") int id) {
         return contratosService.listarTiposContratoadministradorId(id);
     }
 
     @GetMapping("/contrato/detalle/{id}")
-    public List<ContratosResponse> listTiposContratosIdTipoContrato(@Valid @PathVariable("id") int id){
+    public List<ContratosResponse> listTiposContratosIdTipoContrato(@PathVariable("id") int id) {
         return contratosService.listarTiposContratoidContrato(id);
     }
 
     @PutMapping("/contrato")
-    public ContratosResponse updateTiposContrato(@Valid @RequestBody ContratosDTO tiposContratoDTO){
+    public ContratosResponse updateTiposContrato(@RequestBody ContratosDTO tiposContratoDTO) {
         return contratosService.createUpdateTiposContrato(tiposContratoDTO);
     }
 
-
+    //###########################################Intervinientes#######################################################
 
     @PostMapping("/interviniente")
-    public IntervinientesResponse createTiposIntervinientes(@Valid @RequestBody IntervinientesDTO tipoIntervinienteDTO){
+    public IntervinientesResponse createTiposIntervinientes(@RequestBody IntervinientesDTO tipoIntervinienteDTO) {
         return intervinientesService.createUpdateTipoIntervinientes(tipoIntervinienteDTO);
     }
 
     @GetMapping("/interviniente/{id}")
-    public List<IntervinientesResponse> listTiposIntervininetesadminstradorId(@Valid @PathVariable("id") int id){
+    public List<IntervinientesResponse> listTiposIntervininetesadminstradorId(@PathVariable("id") int id) {
         return intervinientesService.listTipoIntervinientesadministradorId(id);
     }
 
     @GetMapping("/interviniente/detalle/{id}")
-    public List<IntervinientesResponse> listTiposIntervininetesIdTipoIntervinientes(@Valid @PathVariable("id") int id){
+    public List<IntervinientesResponse> listTiposIntervininetesIdTipoIntervinientes(@PathVariable("id") int id) {
         return intervinientesService.listTipoIntervinientesidIntervinientes(id);
     }
 
     @PutMapping("/interviniente")
-    public IntervinientesResponse updateTiposIntervinientes(@Valid @RequestBody IntervinientesDTO tipoIntervinienteDTO){
+    public IntervinientesResponse updateTiposIntervinientes(@RequestBody IntervinientesDTO tipoIntervinienteDTO) {
         return intervinientesService.createUpdateTipoIntervinientes(tipoIntervinienteDTO);
     }
 
-
+//###########################################Periodos#######################################################
 
     @PostMapping("/periodo")
-    public PeriodosResponse createTiposPeriodos(@Valid @RequestBody PeriodosDTO tipoPeriodosDTO){
+    public PeriodosResponse createTiposPeriodos(@RequestBody PeriodosDTO tipoPeriodosDTO) {
         return periodosService.createUpdatePeriodos(tipoPeriodosDTO);
     }
 
     @GetMapping("/periodo/{id}")
-    public List<PeriodosResponse> listTiposPeriodosadminstradorId(@Valid @PathVariable("id") int id){
+    public List<PeriodosResponse> listTiposPeriodosadminstradorId(@PathVariable("id") int id) {
         return periodosService.listarPeriodosadministradorId(id);
     }
 
     @GetMapping("/periodo/detalle/{id}")
-    public List<PeriodosResponse> listTiposPeriodosIdTipoPeriodos(@Valid @PathVariable("id") int id){
+    public List<PeriodosResponse> listTiposPeriodosIdTipoPeriodos(@PathVariable("id") int id) {
         return periodosService.listarPeriodosidPeriodos(id);
     }
 
     @PutMapping("/periodo")
-    public PeriodosResponse updateTiposPeriodos(@Valid @RequestBody PeriodosDTO tipoPeriodosDTO){
+    public PeriodosResponse updateTiposPeriodos(@RequestBody PeriodosDTO tipoPeriodosDTO) {
         return periodosService.createUpdatePeriodos(tipoPeriodosDTO);
     }
 
-
+//###########################################Inmueble#######################################################
 
     @PostMapping("/inmueble")
-    public TipoInmuebleResponse createTipoInmueble(@Valid @RequestBody TipoInmuebleDTO tipoInmuebleDTO){
+    public TipoInmuebleResponse createTipoInmueble(@RequestBody TipoInmuebleDTO tipoInmuebleDTO) {
         return tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
     }
 
     @GetMapping("/inmueble/{id}")
-    public List<TipoInmuebleResponse> listTipoInmuebleadminstradorId(@Valid @PathVariable("id") int id){
+    public List<TipoInmuebleResponse> listTipoInmuebleadminstradorId(@PathVariable("id") int id) {
         return tipoInmuebleService.listTipoInmuebleadministradorId(id);
     }
 
     @GetMapping("/inmueble/detalle/{id}")
-    public List<TipoInmuebleResponse> listTipoInmuebleIdTipoInmueble(@Valid @PathVariable("id") int id){
+    public List<TipoInmuebleResponse> listTipoInmuebleIdTipoInmueble(@PathVariable("id") int id) {
         return tipoInmuebleService.listTipoInmuebleidInmuebles(id);
     }
 
     @GetMapping("/inmueble/categoria/{idCategoria}/{id}")
-    public List<TipoInmuebleResponse> listarTipoInmuebleAdministradorIdCategoriaId(@Valid @PathVariable("id") int id, @Valid @PathVariable("idCategoria") int idCategoria){
+    public List<TipoInmuebleResponse> listarTipoInmuebleAdministradorIdCategoriaId(@PathVariable("id") int id, @PathVariable("idCategoria") int idCategoria) {
         return tipoInmuebleService.listTipoInmuebleidInmueblesByCategoria(id, idCategoria);
     }
 
-
     @PutMapping("/inmueble")
-    public TipoInmuebleResponse updateTipoInmueble(@Valid @RequestBody TipoInmuebleDTO tipoInmuebleDTO){
+    public TipoInmuebleResponse updateTipoInmueble(@RequestBody TipoInmuebleDTO tipoInmuebleDTO) {
         return tipoInmuebleService.createUpdateTipoInmueble(tipoInmuebleDTO);
     }
 
-
+//###########################################Rol#######################################################
 
     @PostMapping("/rol")
-    public RolesResponse crearRol(@Valid @RequestBody RolesDTO rolesDTO){
+    public RolesResponse crearRol(@RequestBody RolesDTO rolesDTO) {
         return rolesServiceImpl.createUpdateRoles(rolesDTO);
     }
 
     @GetMapping("/rol/{id}")
-    public List<RolesResponse> listarRolesadministradorId(@Valid @PathVariable("id") int id){
+    public List<RolesResponse> listarRolesadministradorId(@PathVariable("id") int id) {
         return rolesServiceImpl.listarRolesadministradorId(id);
     }
 
     @GetMapping("rol/detalle/{id}")
-    public List<RolesResponse> listarRolesIdRoles(@Valid @PathVariable("id") int id){
+    public List<RolesResponse> listarRolesIdRoles(@PathVariable("id") int id) {
         return rolesServiceImpl.listarRolesidRoles(id);
     }
 
     @PutMapping("/rol")
-    public RolesResponse updateRoles(@Valid @RequestBody RolesDTO rolesDTO){
+    public RolesResponse updateRoles(@RequestBody RolesDTO rolesDTO) {
         return rolesServiceImpl.createUpdateRoles(rolesDTO);
     }
 
-
+//###########################################Concepto#######################################################
 
     @PostMapping("/concepto")
-    public TipoConceptoResponse crearTipoConcepto(@Valid @RequestBody TipoConceptoDTO tipoConceptoDTO){
+    public TipoConceptoResponse crearTipoConcepto(@RequestBody TipoConceptoDTO tipoConceptoDTO) {
         return tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
     }
 
     @GetMapping("/concepto/{id}")
-    public List<TipoConceptoResponse> listarTipoConceptoAdministradorId(@Valid @PathVariable("id") int id){
+    public List<TipoConceptoResponse> listarTipoConceptoAdministradorId(@PathVariable("id") int id) {
         return tipoConceptoService.listarTiposConceptoAdministradorId(id);
     }
 
     @GetMapping("/concepto/categoria/{idCategoria}/{id}")
-    public List<TipoConceptoResponse> listarTipoConceptoAdministradorIdCategoriaId(@Valid @PathVariable("id") int id, @Valid @PathVariable("idCategoria") int idCategoria){
+    public List<TipoConceptoResponse> listarTipoConceptoAdministradorIdCategoriaId(@PathVariable("id") int id, @PathVariable("idCategoria") int idCategoria) {
         return tipoConceptoService.listarTiposConceptoAdministradorIdConceptoId(id, idCategoria);
     }
 
     @GetMapping("concepto/detalle/{id}")
-    public List<TipoConceptoResponse> listarTipoConceptoId(@Valid @PathVariable("id") int id){
+    public List<TipoConceptoResponse> listarTipoConceptoId(@PathVariable("id") int id) {
         return tipoConceptoService.listarTiposConceptoId(id);
     }
 
     @PutMapping("/concepto")
-    public TipoConceptoResponse updateTipoConcepto(@Valid @RequestBody TipoConceptoDTO tipoConceptoDTO){
+    public TipoConceptoResponse updateTipoConcepto(@RequestBody TipoConceptoDTO tipoConceptoDTO) {
         return tipoConceptoService.createUpdateTiposConcepto(tipoConceptoDTO);
     }
 
-
+//###########################################Pagos#######################################################
 
     @PostMapping("/pago")
-    public PagosResponse crearTipoPagos(@Valid @RequestBody PagosDTO pagosDTO){
+    public PagosResponse crearTipoPagos(@RequestBody PagosDTO pagosDTO) {
         return pagosService.createUpdatePagos(pagosDTO);
     }
 
     @GetMapping("/pago/{id}")
-    public List<PagosResponse> listarTipoPagosAdministradorId(@Valid @PathVariable("id") int id){
+    public List<PagosResponse> listarTipoPagosAdministradorId(@PathVariable("id") int id) {
         return pagosService.listarPagosIdAdministrador(id);
     }
 
     @GetMapping("pago/detalle/{id}")
-    public List<PagosResponse> listarTipoPagosId(@Valid @PathVariable("id") int id){
+    public List<PagosResponse> listarTipoPagosId(@PathVariable("id") int id) {
         return pagosService.listarPagosIdPagos(id);
     }
 
     @PutMapping("/pago")
-    public PagosResponse updateTipoPagos(@Valid @RequestBody PagosDTO pagosDTO){
+    public PagosResponse updateTipoPagos(@RequestBody PagosDTO pagosDTO) {
         return pagosService.createUpdatePagos(pagosDTO);
     }
 
+    //###########################################Categoria#######################################################
 
     @PostMapping("/categoria")
-    public TipoCategoriaResponse crearTipoCategoria(@Valid @RequestBody TipoCategoriaDTO tipoConceptoDTO){
+    public TipoCategoriaResponse crearTipoCategoria(@RequestBody TipoCategoriaDTO tipoConceptoDTO) {
         return tipoCategoriaService.createUpdateCategoria(tipoConceptoDTO);
     }
 
     @GetMapping("/categoria/{id}")
-    public List<TipoCategoriaResponse> listarTipoCategoria(@Valid @PathVariable("id") int id){
+    public List<TipoCategoriaResponse> listarTipoCategoria(@PathVariable("id") int id) {
         return tipoCategoriaService.listarCategoriaAdministradorId(id);
     }
 
     @GetMapping("/categoria/inmueble")
-    public List<TipoCategoriaResponse> listarTipoCategoriaInmueble(){
+    public List<TipoCategoriaResponse> listarTipoCategoriaInmueble() {
         return tipoCategoriaService.listarCategoriaInmueble();
     }
 
     @GetMapping("/categoria/concepto")
-    public List<TipoCategoriaResponse> listarTipoCategoriaConcepto(){
+    public List<TipoCategoriaResponse> listarTipoCategoriaConcepto() {
         return tipoCategoriaService.ListarCategoriaConcepto();
     }
 
     @GetMapping("categoria/detalle/{id}")
-    public List<TipoCategoriaResponse> listarTipoCategoriaId(@Valid @PathVariable("id") int id){
+    public List<TipoCategoriaResponse> listarTipoCategoriaId(@PathVariable("id") int id) {
         return tipoCategoriaService.listarCategoriaIdCategoria(id);
     }
 
     @PutMapping("/categoria")
-    public TipoCategoriaResponse updateTipoCategoria(@Valid @RequestBody TipoCategoriaDTO tipoConceptoDTO){
+    public TipoCategoriaResponse updateTipoCategoria(@RequestBody TipoCategoriaDTO tipoConceptoDTO) {
         return tipoCategoriaService.createUpdateCategoria(tipoConceptoDTO);
     }
 

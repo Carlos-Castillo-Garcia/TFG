@@ -1,9 +1,9 @@
 package com.app.GestionInmuebles.DTO.ResponseUnitarios;
 
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
-
-
+@ApiModel(value = "Informes Response", description = "Objeto para la transferencia de datos de la parte Back a la parte Front con la respuesta de las peticiones a Base de datos")
 @Setter
 @Getter
 @ToString

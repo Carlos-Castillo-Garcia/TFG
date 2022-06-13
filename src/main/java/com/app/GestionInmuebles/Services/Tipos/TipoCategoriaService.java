@@ -7,13 +7,27 @@ import org.modelmapper.ModelMapper;
 
 import java.util.List;
 
+/**
+ * Interfaz de Tipo de Categoria
+ * @author Carlos Castillo
+ */
 public interface TipoCategoriaService {
 
+    /**
+     * Mapper de DTO a Entity
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return TipoCategoriaEntity
+     */
     default TipoCategoriaEntity DTOToEntity(TipoCategoriaDTO i) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(i, TipoCategoriaEntity.class);
     }
 
+    /**
+     * Mapper de Entity a Response
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return TipoCategoriaResponse
+     */
     default TipoCategoriaResponse EntityToResponse(TipoCategoriaEntity i) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(i, TipoCategoriaResponse.class);

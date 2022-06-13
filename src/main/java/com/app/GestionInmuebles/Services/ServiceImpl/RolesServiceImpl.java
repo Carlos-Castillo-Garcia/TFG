@@ -13,13 +13,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
 @Service("RolesServiceImpl")
 public class RolesServiceImpl implements RolesService {
 
+    //-------------------------------------------Variable Service de Roles Repository----------------------------------------------
     @Autowired
     @Qualifier(value = "RolesRepository")
     private RolesRepository rolesRepository;
 
+    //-------------------------------------------Metodos de la Clase Roles Service Impl-------------------------------------------------------
+
+    /**
+     * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de RolesResponse
+     */
     @Override
     public List<RolesResponse> listarRolesadministradorId(int id) {
         List<RolesResponse> rolesResponseList = new ArrayList<>();
@@ -31,6 +43,11 @@ public class RolesServiceImpl implements RolesService {
         return rolesResponseList;
     }
 
+    /**
+     * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de RolesResponse
+     */
     @Override
     public List<RolesResponse> listarRolesidRoles(int id) {
         List<RolesResponse> rolesResponseList = new ArrayList<>();
@@ -40,6 +57,11 @@ public class RolesServiceImpl implements RolesService {
         return rolesResponseList;
     }
 
+    /**
+     * Metodo para la usado creacion y modificacion
+     * @param rolesDTO parametro necesario para la ejecucion del metodo
+     * @return RolesResponse
+     */
     @Override
     public RolesResponse createUpdateRoles(RolesDTO rolesDTO) {
         return EntityToResponse(rolesRepository.save(DTOToEntity(rolesDTO)));

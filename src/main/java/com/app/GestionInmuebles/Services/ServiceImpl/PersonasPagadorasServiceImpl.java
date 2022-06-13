@@ -12,9 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
 @Service("PersonasPagadorasServiceImpl")
 public class PersonasPagadorasServiceImpl implements PersonasPagadorasService {
 
+    //-------------------------------------------Variable Service de Personas Pagadoras Repository----------------------------------------------
     @Autowired
     private PersonasPagadorasRepository administradorRepository;
 
@@ -26,11 +31,23 @@ public class PersonasPagadorasServiceImpl implements PersonasPagadorasService {
     @Qualifier("UsuarioServiceImpl")
     private UsuarioServiceImpl usuarioService;
 
+    //-------------------------------------------Metodos de la Clase Personas Pagadoras Service Impl-------------------------------------------------------
+
+    /**
+     * Metodo para la obtencion de la persona recien registrada
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return PersonasPagadorasResponse
+     */
     @Override
     public PersonasPagadorasResponse listaridPersonasPagadoras(int id) {
         return this.EntityToResponse(administradorRepository.findByIdPersonasPagadora(id));
     }
 
+    /**
+     * Metodo para la usado creacion y modificacion
+     * @param i parametro necesario para la ejecucion del metodo
+     * @return PersonasPagadorasResponse
+     */
     @Override
     public PersonasPagadorasResponse createUpdatePersonasPagadoras(PersonasPagadorasDTO i) {
         UsuariosDTO usuariosDTO = new UsuariosDTO();

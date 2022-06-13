@@ -2,14 +2,13 @@ package com.app.GestionInmuebles.Controller;
 
 import com.app.GestionInmuebles.DTO.ResponseUnitarios.InformesResponse;
 import com.app.GestionInmuebles.Services.ServiceImpl.InformesServiceImpl;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
+//Anotaciones del controlador para la creacion de apis y dar acceso a los datos desde angular
 @RestController
 @RequestMapping("api/v1/informe")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -20,34 +19,22 @@ public class InformesController {
     @Qualifier("InformesServiceImpl")
     private InformesServiceImpl informesService;
 
-    @Operation(
-            summary = "Listado de Ingreso Gasto",
-            description = "Metodo para la obtencion de Ingreso Gasto con filtrado del id de Inmueble",
-            method = "GET"
-    )
-    @GetMapping("/{id}")
-    public InformesResponse global(
-            @Valid @PathVariable("id") int id) {
-        return informesService.informeGeneral(id);
+    @GetMapping("/inmueble/{idEntidad}")
+    public List<InformesResponse> globalXInmueble(
+            @PathVariable("idEntidad") int idEntidad) {
+        return informesService.informeXInmueble(idEntidad);
     }
 
-    @GetMapping("/inmueble/{administradorId}/{idEntidad}")
-    public List<InformesResponse> globalXInmueble(@Valid @PathVariable("administradorId") int administradorId, @Valid @PathVariable("idEntidad") int idEntidad) {
-        return informesService.informeXInmueble(administradorId, idEntidad);
-    }
-
-    @GetMapping("/inmueble/anio/{idInmueble}/{administradorId}")
+    @GetMapping("/inmueble/anio/{idInmueble}")
     public List<InformesResponse> globalByInmuebleXAnio(
-            @Valid @PathVariable("idInmueble") int id,
-            @Valid @PathVariable("administradorId") int administradorId) {
-        return informesService.informeByInmuebleXAnio(id, administradorId);
+            @PathVariable("idInmueble") int id) {
+        return informesService.informeByInmuebleXAnio(id);
     }
 
-    @GetMapping("/inmueble/mes/{idInmueble}/{anio}/{administradorId}")
+    @GetMapping("/inmueble/mes/{idInmueble}/{anio}")
     public List<InformesResponse> globalByInmuebleAnioXMes(
-            @Valid @PathVariable("idInmueble") int id,
-            @Valid @PathVariable("anio") int anio,
-            @Valid @PathVariable("administradorId") int administradorId) {
-        return informesService.informeByInmuebleAnioXMes(id, anio, administradorId);
+            @PathVariable("idInmueble") int id,
+            @PathVariable("anio") int anio) {
+        return informesService.informeByInmuebleAnioXMes(id, anio);
     }
 }

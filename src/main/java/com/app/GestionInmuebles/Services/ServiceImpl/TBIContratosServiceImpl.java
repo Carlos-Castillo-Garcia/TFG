@@ -12,13 +12,26 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase para la generacion del codigo de los metodos implementados
+ * @author Carlos Castillo
+ */
+
 @Service("TBIContratosServiceImpl")
 public class TBIContratosServiceImpl implements TBIContratosService {
 
+    //-------------------------------------------Variable Service de Contratos Repository----------------------------------------------
     @Autowired
     @Qualifier("TBIContratosRepository")
     private TBIContratosRepository tbiContratosRespository;
 
+    //-------------------------------------------Metodos de la Clase Contratos Service Impl-------------------------------------------------------
+
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de TBIContratosResponse
+     */
     @Override
     public List<TBIContratosResponse> listarContratosadministradorId(int id) {
         List<TBIContratosResponse> responses = new ArrayList<>();
@@ -30,6 +43,12 @@ public class TBIContratosServiceImpl implements TBIContratosService {
         return responses;
     }
 
+    /**
+      * Metodo para la obtencion de un listado de registros filtrado por el propietario del contrato
+     * @param entidad parametro necesario para la ejecucion del metodo
+     * @param idAdministrador parametro necesario para la ejecucion del metodo
+     * @return Lista de TBIContratosResponse
+     */
     @Override
     public List<TBIContratosResponse> listarContratosPropietario(int idAdministrador, int entidad) {
         List<TBIContratosResponse> responses = new ArrayList<>();
@@ -41,6 +60,11 @@ public class TBIContratosServiceImpl implements TBIContratosService {
         return responses;
     }
 
+    /**
+      * Metodo para la obtencion de un listado de registros
+     * @param id parametro necesario para la ejecucion del metodo
+     * @return Lista de TBIContratosResponse
+     */
     @Override
     public List<TBIContratosResponse> listarContratosidContratos(int id) {
         List<TBIContratosResponse> responses = new ArrayList<>();
@@ -50,6 +74,11 @@ public class TBIContratosServiceImpl implements TBIContratosService {
         return responses;
     }
 
+    /**
+     * Metodo usado para la creacion y modificacion
+     * @param tbiContratosDTO parametro necesario para la ejecucion del metodo
+     * @return TBIContratosResponse
+     */
     @Override
     public TBIContratosResponse createUpdateContratos(TBIContratosDTO tbiContratosDTO) {
         return EntityToResponse(tbiContratosRespository.save(DTOToEntity(tbiContratosDTO)));

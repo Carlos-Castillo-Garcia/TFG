@@ -1,11 +1,16 @@
 package com.app.GestionInmuebles.DTO.Usuarios;
 
 import com.app.GestionInmuebles.DTO.Tipos.Roles.RolesEntity;
+import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
 
+/**
+ * Objeto para el tratado de datos con la Base de datos
+ * @author Carlos Castillo
+  */
 @Entity
 @Table(name = "Usuarios")
 @Getter
